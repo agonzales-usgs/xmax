@@ -1,6 +1,9 @@
 import com.isti.traceview.data.RawDataProvider;
 import com.isti.traceview.processing.IFilter;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * <p>
  * Band-pass Butterworth filter Algorithm is from Stearns, 1975
@@ -22,6 +25,7 @@ import com.isti.traceview.processing.IFilter;
 
 public class FilterBP implements IFilter {
 
+	private static final Logger logger = LoggerFactory.getLogger(FilterBP.class);
 	int order = 0;
 	double cutLowFrequency = Double.NaN;
 	double cutHighFrequency = Double.NaN;
