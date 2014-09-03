@@ -70,7 +70,12 @@ public class FilterFacade {
 			}
 		} catch (TraceViewException e) {
 			lg.error("Can't filter data: " + e);
-			
+		} catch (BPFilterException e) {
+			lg.error("BPFilterException:", e);
+		} catch (HPFilterException e) {
+			lg.error("HPFilterException:", e);
+		} catch (LPFilterException e) {
+			lg.error("LPFilterException:", e);
 		}
 		return data;
 	}

@@ -1,5 +1,6 @@
 import com.isti.traceview.data.RawDataProvider;
 import com.isti.traceview.processing.IFilter;
+import com.isti.traceview.processing.BPFilterException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -131,9 +132,12 @@ public class FilterBP implements IFilter {
 	 *            number of samples to filter
 	 * @return filtered data array
 	 */
-	synchronized public double[] filter(double[] data, int length) {
+	synchronized public double[] filter(double[] data, int length) 
+	throws BPFilterException
+	{
+		//throw new RuntimeException("Requested filtering length exceeds provided array length");
 		if (data.length > length)
-			throw new RuntimeException("Requested filtering length exceeds provided array length");
+			throw new BPFilterException("Requested filtering length exceeds provided array length");
 		int mean = new Double(demean(data, length)).intValue();
 		double[][] f = new double[order + 1][5];
 		for (int i = 0; i <= order; i++) {

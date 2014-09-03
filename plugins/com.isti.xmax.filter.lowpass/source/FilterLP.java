@@ -1,11 +1,16 @@
 import com.isti.traceview.data.RawDataProvider;
 import com.isti.traceview.processing.IFilter;
+import com.isti.traceview.processing.LPFilterException;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Low-pass Butterworth filter Algorithm is from Stearns, 1975
  */
 
 public class FilterLP implements IFilter {
+	private static final Logger logger = LoggerFactory.getLogger(FilterLP.class);
 	int order = 0;
 	double cutFrequency = Double.NaN;
 
@@ -74,9 +79,12 @@ public class FilterLP implements IFilter {
 	 *            number of samples in data array
 	 * @return filtered data array
 	 */
-	synchronized public double[] filter(double[] data, int length) {
+	synchronized public double[] filter(double[] data, int length) 
+	throws LPFilterException
+	{
+		//throw new RuntimeException("Requested filtering length exceeds provided array length");
 		if (data.length > length)
-			throw new RuntimeException("Requested filtering length exceeds provided array length");
+			throw new LPFilterException("Requested filtering length exceeds provided array length");
 		int mean = new Double(demean(data, length)).intValue();
 		double[][] f = new double[order + 1][3];
 		for (int i = 0; i <= order; i++) {

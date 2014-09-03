@@ -24,7 +24,7 @@
 		<Data>
 			<!-- Wildcarded mask of data files to load. Recovers by -d option. Default is "./DATA/*" -->
 			<!-- DataMask>resources/DATA</DataMask -->
-			<DataMask>seed/IU_ANMO/2014_236</DataMask>
+			<DataMask>seed/IU_MACI/2014_236</DataMask>
 
 			<!-- Temporary directory to store decompressed traces in the internal 
 				format -->

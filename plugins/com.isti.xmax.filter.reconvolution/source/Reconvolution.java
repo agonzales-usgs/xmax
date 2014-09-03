@@ -20,7 +20,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EtchedBorder;
 
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.isti.jevalresp.RespUtils;
 import com.isti.traceview.TraceViewException;
@@ -38,7 +40,7 @@ import edu.sc.seis.fissuresUtil.freq.Cmplx;
 public class Reconvolution extends JDialog implements IFilter, PropertyChangeListener {
 	
 	private static final long serialVersionUID = 1L;
-	private static Logger lg = Logger.getLogger(Reconvolution.class);
+	private static final Logger logger = LoggerFactory.getLogger(Reconvolution.class);
 	
 	private final static int comboBoxHeight = 22;
 	private final static int maxDataLength = 16385;
@@ -106,7 +108,7 @@ public class Reconvolution extends JDialog implements IFilter, PropertyChangeLis
 		if((data.length>maxDataLength) && !warningWasShown &&
 			JOptionPane.showConfirmDialog(XMAX.getFrame(), "Too long data, processing could take time. Do you want to continue?", "Warning", JOptionPane.OK_CANCEL_OPTION)==JOptionPane.CANCEL_OPTION){
 			warningWasShown = true;
-			throw new TraceViewException("Filtering was calcelled by user");
+			throw new TraceViewException("Filtering was cancelled by user");
 		}
 	
 		//Make a copy of data since we gonna modify it.
@@ -153,14 +155,14 @@ public class Reconvolution extends JDialog implements IFilter, PropertyChangeLis
 		try {
 			resp = response.getResp(channel.getTimeRange().getStartTime(), fp.startFreq, fp.endFreq, spectra.length);
 			resp = normData(resp);
-			//Spectra.log("Response", resp);
-		} catch (Exception e1) {
+
+			//Remove signal in spectra where response is near 0
+			spectra = removeExcessFrequencies(spectra, resp);
+		} catch (TraceViewException e1) {
 			throw new TraceViewException("File " + response.getFileName() + ": " + e1);
+		} catch (ReconvolutionException e2) {
+			logger.error("ReconvolutionException:", e2);
 		}
-		
-		//Remove signal in spectra where response is near 0
-		spectra = removeExcessFrequencies(spectra, resp);
-		//Spectra.log("Original", spectra);
 		
 		// Deconvolve
 		Cmplx[] deconvolved = null;
@@ -177,12 +179,12 @@ public class Reconvolution extends JDialog implements IFilter, PropertyChangeLis
 				try {
 					respExt = respExternal.getResp(channel.getTimeRange().getStartTime(), fp.startFreq, fp.endFreq, spectra.length);
 					respExt = normData(respExt);
-					//Spectra.log("External response", respExt);
-				} catch (Exception e) {
+					reconvolved = IstiUtilsMath.complexConvolution(removeExcessFrequencies(deconvolved,respExt), respExt);
+				} catch (TraceViewException e) {
 					throw new TraceViewException("File " + respExternal.getFileName() + ": " + e);
+				} catch (ReconvolutionException e) {
+					logger.error("ReconvolutionException:", e);
 				}
-				reconvolved = IstiUtilsMath.complexConvolution(removeExcessFrequencies(deconvolved,respExt), respExt);
-				//Spectra.log("Reconvolved", reconvolved);
 			}
 		}
 		
@@ -253,7 +255,7 @@ public class Reconvolution extends JDialog implements IFilter, PropertyChangeLis
 					}
 				}
 			} catch (TraceViewException e) {
-				lg.error("Can't load response from file: " + e);
+				logger.error("Can't load response from file:", e);
 			}
 			ComboBoxModel<Object> convolveCBModel = new DefaultComboBoxModel<Object>(options.toArray());
 			convolveCB.setModel(convolveCBModel);
@@ -337,10 +339,13 @@ public class Reconvolution extends JDialog implements IFilter, PropertyChangeLis
 	}
 */
 
-	public static Cmplx[] removeExcessFrequencies(Cmplx[] spectra, Cmplx[] resp){
+	public static Cmplx[] removeExcessFrequencies(Cmplx[] spectra, Cmplx[] resp)
+	throws ReconvolutionException
+	{
 		double cutOffRatio = 100.0;
 		if(spectra.length!=resp.length){
-			throw new RuntimeException("Arrays length should be equal");
+			//throw new RuntimeException("Arrays length should be equal");
+			throw new ReconvolutionException("Arrays length should be equal");
 		}
 		double maxAmp = 0;
 		for (int i = 0; i < resp.length; i++){
