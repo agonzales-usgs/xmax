@@ -63,7 +63,7 @@ public class TransSpectra implements ITransformation {
 	 * @throws XMAXException
 	 */
 	private List<Spectra> createData(List<PlotDataProvider> input, IFilter filter, TimeInterval ti, JFrame parentFrame) throws XMAXException {
-		logger.debug("createDataset started");
+		logger.debug("== START");
 		List<Spectra> dataset = new ArrayList<Spectra>();
 		for (PlotDataProvider channel: input) {
 			double sampleRate = 0;

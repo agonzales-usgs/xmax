@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.isti.traceview.AbstractUndoableCommand;
+import com.isti.traceview.UndoException;
 import com.isti.traceview.gui.GraphPanel;
 import com.isti.traceview.processing.Rotation;
 
@@ -37,7 +38,7 @@ public class RotateCommand extends AbstractUndoableCommand {
 		graphPanel.setRotation(rotation);
 	}
 
-	public void undo() {
+	public void undo() throws UndoException {
 		super.undo();
 		graphPanel.setRotation(previous);
 	}

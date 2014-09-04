@@ -226,7 +226,7 @@ public class TimeInterval {
 	 * String representation of duration in seconds (if duration less then hour), hours (if duration less then day) or decimal days
 	 */
 	public static String getStringDiff(long duration) {
-		logger.debug("getStringDiff: duration="+ duration);
+		logger.debug("duration = "+ duration);
 		String ret = "";
 		if (duration < 0) {
 			duration = -duration;
@@ -247,7 +247,7 @@ public class TimeInterval {
 			Double days = new Double(duration) / 86400000;
 			ret = ret + new DecimalFormat("#######.###").format(days) + " d";
 		}
-		logger.debug("getStringDiff return: "+ ret);
+		logger.debug("return: "+ ret);
 		return ret;
 	}
 
@@ -255,7 +255,7 @@ public class TimeInterval {
 	 * String representation of duration in the form +-##days ##hours ##min ##.## s
 	 */
 	public static String getStringDiffDDHHMMSS(long duration) {
-		logger.debug("getStringDiffDDHHMMSS: duration="+ duration);
+		logger.debug("duration = " + duration);
 		String ret = "";
 		if (duration < 0) {
 			duration = -duration;
@@ -288,7 +288,7 @@ public class TimeInterval {
 			ret = ret + ", ";
 		}
 		ret = ret + sec + " s";
-		logger.debug("getStringDiffDDHHMMSS return: "+ ret);
+		logger.debug("return: " + ret);
 		return ret;
 	}
 

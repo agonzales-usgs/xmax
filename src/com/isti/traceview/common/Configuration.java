@@ -238,7 +238,7 @@ public class Configuration extends Observable {
 	 * @uml.property name="dataPath"
 	 */
 	public void setDataPath(String dataPath) {
-		logger.debug("setDataPath(): " + dataPath);
+		logger.debug("== dataPath: " + dataPath);
 		this.dataPath = dataPath;
 	}
 
@@ -730,7 +730,7 @@ public class Configuration extends Observable {
 	public String getConfigFileDir() {
 		File confFile = new File(confFileName);
 		String ret = confFile.getAbsolutePath().substring(0, confFile.getAbsolutePath().lastIndexOf(confFile.getName()));
-		logger.debug("getConfigFileDir(): " + ret);
+		logger.debug("== fileDir: " + ret);
 		return ret;
 	}
 }

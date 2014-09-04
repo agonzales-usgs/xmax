@@ -65,7 +65,7 @@ public class TransCorrelation implements ITransformation {
 	 * @throws XMAXException
 	 */
 	private List<double[]> createData(List<PlotDataProvider> input, IFilter filter, TimeInterval ti) throws XMAXException {
-		logger.debug("Create data");
+		logger.debug("START");
 		List<double[]> ret = new ArrayList<double[]>();
 		PlotDataProvider channel1 = input.get(0);
 		List<Segment> segments1 = channel1.getRawData(ti);

@@ -72,7 +72,7 @@ public class TransPSD implements ITransformation {
 
 	private List<Spectra> createData(List<PlotDataProvider> input, IFilter filter, TimeInterval ti, JFrame parentFrame) throws TraceViewException,
 			XMAXException {
-		logger.debug("createDataset started");
+		logger.debug("== START");
 		List<Spectra> dataset = new ArrayList<Spectra>();
 		ListIterator<PlotDataProvider> li = input.listIterator();
 		String respNotFound = "";

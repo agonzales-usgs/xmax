@@ -147,7 +147,7 @@ public class ViewCorrelation extends JDialog implements PropertyChangeListener, 
 	}
 
 	private XYDataset filterData(List<double[]> ds) {
-		logger.debug("filterData");
+		logger.debug("== START");
 		this.setCursor(new Cursor(Cursor.WAIT_CURSOR));
 		double[] correlation = null;
 		double[] dblData1 = applyWindow(ds.get(0), (String) getTaperCB().getSelectedItem());

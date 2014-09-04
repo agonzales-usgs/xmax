@@ -9,7 +9,9 @@ import java.io.Reader;
 import java.io.StringReader;
 import java.util.Date;
 
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.isti.traceview.TraceView;
 import com.isti.traceview.TraceViewException;
@@ -24,7 +26,7 @@ import edu.sc.seis.fissuresUtil.freq.Cmplx;
  *
  */
 public class Response {
-	private static Logger lg = Logger.getLogger(Response.class);
+	private static final Logger logger = LoggerFactory.getLogger(Response.class);
 	private static final boolean verboseDebug = false;
 	
 	String network = null;
@@ -157,7 +159,7 @@ public class Response {
 		Response resp = null;
 		Reader respReader = null;
 		if(!file.getName().startsWith("RESP.")){
-			lg.error("getResponse("+file.getName()+"): response file should starts with RESP.");
+			logger.error("getResponse("+file.getName()+"): response file should starts with RESP.");
 			return null;
 		}
 		try {
@@ -172,11 +174,14 @@ public class Response {
 			respReader.read(cbuf, 0, len);
 			resp = new Response(network, station, location, channel, new String(cbuf), file.getCanonicalPath());
 		} catch (Exception ex) {
-			lg.error("Could not open file: " + file.getName());
+			StringBuilder message = new StringBuilder();
+			message.append("Could not open file: " + file.getName());
+			logger.error(message.toString(), ex);
 		} finally {
 			try {
 				respReader.close();
 			} catch (IOException e) {
+				logger.error("IOException:", e);
 			}
 		}
 		return resp;
