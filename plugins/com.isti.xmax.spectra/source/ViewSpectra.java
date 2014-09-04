@@ -24,7 +24,10 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.LogarithmicAxis;
@@ -53,7 +56,8 @@ import com.isti.xmax.XMAX;
 public class ViewSpectra extends JDialog implements PropertyChangeListener, ItemListener {
 
 	private static final long serialVersionUID = 1L;
-	private static Logger lg = Logger.getLogger(ViewSpectra.class);
+	private static final Logger logger = LoggerFactory.getLogger(ViewSpectra.class);
+	
 	private static SimpleDateFormat df = new SimpleDateFormat("yyyy,DDD");
 	private JOptionPane optionPane;
 	private JCheckBox SmoothCB;
@@ -146,7 +150,6 @@ public class ViewSpectra extends JDialog implements PropertyChangeListener, Item
 			if (e.getSource() instanceof JCheckBox) {
 				// checkbox for channel's selection
 				JCheckBox cb = (JCheckBox) e.getSource();
-
 			}
 		}
 		plot.setDataset(filterData(data));

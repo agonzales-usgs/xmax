@@ -3,7 +3,9 @@ import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
@@ -20,13 +22,13 @@ import com.isti.xmax.XMAXException;
 import com.isti.xmax.gui.XMAXframe;
 
 public class TransResp implements ITransformation {
-	private static Logger lg = Logger.getLogger(TransResp.class);
+	private static final Logger logger = LoggerFactory.getLogger(TransResp.class);
 
 	private static final double minFreqValue = 0.0001;
 	private static final int numberFreqs = 500;
 
 	public void transform(List<PlotDataProvider> input, TimeInterval ti, IFilter filter, Object configuration, JFrame parentFrame) {
-		lg.debug("RESPONSE PLUGIN CALLED!!!!!!!!!!!!!!!!!!!");
+		logger.debug("RESPONSE PLUGIN CALLED!!!!!!!!!!!!!!!!!!!");
 		if (input.size() == 0) {
 			JOptionPane.showMessageDialog(parentFrame, "Please select channels", "RESP computation warning", JOptionPane.WARNING_MESSAGE);
 		} else {

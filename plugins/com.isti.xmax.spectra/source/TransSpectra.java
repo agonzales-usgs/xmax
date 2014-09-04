@@ -4,7 +4,9 @@ import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.isti.traceview.TraceViewException;
 import com.isti.traceview.common.TimeInterval;
@@ -23,13 +25,13 @@ import com.isti.xmax.gui.XMAXframe;
  * @author Max Kokoulin
  */
 public class TransSpectra implements ITransformation {
-	private static Logger lg = Logger.getLogger(TransSpectra.class);
+	private static final Logger logger = LoggerFactory.getLogger(TransSpectra.class);
 	private static final boolean verboseDebug = false;
 
 	public int maxDataLength = 65536;
 
 	public void transform(List<PlotDataProvider> input, TimeInterval ti, IFilter filter, Object configuration, JFrame parentFrame) {
-		lg.debug("SPECTRA PLUGIN CALLED!!!!!!!!!!!!!!!!!!!");
+		logger.debug("SPECTRA PLUGIN CALLED!!!!!!!!!!!!!!!!!!!");
 		if (input.size() == 0) {
 			JOptionPane.showMessageDialog(parentFrame, "Please select channels", "Spectra computation warning", JOptionPane.WARNING_MESSAGE);
 		} else {
@@ -61,7 +63,7 @@ public class TransSpectra implements ITransformation {
 	 * @throws XMAXException
 	 */
 	private List<Spectra> createData(List<PlotDataProvider> input, IFilter filter, TimeInterval ti, JFrame parentFrame) throws XMAXException {
-		// lg.debug("TransSpectra: createDataset started");
+		logger.debug("createDataset started");
 		List<Spectra> dataset = new ArrayList<Spectra>();
 		for (PlotDataProvider channel: input) {
 			double sampleRate = 0;
@@ -109,7 +111,7 @@ public class TransSpectra implements ITransformation {
 				}
 			}
 			*/
-			lg.debug("data size = " + ds);
+			logger.debug("data size = " + ds);
 			int[] data = new int[ds];
 			for (int i = 0; i < ds; i++) {
 				data[i] = intData[i];
@@ -122,7 +124,7 @@ public class TransSpectra implements ITransformation {
 						verboseDebug);
 				dataset.add(spectra);
 			} catch (TraceViewException e) {
-				lg.error(e);
+				logger.error("TraceViewException:", e);
 			}
 		}
 		return dataset;

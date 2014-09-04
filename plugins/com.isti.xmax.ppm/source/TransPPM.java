@@ -4,7 +4,9 @@ import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
@@ -27,12 +29,11 @@ import com.isti.xmax.gui.XMAXframe;
  */
 public class TransPPM implements ITransformation {
 
-	private static Logger lg = Logger.getLogger(TransPPM.class);
-
+	private static final Logger logger = LoggerFactory.getLogger(TransPPM.class);
 	public int maxDataLength = 65536;
 
 	public void transform(List<PlotDataProvider> input, TimeInterval ti, IFilter filter, Object configuration, JFrame parentFrame) {
-		lg.debug("PPM PLUGIN CALLED!!!!!!!!!!!!!!!!!!!");
+		logger.debug("PPM PLUGIN CALLED!!!!!!!!!!!!!!!!!!!");
 		if ((input == null) || (input.size() != 2)) {
 			JOptionPane.showMessageDialog(parentFrame, "You should select two channels to view PPM", "Error", JOptionPane.ERROR_MESSAGE);
 		} else {
