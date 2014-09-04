@@ -5,7 +5,9 @@ import java.util.SimpleTimeZone;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 
 import com.isti.traceview.common.Configuration;
 import com.isti.traceview.data.DataModule;
@@ -25,7 +27,7 @@ public class TraceView {
 	 * @see JFrame
 	 */
 	
-	private static Logger lg = Logger.getLogger(TraceView.class);
+	private static final Logger logger = LoggerFactory.getLogger(TraceView.class);
 	/**
 	 * Library version label holder
 	 */
@@ -88,8 +90,7 @@ public class TraceView {
 		} else
 			// unable to fetch Java version string
 			javaVersionString = "(Unknown)"; // indicate unable to fetch
-		lg.debug("" + javaVersionString);
-
+		logger.debug("" + javaVersionString);
 	}
 
 	public TraceView() {
@@ -111,7 +112,7 @@ public class TraceView {
 	public static void setFrame(JFrame fr) {
 		if (!getJavaVersionMessage().contains("version OK")) {
 			// send warning to log
-			lg.warn(getJavaVersionMessage());
+			logger.warn(getJavaVersionMessage());
 			JOptionPane.showMessageDialog(frame, getJavaVersionMessage(), "Warning", JOptionPane.WARNING_MESSAGE);
 		}
 		frame = fr;
@@ -139,7 +140,7 @@ public class TraceView {
 	public static void dumpMemory() {
 		Runtime r = Runtime.getRuntime();
 		r.gc();
-		lg.debug("Utilized memory: " + (r.totalMemory() - r.freeMemory()) + "; Free memory: " + r.freeMemory() + "; Total memory: " + r.totalMemory());
+		logger.debug("Utilized memory: " + (r.totalMemory() - r.freeMemory()) + "; Free memory: " + r.freeMemory() + "; Total memory: " + r.totalMemory());
 	}
 
 	public static String getJavaVersionMessage() {
