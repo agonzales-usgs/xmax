@@ -1,6 +1,8 @@
 package com.isti.traceview.commands;
 
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.isti.traceview.AbstractUndoableCommand;
 import com.isti.traceview.gui.GraphPanel;
@@ -11,7 +13,7 @@ import com.isti.traceview.gui.GraphPanel;
  * @author Max Kokoulin
  */
 public class SelectCommand extends AbstractUndoableCommand {
-	private static Logger lg = Logger.getLogger(SelectCommand.class);
+	private static final Logger logger = LoggerFactory.getLogger(SelectCommand.class);
 	private GraphPanel graphPanel = null;
 
 	/**
@@ -27,7 +29,7 @@ public class SelectCommand extends AbstractUndoableCommand {
 			super.run();
 			graphPanel.select();
 		} catch (Exception e) {
-			lg.error("SelectCommand error: " + e);
+			logger.error("Exception:", e);
 		}
 	}
 
@@ -39,6 +41,7 @@ public class SelectCommand extends AbstractUndoableCommand {
 			}
 		} catch (Exception e) {
 			// do nothing
+			logger.error("Exception:", e);
 		}
 	}
 

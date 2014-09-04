@@ -1,6 +1,8 @@
 package com.isti.traceview.commands;
 
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 import com.isti.traceview.AbstractUndoableCommand;
 import com.isti.traceview.gui.GraphPanel;
 
@@ -10,7 +12,7 @@ import com.isti.traceview.gui.GraphPanel;
  * @author Max Kokoulin
  */
 public class OverlayCommand extends AbstractUndoableCommand {
-	private static Logger lg = Logger.getLogger(OverlayCommand.class);
+	private static final Logger logger = LoggerFactory.getLogger(OverlayCommand.class);
 	private GraphPanel graphPanel = null;
 
 	/**
@@ -26,7 +28,7 @@ public class OverlayCommand extends AbstractUndoableCommand {
 			super.run();
 			graphPanel.overlay();
 		} catch (Exception e) {
-			lg.error("OverlayCommand error: " + e);
+			logger.error("Exception:", e);
 		}
 	}
 
@@ -38,6 +40,7 @@ public class OverlayCommand extends AbstractUndoableCommand {
 			}
 		} catch (Exception e) {
 			// do nothing
+			logger.error("Exception:", e);
 		}
 	}
 

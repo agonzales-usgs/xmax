@@ -1,6 +1,8 @@
 package com.isti.traceview.commands;
 
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 
 import com.isti.traceview.AbstractCommand;
 import com.isti.traceview.TraceView;
@@ -13,7 +15,7 @@ import com.isti.traceview.data.PlotDataProvider;
  * @author Max Kokoulin
  */
 public class SaveAllDataCommand extends AbstractCommand {
-	private static Logger lg = Logger.getLogger(SaveAllDataCommand.class);
+	private static final Logger logger = LoggerFactory.getLogger(SaveAllDataCommand.class);
 
 	public void run() {
 		try {
@@ -22,7 +24,7 @@ public class SaveAllDataCommand extends AbstractCommand {
 				channel.dump(DataModule.getTemporaryStorage().getSerialFileName(channel));
 			}
 		} catch (Exception e) {
-			lg.error("SaveAllDataCommand error: " + e);
+			logger.error("Exception:", e);
 		}
 	}
 }
