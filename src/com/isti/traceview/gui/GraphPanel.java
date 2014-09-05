@@ -11,7 +11,10 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EtchedBorder;
 import javax.swing.event.MouseInputListener;
 
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import org.jfree.chart.axis.DateAxis;
 import org.jfree.chart.axis.DateTickUnit;
 import org.jfree.chart.axis.DateTickUnitType;
@@ -71,7 +74,7 @@ public class GraphPanel extends JPanel implements Printable, MouseInputListener,
 
 	private static final long serialVersionUID = 1L;
 
-	private static Logger lg = Logger.getLogger(GraphPanel.class); // @jve:decl-index=0:
+	private static final Logger logger = LoggerFactory.getLogger(GraphPanel.class); // @jve:decl-index=0:
 
 	private static final Color selectionColor = Color.YELLOW;
 	private static Font axisFont = null; // @jve:decl-index=0:
@@ -289,11 +292,13 @@ public class GraphPanel extends JPanel implements Printable, MouseInputListener,
 			} else {
 				url = GraphPanel.class.getResource("defaultMarkPosition.gif");
 			}
-			System.out.format("== MTH: file=%s path=%s\n", url.getFile(), url.getPath() );
+			//System.out.format("== MTH: file=%s path=%s\n", url.getFile(), url.getPath() );
+			logger.info("== MTH: file=%s path=%s\n", url.getFile(), url.getPath());
 			markPositionImage = javax.imageio.ImageIO.read(url);
 			//} catch (MalformedURLException e) {
 		} catch (Exception e) {
 	     // Do something appropriate
+			logger.error("Exception:", e);
 		}
 
 		/** ----------------- MTH ---------------- **/
@@ -340,7 +345,7 @@ public class GraphPanel extends JPanel implements Printable, MouseInputListener,
 	 *            time range to set. Graph panel redraws to show this time range.
 	 */
 	public void setTimeRange(TimeInterval timeRange) {
-		lg.debug("GraphPanel.setTimeRange " + timeRange);
+		logger.debug("timerange: " + timeRange);
 		this.timeRange = timeRange;
 		if (timeRangeAdapter != null && TraceView.getFrame() != null) {
 			timeRangeAdapter.setTimeRange(timeRange);
@@ -583,16 +588,15 @@ public class GraphPanel extends JPanel implements Printable, MouseInputListener,
 	 *            list of traces
 	 */
 	public void setChannelShowSet(List<PlotDataProvider> channels) {
-        lg.debug("== GraphPanel.setChannelShowSet [ENTER]");
+        logger.debug("== [ENTER]");
 		synchronized (TraceView.getDataModule().getAllChannels()) {
-			lg.debug("GraphPanel.setChannelShowSet begin");
 			if (channels != null) {
 				clearChannelShowSet();
 				CommandExecutor.getInstance().clearCommandHistory(); // or do channels loading as
 				// a command
 				if (!TraceView.getConfiguration().getMergeLocations()) {
 					for (PlotDataProvider channel: channels) {
-                        lg.debug("== GraphPanel.setChannelShowSet Handle channel=" + channel);
+                        logger.debug("== handle channel=" + channel);
 						List<PlotDataProvider> toAdd = new ArrayList<PlotDataProvider>();
 						toAdd.add(channel);
 						addChannelShowSet(toAdd);
@@ -637,7 +641,7 @@ public class GraphPanel extends JPanel implements Printable, MouseInputListener,
 			}
 			observable.setChanged();
 			observable.notifyObservers(channels);
-            lg.debug("== GraphPanel.setChannelShowSet [EXIT]");
+            logger.debug("== [EXIT]");
 		}
 	}
 
@@ -897,7 +901,7 @@ public class GraphPanel extends JPanel implements Printable, MouseInputListener,
 	 *            IFilter to set
 	 */
 	public void setFilter(IFilter filter) {
-		lg.debug("GraphPanel: setFilter " + filter);
+		logger.debug("filter " + filter);
 		if(filter != null){
 			if(getMaxDataLength()>filter.getMaxDataLength()){
 				if(JOptionPane.showConfirmDialog(TraceView.getFrame(), "Too long data, processing could take time. Do you want to continue?", "Warning", JOptionPane.OK_CANCEL_OPTION)==JOptionPane.OK_OPTION){
@@ -1582,7 +1586,7 @@ public class GraphPanel extends JPanel implements Printable, MouseInputListener,
             final long FOUR_WEEKS = 28L*86400000;
             final long EIGHT_WEEKS= 56L*86400000;
 
-			lg.debug("AxisPanel setTimeRange: " + ti);
+			logger.debug("time range: " + ti);
 			boolean needwait = false;
 			if (axis.getMinimumDate().getTime() == 0 && axis.getMaximumDate().getTime() == 1) {
 				needwait = true;
@@ -1691,7 +1695,7 @@ public class GraphPanel extends JPanel implements Printable, MouseInputListener,
 			super.paintComponent(g);
 			int infoPanelWidth = channelViewFactory.getInfoAreaWidth();
 			if (axis.getMinimumDate().getTime() != 0 && axis.getMaximumDate().getTime() != 1) {
-				//lg.debug("min date " + axis.getMinimumDate() + ", max date " + axis.getMaximumDate());
+				logger.debug("min date " + axis.getMinimumDate() + ", max date " + axis.getMaximumDate());
 
 				//axis.draw((Graphics2D) g, 0, new Rectangle(infoPanelWidth + getInsets().left, 0, getWidth(), getHeight()), new Rectangle(
 						//infoPanelWidth + getInsets().left, 0, getWidth(), 10), RectangleEdge.BOTTOM, null);
@@ -1739,7 +1743,7 @@ public class GraphPanel extends JPanel implements Printable, MouseInputListener,
 		}
 
 		public void update(TimeInterval ti) {
-			lg.debug("InfoPanel updating, ti = " + ti);
+			logger.debug("updating, ti = " + ti);
 			if (ti != null) {
 				start.setText(TimeInterval.formatDate(ti.getStartTime(), TimeInterval.DateFormatType.DATE_FORMAT_NORMAL));
 				duration.setText(ti.convert());
@@ -1764,10 +1768,10 @@ public class GraphPanel extends JPanel implements Printable, MouseInputListener,
 			gridLayout.setColumns(1);
 			gridLayout.setRows(0);
 			add(axisPanel);
-//axisPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK,2));
+			//axisPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK,2));
 			if(showTimePanel){
 				add(infoPanel);
-//infoPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK,2));
+				//infoPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK,2));
 			}
 		}
 
@@ -1804,13 +1808,13 @@ public class GraphPanel extends JPanel implements Printable, MouseInputListener,
 		}
 
 		public void paint(Graphics g) {
-			lg.debug("DrawAreaPanel paint() Height: " + getHeight() + ", width: " + getWidth() + ", " + getComponents().length + " ChannelViews");
+			logger.debug("paint() Height: " + getHeight() + ", width: " + getWidth() + ", " + getComponents().length + " ChannelViews");
 			super.paint(g);
 		}
 	}
 
 	public void update(Observable observable, Object obj) {
-		lg.debug(this + ": update request from " + observable);
+		logger.debug(this + ": update request from " + observable);
 		if (obj instanceof IScaleModeState) {
 			setScaleMode((IScaleModeState) obj);
 		} else if (obj instanceof IColorModeState) {
