@@ -4,12 +4,14 @@ import java.io.DataInput;
 import java.io.IOException;
 import java.text.ParseException;
 
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.isti.traceview.data.BufferedRandomAccessFile;
 
 public class STA2 extends Block {
-	private static Logger lg = Logger.getLogger(STA2.class);
+	private static final Logger logger = LoggerFactory.getLogger(STA2.class);
 	
 	private String network;		//6-14 a9 network identifier
 	private double latitude;	//16-24 f9.5 latitude (degrees, South is negative)
@@ -47,7 +49,6 @@ public class STA2 extends Block {
 	}
 	
 	public void read(BufferedRandomAccessFile input) throws IMSFormatException, IOException, ParseException {
-		lg.debug("STA2.read begin");
 		header = input.readLine();
 		if(!header.startsWith("STA2")){
 			throw new IMSFormatException("Wrong station block header: " + header);
@@ -58,6 +59,5 @@ public class STA2 extends Block {
 		coordType = getString(36,48);
 		elevation = getDouble(49,54);
 		emplacement = getDouble(55,60);
-		lg.debug("STA2.read end");
 	}
 }

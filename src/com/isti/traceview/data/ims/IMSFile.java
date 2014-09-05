@@ -11,7 +11,9 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.isti.traceview.data.BufferedRandomAccessFile;
 
@@ -21,7 +23,7 @@ public class IMSFile {
 		DATA, REQUEST, SUBSCRIPTION
 	};
 
-	private static Logger lg = Logger.getLogger(IMSFile.class);
+	private static final Logger logger = LoggerFactory.getLogger(IMSFile.class);
 	private static Pattern wid2Pattern = Pattern.compile("(\\w.)\\s.(\\S.)\\s.(\\S.)\\s.");
 	private static Pattern msgTypePattern = Pattern.compile("^MSG_TYPE\\s+(\\S+)$");
 	private static Pattern msgIdPattern = Pattern.compile("^MSG_ID\\s+(\\S+\\.*)$");
@@ -44,7 +46,6 @@ public class IMSFile {
 
 	public static IMSFile read(DataInput inStream, boolean parseOnly) throws IOException, IMSFormatException, ParseException, CanadaException {
 		IMSFile imsFile = new IMSFile();
-		lg.debug("IMSFile.read begin");
 		BufferedRandomAccessFile input = (BufferedRandomAccessFile) inStream;
 		try {
 			while (true) {
@@ -77,11 +78,11 @@ public class IMSFile {
 			}
 		} catch (EOFException e) {
 			// Do nothing
+			logger.error("EOFException:", e);
 		}
 		if(imsFile.dataTypes.size()==0){
 			throw new IMSFormatException("Data not found");
 		}
-		lg.debug("IMSFile.read end");
 		return imsFile;
 	}
 
@@ -143,6 +144,7 @@ public class IMSFile {
 			}
 		} catch (EOFException e) {
 			// Do nothing
+			logger.error("EOFException:", e);
 		}
 	}
 }
