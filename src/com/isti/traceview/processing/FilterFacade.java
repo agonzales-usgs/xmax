@@ -1,6 +1,8 @@
 package com.isti.traceview.processing;
 
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.isti.traceview.TraceViewException;
 import com.isti.traceview.common.TimeInterval;
@@ -13,7 +15,7 @@ import com.isti.traceview.data.Segment;
  * @author Max Kokoulin
  */
 public class FilterFacade {
-	private static Logger lg = Logger.getLogger(FilterFacade.class);
+	private static final Logger logger = LoggerFactory.getLogger(FilterFacade.class);
 
 	private IFilter filter;
 
@@ -49,7 +51,7 @@ public class FilterFacade {
 			}
 			data = filter(data);
 		} catch (CloneNotSupportedException e) {
-			lg.error("Can't filter segment: " + e);
+			logger.error("Can't filter segment: " + e);
 			return segment;
 		}
 		return clone;
@@ -69,13 +71,13 @@ public class FilterFacade {
 				data[i] = new Double(toFilt[i]).intValue();
 			}
 		} catch (TraceViewException e) {
-			lg.error("Can't filter data: " + e);
+			logger.error("Can't filter data:", e);
 		} catch (BPFilterException e) {
-			lg.error("BPFilterException:", e);
+			logger.error("BPFilterException:", e);
 		} catch (HPFilterException e) {
-			lg.error("HPFilterException:", e);
+			logger.error("HPFilterException:", e);
 		} catch (LPFilterException e) {
-			lg.error("LPFilterException:", e);
+			logger.error("LPFilterException:", e);
 		}
 		return data;
 	}

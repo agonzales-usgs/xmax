@@ -165,9 +165,12 @@ public class Reconvolution extends JDialog implements IFilter, PropertyChangeLis
 		}
 		
 		// Deconvolve
-		Cmplx[] deconvolved = null;
-		deconvolved = IstiUtilsMath.complexDeconvolution(spectra, resp);
-		//Spectra.log("Deconvolved", deconvolved);
+		try {
+			Cmplx[] deconvolved = null;
+			deconvolved = IstiUtilsMath.complexDeconvolution(spectra, resp);
+		} catch (IllegalArgumentException e) {
+			logger.error("IllegalArgumentException:", e);
+		}
 		
 		// Convolve if needed
 		Cmplx[] reconvolved = null;

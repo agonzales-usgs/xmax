@@ -27,7 +27,9 @@ import javax.swing.JTextField;
 import javax.swing.ListModel;
 import javax.swing.border.EtchedBorder;
 
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.isti.traceview.TraceView;
 import com.isti.traceview.TraceViewException;
@@ -60,7 +62,7 @@ public class Rotation {
 		THRILLIUM_UVW_TO_XMAX, THRILLIUM_XMAX_TO_UVW, STS2_UVW_TO_XMAX, STS2_XMAX_TO_UVW
 	};
 
-	private static Logger lg = Logger.getLogger(Rotation.class);
+	private static final Logger logger = LoggerFactory.getLogger(Rotation.class);
 
 	private static double[][] UVWtoXMAXthrillium = { { Math.sqrt(2.0 / 3.0), -Math.sqrt(1.0 / 6.0), -Math.sqrt(1.0 / 6.0) },
 			{ 0.0, Math.sqrt(0.5), -Math.sqrt(0.5) }, { Math.sqrt(1.0 / 3.0), Math.sqrt(1.0 / 3.0), Math.sqrt(1.0 / 3.0) } };
@@ -177,6 +179,7 @@ public class Rotation {
 			try{
 				tripletPlotData[1] = getComplementaryPlotData(channel, 'N', ti, pointCount, filter, colorMode);
 			} catch (TraceViewException te) {
+				logger.error("TraceViewException:", te);
 				tripletPlotData[1] = getComplementaryPlotData(channel, '1', ti, pointCount, filter, colorMode);
 			}
 			tripletPlotData[2] = getComplementaryPlotData(channel, 'Z', ti, pointCount, filter, colorMode);
@@ -185,6 +188,7 @@ public class Rotation {
 			try{
 				tripletPlotData[0] = getComplementaryPlotData(channel, 'E', ti, pointCount, filter, colorMode);
 			} catch (TraceViewException te) {
+				logger.error("TraceViewException:", te);
 				tripletPlotData[0] = getComplementaryPlotData(channel, '2', ti, pointCount, filter, colorMode);
 			}
 			tripletPlotData[1] = toProcess;
@@ -194,11 +198,13 @@ public class Rotation {
 			try{
 				tripletPlotData[0] = getComplementaryPlotData(channel, 'E', ti, pointCount, filter, colorMode);
 			} catch (TraceViewException te) {
+				logger.error("TraceViewException:", te);
 				tripletPlotData[0] = getComplementaryPlotData(channel, '2', ti, pointCount, filter, colorMode);
 			}
 			try{
 				tripletPlotData[1] = getComplementaryPlotData(channel, 'N', ti, pointCount, filter, colorMode);
 			} catch (TraceViewException te) {
+				logger.error("TraceViewException:", te);
 				tripletPlotData[1] = getComplementaryPlotData(channel, '1', ti, pointCount, filter, colorMode);
 			}
 			tripletPlotData[2] = toProcess;
@@ -269,10 +275,15 @@ public class Rotation {
 			PlotDataPoint pdp = null;
 			if (allDataFound) {
 				double[][][] rotatedCubicle = new double[8][3][1];
-				for (int j = 0; j < 8; j++) {
-					rotatedCubicle[j] = matrix.times(new Matrix(cubicle[j])).getData();
+				try {
+					for (int j = 0; j < 8; j++) {
+						rotatedCubicle[j] = matrix.times(new Matrix(cubicle[j])).getData();
+					}
+					double[][] rotatedMean = matrix.times(new Matrix(mean)).getData();
+				} catch (MatrixException e) {
+					logger.error("MatrixException:", e);
+					System.exit(0);
 				}
-				double[][] rotatedMean = matrix.times(new Matrix(mean)).getData();
 				int index = 0;
 				if (channelType == 'E' || channelType == 'U' || channelType== '2') {
 					index = 0;
@@ -337,13 +348,18 @@ public class Rotation {
 				if (pointPosition[0][0] == Integer.MIN_VALUE || pointPosition[0][0] == Integer.MIN_VALUE || pointPosition[0][0] == Integer.MIN_VALUE) {
 
 				} else {
-					double[][] rotatedPointPosition = matrix.times(new Matrix(pointPosition)).getData();
-					if (channelType == 'E' || channelType == 'U' || channelType== '2') {
-						rotated.addDataPoint(new Double(rotatedPointPosition[0][0]).intValue());
-					} else if (channelType == 'N' || channelType == 'V' || channelType == '1') {
-						rotated.addDataPoint(new Double(rotatedPointPosition[1][0]).intValue());
-					} else if (channelType == 'Z' || channelType == 'W') {
-						rotated.addDataPoint(new Double(rotatedPointPosition[2][0]).intValue());
+					try {
+						double[][] rotatedPointPosition = matrix.times(new Matrix(pointPosition)).getData();
+						if (channelType == 'E' || channelType == 'U' || channelType== '2') {
+							rotated.addDataPoint(new Double(rotatedPointPosition[0][0]).intValue());
+						} else if (channelType == 'N' || channelType == 'V' || channelType == '1') {
+							rotated.addDataPoint(new Double(rotatedPointPosition[1][0]).intValue());
+						} else if (channelType == 'Z' || channelType == 'W') {
+							rotated.addDataPoint(new Double(rotatedPointPosition[2][0]).intValue());
+						}
+					} catch (MatrixException e) {
+						logger.error("MatrixException:", e);
+						System.exit(0);
 					}
 				}
 			}
@@ -391,6 +407,7 @@ public class Rotation {
 			try{
 				chs[1] = getComplementaryChannel(channel, 'N');
 			} catch (TraceViewException te) {
+				logger.error("TraceViewException:", te);
 				chs[1] = getComplementaryChannel(channel, '1');
 			}
 			chs[2] = getComplementaryChannel(channel, 'Z');
@@ -399,6 +416,7 @@ public class Rotation {
 			try{
 				chs[0] = getComplementaryChannel(channel, 'E');
 			} catch (TraceViewException te) {
+				logger.error("TraceViewException:", te);
 				chs[0] = getComplementaryChannel(channel, '2');
 			}
 			chs[1] = channel;
@@ -408,11 +426,13 @@ public class Rotation {
 			try{
 				chs[0] = getComplementaryChannel(channel, 'E');
 			} catch (TraceViewException te) {
+				logger.error("TraceViewException:", te);
 				chs[0] = getComplementaryChannel(channel, '2');
 			}
 			try{
 				chs[1] = getComplementaryChannel(channel, 'N');
 			} catch (TraceViewException te) {
+				logger.error("TraceViewException:", te);
 				chs[1] = getComplementaryChannel(channel, '1');
 			}
 			chs[2] = channel;

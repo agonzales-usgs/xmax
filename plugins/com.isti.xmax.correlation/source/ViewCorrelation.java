@@ -151,11 +151,15 @@ public class ViewCorrelation extends JDialog implements PropertyChangeListener, 
 		this.setCursor(new Cursor(Cursor.WAIT_CURSOR));
 		double[] correlation = null;
 		double[] dblData1 = applyWindow(ds.get(0), (String) getTaperCB().getSelectedItem());
-		if (ds.size() == 1) {
-			correlation = IstiUtilsMath.correlate(dblData1, dblData1);
-		} else {
-			double[] dblData2 = applyWindow(ds.get(1), (String) taperCB.getSelectedItem());
-			correlation = IstiUtilsMath.correlate(dblData1, dblData2);
+		try {
+			if (ds.size() == 1) {
+				correlation = IstiUtilsMath.correlate(dblData1, dblData1);
+			} else {
+				double[] dblData2 = applyWindow(ds.get(1), (String) taperCB.getSelectedItem());
+				correlation = IstiUtilsMath.correlate(dblData1, dblData2);
+			}
+		} catch (IllegalArgumentException e) {
+			logger.error("IllegalArgumentException:", e);
 		}
 		logger.debug("correlation computed, size = " + correlation.length);
 		XYSeriesCollection dataset = new XYSeriesCollection();
