@@ -2,7 +2,9 @@ package com.isti.xmax.common;
 
 import java.util.Date;
 
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.isti.traceview.common.AbstractEvent;
 import com.isti.traceview.common.IEvent;
@@ -14,7 +16,7 @@ import com.isti.traceview.common.IEvent;
  * @author Max Kokoulin
  */
 public class Arrival extends AbstractEvent implements IEvent {
-	private static Logger lg = Logger.getLogger(Arrival.class);
+	private static final Logger logger = LoggerFactory.getLogger(Arrival.class);
 
 	/**
 	 * @param localTime
@@ -40,7 +42,7 @@ public class Arrival extends AbstractEvent implements IEvent {
 		setParameter("AZIMUTH", azimuth);
 		setParameter("AZIMUTH_BACK", azimuth_back);
 		setParameter("DISTANCE", distance);
-		lg.debug("Created " + this);
+		logger.debug("Created " + this);
 	}
 
 	@Override

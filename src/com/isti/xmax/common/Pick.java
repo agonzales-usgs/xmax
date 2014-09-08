@@ -12,11 +12,13 @@ import java.nio.channels.FileChannel;
 import java.util.Date;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
-import org.apache.log4j.Logger;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
@@ -46,7 +48,7 @@ import com.isti.xmax.XMAXconfiguration;
  * @author Max Kokoulin
  */
 public class Pick extends AbstractEvent implements IEvent {
-	private static Logger lg = Logger.getLogger(Pick.class);
+	private static final Logger logger = LoggerFactory.getLogger(Pick.class);
 	private static String thisSessionStart = TimeInterval.formatDate(new Date(), TimeInterval.DateFormatType.DATE_FORMAT_MIDDLE);
 	private static Pick lastPick = null;
 
@@ -104,7 +106,7 @@ public class Pick extends AbstractEvent implements IEvent {
 				lastPick.nextPick = this;
 			}
 			lastPick = this;
-			lg.debug("Pick created: channel " + channel + ", session " + sessionLabel + ", time "
+			logger.debug("Pick created: channel " + channel + ", session " + sessionLabel + ", time "
 					+ TimeInterval.formatDate(time, TimeInterval.DateFormatType.DATE_FORMAT_NORMAL) + "(" + time.getTime() + ")");
 		}
 	}
@@ -216,6 +218,7 @@ public class Pick extends AbstractEvent implements IEvent {
 					try {
 						Thread.sleep(sleep);
 					} catch (Exception ex) {
+						logger.error("Exception:", ex);
 					}
 					sleep *= 2;
 					if (sleep > maxsleep) {
@@ -229,10 +232,10 @@ public class Pick extends AbstractEvent implements IEvent {
 			writer.close();
 		} catch (JDOMException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error("JDOMException:", e);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error("IOException:", e);
 		}
 	}
 
@@ -260,16 +263,16 @@ public class Pick extends AbstractEvent implements IEvent {
 			raf.setLength(insertPlace + insertText.length() + 11);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error("FileNotFoundException:", e);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error("IOException:", e);
 		} finally {
 			try {
 				raf.close();
 			} catch (Exception e) {
 				// do nothing
-				e.printStackTrace();
+				logger.error("Exception:", e);
 			}
 		}
 	}
@@ -304,13 +307,13 @@ public class Pick extends AbstractEvent implements IEvent {
 							sp.parse(dir[i], new SAXHandler());
 						} catch (ParserConfigurationException e) {
 							// TODO Auto-generated catch block
-							e.printStackTrace();
+							logger.error("ParserConfigurationException:", e);
 						} catch (SAXException e) {
 							// TODO Auto-generated catch block
-							e.printStackTrace();
+							logger.error("SAXException:", e);
 						} catch (IOException e) {
 							// TODO Auto-generated catch block
-							e.printStackTrace();
+							logger.error("IOException:", e);
 						}
 					}
 				}
@@ -325,7 +328,7 @@ public class Pick extends AbstractEvent implements IEvent {
  * SAX handler to parse xml picks database file
  */
 class SAXHandler extends DefaultHandler {
-	private static Logger lg = Logger.getLogger(SAXHandler.class);
+	private static final Logger logger = LoggerFactory.getLogger(SAXHandler.class);
 
 	private Locator locator = null;
 	private String sessionLabel = "";
@@ -387,18 +390,17 @@ class SAXHandler extends DefaultHandler {
 
 	/** Warning. */
 	public void warning(SAXParseException ex) {
-		lg.warn("[Warning] " + getLocationString(ex) + ": " + ex.getMessage());
+		logger.warn("[Warning] " + getLocationString(ex) + ": ", ex);
 	}
 
 	/** Error. */
 	public void error(SAXParseException ex) {
-		lg.error("[Error] " + getLocationString(ex) + ": " + ex.getMessage());
+		logger.error("[Error] " + getLocationString(ex) + ": ", ex);
 	}
 
 	/** Fatal error. */
-	public void fatalError(SAXParseException ex) throws SAXException {
-		lg.error("[Fatal Error] " + getLocationString(ex) + ": " + ex.getMessage());
-		throw ex;
+	public void fatalError(SAXParseException ex) {
+		logger.error("[Fatal Error] " + getLocationString(ex) + ": ", ex);
 	}
 
 	/** Returns a string of the location. */
