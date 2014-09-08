@@ -17,6 +17,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+
 //import org.apache.log4j.Logger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,6 +33,7 @@ import edu.sc.seis.seisFile.mseed.ControlHeader;
 import edu.sc.seis.seisFile.mseed.DataRecord;
 import edu.sc.seis.seisFile.mseed.SeedFormatException;
 import edu.sc.seis.seisFile.mseed.SeedRecord;
+import edu.sc.seis.seisFile.segd.SegdException;
 import edu.sc.seis.seisFile.segd.SegdRecord;
 
 /**
@@ -359,13 +361,17 @@ public abstract class SourceFile implements ISource {
 			inputStream = new BufferedInputStream(new FileInputStream(file));
 			SegdRecord rec = new SegdRecord(file); 
 			rec.readHeader1(new DataInputStream(inputStream));
-		} catch (Exception e) {
-			logger.error("Exception:", e);
+		} catch (IOException e) {
+			logger.error("IOException:", e);
 			return false;
-		} finally {
+		} catch (SegdException e) {
+			logger.error("SegdException:", e);
+			return false;
+		}
+		finally {
 			try{
 				inputStream.close();
-			} catch (Exception ex){
+			} catch (Exception ex) {
 				logger.error("Exception:", ex);
 			}
 		}

@@ -1,10 +1,14 @@
 package edu.sc.seis.seisFile.segd;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.DataInput;
 import java.io.IOException;
 import edu.sc.seis.seisFile.segd.SegdRecord;
 
 public class ChannelSet {
+	private static final Logger logger = LoggerFactory.getLogger(ChannelSet.class);
 	
 	public enum ChannelType {
 		OTHER, 
@@ -142,8 +146,6 @@ public class ChannelSet {
 		traces[tracesAdded++] = trace;
 	}
 
-
-
 	public void read(DataInput inStream) throws IOException{
 		
 		try {
@@ -152,6 +154,7 @@ public class ChannelSet {
 			channelSetNumber = SegdRecord.getDataValue(SegdRecord.getSections(SegdRecord.readBytes(inStream, 1, check),	4), 10);
 		} catch (CheckFailedException e) {
 			//See extended channel set number, bytes 27-28
+			logger.error("CheckFailedException:", e);
 		}
 		try {
 			startTime = SegdRecord.readShorts(inStream, 1)[0]*2;
@@ -247,9 +250,8 @@ public class ChannelSet {
 			array_summed_groups = (short) (byte32&0xF);
 			traces = new Trace[channels_in_set];
 		} catch (CheckFailedException e) {
+			logger.error("CheckFailedException:", e);
 		}
-		
-		
 	}
 	
 	public String toString(){
