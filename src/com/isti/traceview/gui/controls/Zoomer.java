@@ -9,7 +9,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.isti.traceview.TraceView;
 import com.isti.traceview.common.TimeInterval;
@@ -25,7 +27,8 @@ import com.isti.traceview.gui.GraphUtil;
 public class Zoomer extends JPanel implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
-	private static Logger lg = Logger.getLogger(Zoomer.class);
+	private static final Logger logger = LoggerFactory.getLogger(Zoomer.class);
+	
 	private static Insets inset = new Insets(0, 0, 0, 0);
 	private static final Dimension maxSize = new Dimension(130, 30);
 	private double factor = 1.5;
@@ -55,7 +58,7 @@ public class Zoomer extends JPanel implements ActionListener {
 		if (factor > 1.0) {
 			this.factor = factor;
 		} else {
-			lg.error("Zoom factor = " + factor + " must be greater than 1; Forced to " + this.factor);
+			logger.error("Zoom factor = " + factor + " must be greater than 1; Forced to " + this.factor);
 		}
 		zoomInButton = GraphUtil.createGraphicalButton("zoom_in.gif", "Zoom In");
 		zoomInButton.setToolTipText("Zoom In");
