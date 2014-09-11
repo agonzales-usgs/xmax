@@ -403,7 +403,7 @@ public abstract class SourceFile implements ISource {
 				importDirector.close();
 				fileInputStream.close();
 			} catch (Exception ex){
-				logger.error("Exception:", e);
+				logger.error("Exception:", ex);
 			}
 		}
 		return true;

@@ -84,6 +84,8 @@ public class AdditionalGeneralHeader {
 		} catch (CheckFailedException e) {
 			// TODO Auto-generated catch block
 			logger.error("CheckFailedException:", e);
+		} catch (SegdException e) {
+			logger.error("SegdException:", e);
 		}
 	}
 	

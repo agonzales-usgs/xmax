@@ -168,62 +168,64 @@ public class Reconvolution extends JDialog implements IFilter, PropertyChangeLis
 		try {
 			Cmplx[] deconvolved = null;
 			deconvolved = IstiUtilsMath.complexDeconvolution(spectra, resp);
-		} catch (IllegalArgumentException e) {
-			logger.error("IllegalArgumentException:", e);
-		}
 		
-		// Convolve if needed
-		Cmplx[] reconvolved = null;
-		String selectedFileName = (String) convolveCB.getSelectedItem();
-		if (!selectedFileName.equals("None")) {
-			Response respExternal = Response.getResponse(new File(selectedFileName));
-			if (respExternal != null) {
-				Cmplx[] respExt;
-				try {
-					respExt = respExternal.getResp(channel.getTimeRange().getStartTime(), fp.startFreq, fp.endFreq, spectra.length);
-					respExt = normData(respExt);
-					reconvolved = IstiUtilsMath.complexConvolution(removeExcessFrequencies(deconvolved,respExt), respExt);
-				} catch (TraceViewException e) {
-					throw new TraceViewException("File " + respExternal.getFileName() + ": " + e);
-				} catch (ReconvolutionException e) {
-					logger.error("ReconvolutionException:", e);
+			// Convolve if needed
+			Cmplx[] reconvolved = null;
+			String selectedFileName = (String) convolveCB.getSelectedItem();
+			if (!selectedFileName.equals("None")) {
+				Response respExternal = Response.getResponse(new File(selectedFileName));
+				if (respExternal != null) {
+					Cmplx[] respExt;
+					try {
+						respExt = respExternal.getResp(channel.getTimeRange().getStartTime(), fp.startFreq, fp.endFreq, spectra.length);
+						respExt = normData(respExt);
+						reconvolved = IstiUtilsMath.complexConvolution(removeExcessFrequencies(deconvolved,respExt), respExt);
+					} catch (TraceViewException e) {
+						throw new TraceViewException("File " + respExternal.getFileName() + ": " + e);
+					} catch (ReconvolutionException e) {
+						logger.error("ReconvolutionException:", e);
+					}
 				}
 			}
-		}
-		
-		if (reconvolved==null && deconvolved==null){
-			return data;
-		}
-
-		// Reverse fourier transformation
-		double[] inversedTrace = null;
-		if(reconvolved !=null){
-			inversedTrace = IstiUtilsMath.inverseFft_Even(reconvolved);
-		} else if (deconvolved != null){
-			inversedTrace = IstiUtilsMath.inverseFft_Even(deconvolved);
-		}
-		
-		double inversedMax = Double.NEGATIVE_INFINITY;
-		double inversedMin = Double.POSITIVE_INFINITY;
-		
-		//Count inversed trace limits
-		for (int i = 0; i < inversedTrace.length; i++){
-			if(data[i]>inversedMax){
-				inversedMax = inversedTrace[i];
+			
+			if (reconvolved==null && deconvolved==null){
+				return data;
 			}
-			if(data[i]<inversedMin){
-				inversedMin = inversedTrace[i];
+	
+			// Reverse fourier transformation
+			double[] inversedTrace = null;
+			if(reconvolved !=null){
+				inversedTrace = IstiUtilsMath.inverseFft_Even(reconvolved);
+			} else if (deconvolved != null){
+				inversedTrace = IstiUtilsMath.inverseFft_Even(deconvolved);
 			}
-		}		
-		double normCoeff = (max-min)/(inversedMax-inversedMin);
-		double[] processedTrace = new double[data.length];
-		for(int i = 0; i < inversedTrace.length; i++){
-			processedTrace[i] = normCoeff*inversedTrace[i]+mean;
+			
+			double inversedMax = Double.NEGATIVE_INFINITY;
+			double inversedMin = Double.POSITIVE_INFINITY;
+			
+			//Count inversed trace limits
+			for (int i = 0; i < inversedTrace.length; i++){
+				if(data[i]>inversedMax){
+					inversedMax = inversedTrace[i];
+				}
+				if(data[i]<inversedMin){
+					inversedMin = inversedTrace[i];
+				}
+			}		
+			double normCoeff = (max-min)/(inversedMax-inversedMin);
+			double[] processedTrace = new double[data.length];
+			for(int i = 0; i < inversedTrace.length; i++){
+				processedTrace[i] = normCoeff*inversedTrace[i]+mean;
+			}
+			if(data.length%2==1){
+				processedTrace[data.length-1] = processedTrace[data.length-2];
+			} 	
+			return processedTrace;
+		} catch (IllegalArgumentException e) {
+			logger.error("IllegalArgumentException:", e);
+			System.exit(0);
+			return null;
 		}
-		if(data.length%2==1){
-			processedTrace[data.length-1] = processedTrace[data.length-2];
-		} 			
-		return processedTrace;
 	}
 
 	public String getName() {

@@ -155,6 +155,8 @@ public class ChannelSet {
 		} catch (CheckFailedException e) {
 			//See extended channel set number, bytes 27-28
 			logger.error("CheckFailedException:", e);
+		} catch (SegdException e) {
+			logger.error("SegdException:", e);
 		}
 		try {
 			startTime = SegdRecord.readShorts(inStream, 1)[0]*2;
@@ -251,6 +253,8 @@ public class ChannelSet {
 			traces = new Trace[channels_in_set];
 		} catch (CheckFailedException e) {
 			logger.error("CheckFailedException:", e);
+		} catch (SegdException e) {
+			logger.error("SegdException:", e);
 		}
 	}
 	

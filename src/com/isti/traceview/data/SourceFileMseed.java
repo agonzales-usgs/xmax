@@ -271,8 +271,12 @@ public class SourceFileMseed extends SourceFile implements Serializable {
 			System.exit(0);
 		} catch (IOException e) {
 			StringBuilder message = new StringBuilder();
-			message.append(String.format(this + " " + segment + " Ending position " + dis.getFilePointer() + ", sampleCount read" + currentSampleCount + ", samples from headers " + headerSampleCount + ", blocks read " + blockNumber));
-			logger.error(message.toString(), e);
+			try {
+				message.append(String.format(this + " " + segment + " Ending position " + dis.getFilePointer() + ", sampleCount read" + currentSampleCount + ", samples from headers " + headerSampleCount + ", blocks read " + blockNumber));
+				logger.error(message.toString(), e);
+			} catch (IOException eIO) {
+				logger.error("IOException:", eIO);
+			}
 			//throw new RuntimeException(e);
 			System.exit(0);
 		} catch (SeedFormatException e) {

@@ -120,7 +120,7 @@ public class XMAXconfiguration extends Configuration {
 		ti = null;
 		try {
 			setUseTempData(false);
-			setLogFile(config.getString("Configuration.LogFile", "XMAX.log"));
+			//setLogFile(config.getString("Configuration.LogFile", "XMAX.log"));
 			setPanelCountUnit(PanelCountUnit.values()[config.getInt("Configuration.PanelCountUnit", 0)]);
 			setUnitsInFrame(config.getInt("Configuration.UnitsInFrame", 1));
 			setMergeLocations(config.getBoolean("Configuration.MergeLocations", false));
@@ -509,9 +509,9 @@ public class XMAXconfiguration extends Configuration {
 	 * @param logFile
 	 *            the log file name.
 	 */
-	public void setLogFile(String logFile) {
+	/*public void setLogFile(String logFile) {
 		this.logFile = logFile;
-	}
+	}*/
 
 	/**
 	 * Get HTML pattern to generate blank HTML report. First looks in the "pattern.html" file, if
