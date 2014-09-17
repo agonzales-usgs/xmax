@@ -98,7 +98,7 @@ public class ChannelView extends JPanel implements Comparable<Object>, Observer 
 
 	private List<MarkPosition> markPositions = null;
 	private int selectionNumber = 0;
-	private boolean isDrawSelectionCheckBox = true;
+	//private boolean isDrawSelectionCheckBox = true;
 
 	/**
 	 * Mouse adapter for GraphAreaPanel - internal panel containing graphs
@@ -667,7 +667,7 @@ System.out.println();
 							yprev.set(j, new Stroke());
 						}
 						// drawing events
-						long currentTime = getTime(i);
+						//long currentTime = getTime(i);
 						for (EventWrapper eventWrapper: point.getEvents()) {
 							logger.debug("drawing event front");
 							g.setColor(eventWrapper.getEvent().getColor());
@@ -770,7 +770,7 @@ System.out.println();
 		public void mouseClicked(MouseEvent e) {
 			int clickedX = e.getX();
 			int clickedY = e.getY();
-			long clickedTime = graphPanel.getTime(clickedX);
+			//long clickedTime = graphPanel.getTime(clickedX);
 			if (e.getButton() == MouseEvent.BUTTON1) {
 				if (mouseAdapter != null) {
 					mouseAdapter.mouseClickedButton1(clickedX, clickedY, cv);

@@ -4,6 +4,7 @@ import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+
 //import org.apache.log4j.Logger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,6 +37,7 @@ public class TransSpectra implements ITransformation {
 			JOptionPane.showMessageDialog(parentFrame, "Please select channels", "Spectra computation warning", JOptionPane.WARNING_MESSAGE);
 		} else {
 			try {
+				@SuppressWarnings("unused")
 				ViewSpectra vs = new ViewSpectra(parentFrame, createData(input, filter, ti, parentFrame), ti);
 			} catch (XMAXException e) {
 				if (!e.getMessage().equals("Operation cancelled")) {

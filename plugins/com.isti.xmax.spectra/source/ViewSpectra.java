@@ -1,5 +1,4 @@
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.FlowLayout;
 import java.awt.Frame;
 import java.awt.event.ItemEvent;
@@ -9,7 +8,7 @@ import java.awt.event.WindowEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.File;
-import java.text.SimpleDateFormat;
+//import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,8 +24,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 //import org.apache.log4j.Logger;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
@@ -56,9 +55,9 @@ import com.isti.xmax.XMAX;
 public class ViewSpectra extends JDialog implements PropertyChangeListener, ItemListener {
 
 	private static final long serialVersionUID = 1L;
-	private static final Logger logger = LoggerFactory.getLogger(ViewSpectra.class);
+	//private static final Logger logger = LoggerFactory.getLogger(ViewSpectra.class);
 	
-	private static SimpleDateFormat df = new SimpleDateFormat("yyyy,DDD");
+	//private static SimpleDateFormat df = new SimpleDateFormat("yyyy,DDD");
 	private JOptionPane optionPane;
 	private JCheckBox SmoothCB;
 	private JPanel selectionP;
@@ -149,7 +148,7 @@ public class ViewSpectra extends JDialog implements PropertyChangeListener, Item
 		} else {
 			if (e.getSource() instanceof JCheckBox) {
 				// checkbox for channel's selection
-				JCheckBox cb = (JCheckBox) e.getSource();
+				//JCheckBox cb = (JCheckBox) e.getSource();
 			}
 		}
 		plot.setDataset(filterData(data));

@@ -1,12 +1,11 @@
 package com.isti.traceview.data;
 
 import java.io.Serializable;
-import java.util.List;
 import java.util.Set;
 
 //import org.apache.log4j.Logger;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 
 /**
  * Socket data source
@@ -14,7 +13,8 @@ import org.slf4j.LoggerFactory;
  * @author Max Kokoulin
  */
 public abstract class SourceSocket implements ISource, Serializable {
-	private static final Logger logger = LoggerFactory.getLogger(SourceSocket.class);
+	private static final long serialVersionUID = 1L;
+	//private static final Logger logger = LoggerFactory.getLogger(SourceSocket.class);
 
 	public SourceType getSourceType() {
 		return SourceType.SOCKET;

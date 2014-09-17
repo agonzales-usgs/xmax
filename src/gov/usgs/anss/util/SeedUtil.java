@@ -218,7 +218,7 @@ public class SeedUtil {
 
 	// Gregorian Calendar adopted Oct. 15, 1582 (2299161)
 	private static int JGREG = 15 + 31 * (10 + 12 * 1582);
-	private static double HALFSECOND = 0.5;
+	//private static double HALFSECOND = 0.5;
 
 	/**
 	 * Given a year and day of year, return the true julian day
@@ -309,7 +309,7 @@ public class SeedUtil {
 	public static int[] fromJulian(int injulian) {
 
 		int jalpha, ja, jb, jc, jd, je, year, month, day;
-		double julian = (double) injulian + HALFSECOND / 86400.0;
+		//double julian = (double) injulian + HALFSECOND / 86400.0;
 
 		// (int)
 		ja = injulian;

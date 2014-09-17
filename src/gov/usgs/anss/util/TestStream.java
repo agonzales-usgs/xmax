@@ -132,6 +132,7 @@ public class TestStream extends PrintStream {
 		ignoreSQLDialog = t;
 	}
 
+	@SuppressWarnings("unused")
 	private synchronized void append(String s) {
 		sb.append(s);
 		if (s.indexOf("EventQueueExceptionHandler") >= 0) {
@@ -386,6 +387,7 @@ public class TestStream extends PrintStream {
 			fout.println(x);
 	}
 
+	@SuppressWarnings("unused")
 	@Override
 	public synchronized void println() {
 		append("\n");

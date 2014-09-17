@@ -29,7 +29,6 @@ import com.isti.traceview.common.Wildcard;
 
 import edu.iris.Fissures.seed.builder.SeedObjectBuilder;
 import edu.iris.Fissures.seed.director.SeedImportDirector;
-import edu.sc.seis.seisFile.mseed.ControlHeader;
 import edu.sc.seis.seisFile.mseed.DataRecord;
 import edu.sc.seis.seisFile.mseed.SeedFormatException;
 import edu.sc.seis.seisFile.mseed.SeedRecord;
@@ -42,6 +41,11 @@ import edu.sc.seis.seisFile.segd.SegdRecord;
  * @author Max Kokoulin
  */
 public abstract class SourceFile implements ISource {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	private static final Logger logger = LoggerFactory.getLogger(SourceFile.class);
 
@@ -218,7 +222,7 @@ public abstract class SourceFile implements ISource {
 	public static boolean isMSEED(File file) {
 		if (file.length() > 0) {
 			BufferedRandomAccessFile dis = null;
-			ControlHeader ch = null;
+			//ControlHeader ch = null;
 			try {
 				dis = new BufferedRandomAccessFile(file.getCanonicalPath(), "r");
 				dis.order(BufferedRandomAccessFile.BIG_ENDIAN);
@@ -227,7 +231,7 @@ public abstract class SourceFile implements ISource {
 			            while (blockNumber < 5) {
 			                SeedRecord sr = SeedRecord.read(dis, 4096);
 			                if (sr instanceof DataRecord) {
-			                    DataRecord dr = (DataRecord)sr;
+			                    //DataRecord dr = (DataRecord)sr;
 			                } else {
 			                    //control record, skip...
 			                }

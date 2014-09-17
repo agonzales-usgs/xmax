@@ -6,7 +6,7 @@
 		<import plugin-id="com.isti.xmax.core"/> 
 	</requires> 
 	<runtime> 
-		<library id="highpass" path="classes/" type="code"/> 
+		<library id="highpass" path="classes/" type="code"/>
 	</runtime> 
 	<extension plugin-id="com.isti.xmax.core" point-id="Filter" id="HP"> 
 		<parameter id="class" value="FilterHP"/>

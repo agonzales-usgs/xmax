@@ -5,6 +5,7 @@ import java.util.ListIterator;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+
 //import org.apache.log4j.Logger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,6 +42,7 @@ public class TransPSD implements ITransformation {
 			try {
 				List<Spectra> spList = createData(input, filter, ti, parentFrame);
 				TimeInterval effectiveInterval = new TimeInterval(ti.getStart(), ti.getStart() + new Double(input.get(0).getSampleRate()*effectiveLength).longValue());
+				@SuppressWarnings("unused")
 				ViewPSD vp = new ViewPSD(parentFrame, spList, effectiveInterval, (Configuration)configuration, input);
 			} catch (XMAXException e) {
 				if (!e.getMessage().equals("Operation cancelled")) {
@@ -76,7 +78,7 @@ public class TransPSD implements ITransformation {
 		List<Spectra> dataset = new ArrayList<Spectra>();
 		ListIterator<PlotDataProvider> li = input.listIterator();
 		String respNotFound = "";
-		int userAnswer = -1;
+		//int userAnswer = -1;
 		while (li.hasNext()) {
 			PlotDataProvider channel = li.next();
 			List<Segment> segments = channel.getRawData(ti);

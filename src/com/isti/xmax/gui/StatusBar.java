@@ -2,12 +2,14 @@ package com.isti.xmax.gui;
 
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-
 import javax.swing.JLabel;
 import javax.swing.BorderFactory;
 import javax.swing.border.BevelBorder;
+
 import java.awt.Dimension;
+
 import javax.swing.BoxLayout;
+
 
 //import org.apache.log4j.Logger;
 import org.slf4j.Logger;
@@ -40,6 +42,7 @@ public class StatusBar extends JPanel implements Observer {
 	private static final long serialVersionUID = 1L;
 	private static final Logger logger = LoggerFactory.getLogger(StatusBar.class);
 
+	@SuppressWarnings("unused")
 	private Font font = null;
 	private JLabel channelCountLabel = null;
 	private JLabel messageLabel = null;

@@ -8,6 +8,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+
 //import org.apache.log4j.Logger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -249,12 +250,13 @@ public class SegyTimeSeries { /* Offset Description */
 	 */
 	public void read(String filename) throws FileNotFoundException, IOException, TraceViewException {
 		BufferedRandomAccessFile dis = new BufferedRandomAccessFile(filename, "r");
-		double bgn = System.currentTimeMillis();
+		//double bgn = System.currentTimeMillis();
 		/*
 		 * checkNeedToSwap(dis); skipHeader(dis);
 		 */
 		readHeader(dis);
-		double afterHead = System.currentTimeMillis();
+		//double afterHead = System.currentTimeMillis();
+		@SuppressWarnings("unused")
 		int num_bits = 4;
 		if (data_form == 1) {
 			num_bits = 4;
@@ -268,10 +270,10 @@ public class SegyTimeSeries { /* Offset Description */
 		 * (sampleLength == 32767 && segyFile.length() != num_samps * num_bits + 240)) { throw new
 		 * IOException(segyFileName + " does not appear to be a segy file!"); }
 		 */
-		double beforeData = System.currentTimeMillis();
+		//double beforeData = System.currentTimeMillis();
 		readData(dis);
 		dis.close();
-		double afterData = System.currentTimeMillis();
+		//double afterData = System.currentTimeMillis();
 	}
 
 	/**

@@ -3,6 +3,7 @@ import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+
 //import org.apache.log4j.Logger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,6 +34,7 @@ public class TransResp implements ITransformation {
 			JOptionPane.showMessageDialog(parentFrame, "Please select channels", "RESP computation warning", JOptionPane.WARNING_MESSAGE);
 		} else {
 			try {
+				@SuppressWarnings("unused")
 				ViewResp vr = new ViewResp(parentFrame, createDataset(input, ti));
 			} catch (XMAXException e) {
 				JOptionPane.showMessageDialog(parentFrame, e.getMessage(), "Warning", JOptionPane.WARNING_MESSAGE);

@@ -12,9 +12,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.swing.JOptionPane;
-import javax.swing.SwingUtilities;
-import java.util.Date;
-import java.text.SimpleDateFormat;
 
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
@@ -23,10 +20,6 @@ import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 import org.apache.commons.cli.PosixParser;
-import org.apache.commons.cli.GnuParser;	// used for build.xml?
-//import org.apache.commons.cli.DefaultParser;
-import org.apache.log4j.Level;
-
 import org.apache.log4j.PatternLayout;
 import org.apache.log4j.RollingFileAppender;
 import org.java.plugin.ObjectFactory;
@@ -441,6 +434,7 @@ public class XMAX extends TraceView {
 		return releaseDate;
 	}
 
+	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 		options = getOptions();
 		try {

@@ -20,7 +20,6 @@ import com.isti.traceview.data.ims.IMSFormatException;
 import com.isti.traceview.data.ims.STA2;
 import com.isti.traceview.data.ims.WID2;
 
-import edu.sc.seis.seisFile.sac.SacTimeSeries;
 import gov.usgs.anss.cd11.CanadaException;
 
 public class SourceFileIMS extends SourceFile {
@@ -40,7 +39,7 @@ public class SourceFileIMS extends SourceFile {
 			dis = new BufferedRandomAccessFile(getFile().getCanonicalPath(), "r");
 			dis.order(BufferedRandomAccessFile.BIG_ENDIAN);
 			if (getFile().length() > 0) {
-				long currentOffset = dis.getFilePointer();
+				//long currentOffset = dis.getFilePointer();
 				IMSFile ims = IMSFile.read(dis, true);
 				for (DataType dataType : ims.getDataTypes()) {
 					if (dataType instanceof DataTypeWaveform) {
@@ -78,7 +77,7 @@ public class SourceFileIMS extends SourceFile {
 	}
 
 	public void load(Segment segment) {
-		int[] data = null;
+		//int[] data = null;
 		BufferedRandomAccessFile dis = null;
 		try {
 			dis = new BufferedRandomAccessFile(getFile().getCanonicalPath(), "r");

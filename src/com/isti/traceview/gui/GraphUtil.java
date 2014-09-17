@@ -143,6 +143,7 @@ public class GraphUtil {
 				raf.seek(insertPlace);
 				raf.writeBytes(insertText + "</body></html>");
 				raf.close();
+				fis.close();
 			} catch (FileNotFoundException e1) {
 				// TODO Auto-generated catch block
 				logger.error("FileNotFoundException:", e1);

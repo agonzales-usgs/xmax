@@ -13,7 +13,6 @@ import java.util.Date;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.isti.traceview.TraceView;
 import com.isti.traceview.TraceViewException;
 import com.isti.traceview.processing.IstiUtilsMath;
 import com.isti.traceview.processing.RunEvalResp;

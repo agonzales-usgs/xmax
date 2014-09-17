@@ -32,7 +32,6 @@ import com.isti.xmax.XMAXconfiguration;
 import com.isti.xmax.common.Pick;
 import com.isti.xmax.data.XMAXDataModule;
 import com.isti.xmax.gui.XMAXGraphPanel;
-import com.isti.traceview.common.Station;
 import com.isti.traceview.common.TimeInterval;
 import com.isti.traceview.data.PlotDataProvider;
 import com.isti.traceview.gui.ChannelView;
@@ -69,6 +68,8 @@ import javax.swing.JPopupMenu;
 import javax.swing.KeyStroke;
 import javax.swing.MenuElement;
 import javax.swing.ToolTipManager;
+
+
 
 
 //import org.apache.log4j.Logger;
@@ -634,6 +635,7 @@ public class XMAXframe extends JFrame implements MouseInputListener, ActionListe
 	 * 
 	 * @return com.isti.xmax.gui.QCPanel
 	 */
+	@SuppressWarnings("unused")
 	private JPanel getQCPanel() {
 		if (qCPanel == null) {
 			qCPanel = new QCPanel();
@@ -1257,6 +1259,7 @@ public class XMAXframe extends JFrame implements MouseInputListener, ActionListe
 	 * 
 	 * @return javax.swing.JMenuItem
 	 */
+	@SuppressWarnings("unused")
 	private JMenuItem getSaveInternalMenuItem() {
 		if (saveInternalMenuItem == null) {
 			saveInternalMenuItem = new JMenuItem();
@@ -1327,8 +1330,8 @@ public class XMAXframe extends JFrame implements MouseInputListener, ActionListe
 	}
 
 	public static void main(String[] args) {
-		GraphicsEnvironment graphicsEnvironment = GraphicsEnvironment.getLocalGraphicsEnvironment();
-		GraphicsDevice[] devices = graphicsEnvironment.getScreenDevices();
+		//GraphicsEnvironment graphicsEnvironment = GraphicsEnvironment.getLocalGraphicsEnvironment();
+		//GraphicsDevice[] devices = graphicsEnvironment.getScreenDevices();
 		XMAXframe frame = XMAXframe.getInstance();
 		frame.setVisible(true);
 	}
@@ -1898,7 +1901,7 @@ public class XMAXframe extends JFrame implements MouseInputListener, ActionListe
 				if (selectedChannels.size() == 0) {
 					// Try to fill default channels
 					List<PlotDataProvider> channelSet = graphPanel.getChannelSet();
-					Station station = null;
+					//Station station = null;
 					PlotDataProvider Nchannel = null;
 					PlotDataProvider Echannel = null;
 					for (PlotDataProvider channel: channelSet) {

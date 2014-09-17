@@ -54,12 +54,13 @@ public class Canada {
 												 * number of samples not
 												 * divisible by 20
 												 */
-	private static final int CANCOMP_CORRUPT = 2; /* corrupted call */
-	private static final int CANCOMP_EXCEED = 3; /*
-												 * number of bytes available in
-												 * compressed data exceeded
-												 * during decompression
-												 */
+	//private static final int CANCOMP_CORRUPT = 2; /* corrupted call */
+	//private static final int CANCOMP_EXCEED = 3; 
+	/* number of bytes available in
+	 * compressed data exceeded
+	 * during decompression
+	 */
+	
 	static boolean dbg = true;
 
 	static int corrupt = 0;
@@ -236,8 +237,8 @@ public class Canada {
 		 */
 		int y0 = 0, y1 = 0, y2 = 0, y3 = 0, ul = 0, vl = 0;
 		long ll;
-		byte[] ub = new byte[4];
-		byte[] vb = new byte[4];
+		//byte[] ub = new byte[4];
+		//byte[] vb = new byte[4];
 		// sb.append(m+",");
 		b.position(j); // set the buffer position based on j
 		switch (m) { /* switch on bits/sample */

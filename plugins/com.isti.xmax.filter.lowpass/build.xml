@@ -35,7 +35,7 @@
     <!-- Plugin Info -->
     <jpf-info manifest="${basedir}/plugin.xml"
               propertyid="plugin.id"
-	      propertyversion="plugin.version" />
+    	propertyversion="plugin.version"/>
     <property name="plugin.home" value="${basedir}" />
 	
     <!-- Plugin Classpath --> 

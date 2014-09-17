@@ -20,17 +20,15 @@
 package gov.usgs.anss.cd11;
 
 import java.nio.ByteBuffer;
-import gov.usgs.anss.edgethread.EdgeThread;
 import java.util.GregorianCalendar;
+
+
 
 //import org.apache.log4j.Logger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.isti.traceview.data.ims.DAT2;
-
 import gov.usgs.anss.util.Util;
-import gov.usgs.alarm.SendEvent;
 
 /**
  * This class represents a CD1.1 channel subframe and has methods for reading
@@ -45,15 +43,19 @@ public class ChannelSubframe {
 	private static final Logger logger = LoggerFactory
 			.getLogger(ChannelSubframe.class);
 	private int len;
+	@SuppressWarnings("unused")
 	private int authOffset;
 	private byte auth;
 	private byte transform;
 	private byte sensorType;
+	@SuppressWarnings("unused")
 	private byte optionFlag;
 	private String station; // a SSSSSCCCLL name!
 	private byte[] statbuf = new byte[10];
-	private String uncompressedFormat; // two characters
+	private String uncompressedFormat; // two characters\
+	@SuppressWarnings("unused")
 	private float calibFactor;
+	@SuppressWarnings("unused")
 	private float calibPeriod;
 	private String timeStamp;
 	private byte[] timebuf = new byte[20]; // scratch space to get time
@@ -66,6 +68,7 @@ public class ChannelSubframe {
 	private byte[] data;
 	private ByteBuffer bdata;
 	private int subframeCount;
+	@SuppressWarnings("unused")
 	private int authKeyID;
 	private int authSize;
 	private byte[] authBytes;
@@ -352,8 +355,8 @@ public class ChannelSubframe {
 				double time2 = bb.getDouble();
 				GregorianCalendar g2 = new GregorianCalendar();
 				g2.setTimeInMillis((long) (time2 * 1000.));
-				int ns = bb.getInt();
-				int stat2 = bb.getInt();
+				//int ns = bb.getInt();
+				//int stat2 = bb.getInt();
 				// par.prt("CD : "+station+" len="+len2+" datasize="+dataSize+" time="+time2+" as g ="+Util.ascdate(g2)+" "+Util.asctime2(g2)+" status="+Util.toHex(stat2)+" ns="+ns);
 
 				byte[] cddata = new byte[len2 - bb.position() + 4 + 8];

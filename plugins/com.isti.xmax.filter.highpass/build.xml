@@ -21,12 +21,10 @@
     <!-- Global Properties -->
     <property name="lib.dir"	location="../../lib/"/>
     <property name="build.dir"	location="../../build/"/>
-    
-    <!-- Build Classpath (Java Plugins) -->
+	
+    <!-- Build Classpath (Java Plugins) --> 
     <path id="classpath">
-        <fileset dir="${lib.dir}">
-	    <include name="*.jar"/>
-	</fileset>
+        <fileset dir="${lib.dir}" includes="*.jar"/>
     </path>
     <typedef resource="org/java/plugin/tools/ant/jpf-tasks.properties">
         <classpath refid="classpath"/>

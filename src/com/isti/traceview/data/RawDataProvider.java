@@ -14,8 +14,10 @@ import java.util.LinkedList;
 import java.util.List;
 
 //import org.apache.log4j.Logger;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
+
+
 
 import com.isti.traceview.TraceViewException;
 import com.isti.traceview.common.Station;
@@ -29,7 +31,6 @@ import edu.iris.Fissures.IfNetwork.NetworkId;
 import edu.iris.Fissures.IfTimeSeries.EncodedData;
 import edu.iris.Fissures.model.MicroSecondDate;
 import edu.iris.Fissures.model.SamplingImpl;
-import edu.iris.dmc.seedcodec.Steim1;
 import edu.iris.dmc.seedcodec.SteimException;
 import edu.iris.dmc.seedcodec.SteimFrameBlock;
 import edu.sc.seis.fissuresUtil.mseed.FissuresConvert;
@@ -50,7 +51,7 @@ public class RawDataProvider extends Channel {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private static final Logger logger = LoggerFactory.getLogger(RawDataProvider.class);
+	//private static final Logger logger = LoggerFactory.getLogger(RawDataProvider.class);
 
 	/**
 	 * @uml.property name="rawData"
@@ -154,7 +155,7 @@ public class RawDataProvider extends Channel {
 			segment.setRawDataProvider(this);
 		}
 		setSampleRate(segment.getSampleRate());
-		logger.debug(segment + " added to " + this);
+		//logger.debug(segment + " added to " + this);
 	}
 
 	/**
@@ -231,17 +232,17 @@ public class RawDataProvider extends Channel {
 	 * @param ti
 	 */
 	public void loadData(TimeInterval ti) {
-        logger.debug("== ENTER");
+        //logger.debug("== ENTER");
 		for (SegmentCache sc: rawData) {
             Segment seg = sc.getSegment();
             if (!seg.getIsLoaded()) {
-                logger.debug("== Load Segment:" + seg.toString() );
+                //logger.debug("== Load Segment:" + seg.toString() );
 			    seg.load();
 			    seg.setIsLoaded(true);
 			    //sc.getSegment().load();
             }
             else {
-                logger.debug("== Segment is ALREADY loaded:" + seg.toString() );
+                //logger.debug("== Segment is ALREADY loaded:" + seg.toString() );
                 //System.out.format("== RawDataProvider.loadData(): Segment is Already Loaded:%s\n", seg.toString() );
                 // MTH: This is another place we *could* load the points into a serialized provider (from .DATA)
                 //      in order to have the segment's int[] data filled before serialization, but we're
@@ -249,7 +250,7 @@ public class RawDataProvider extends Channel {
                 //seg.loadDataInt();
             }
 		}
-        logger.debug("== EXIT");
+        //logger.debug("== EXIT");
 	}
 
 	/**
@@ -283,21 +284,21 @@ public class RawDataProvider extends Channel {
 	 * @param dataStream
 	 */
 	public void setDataStream(Object dataStream) {
-        logger.debug("== ENTER");
+        //logger.debug("== ENTER");
 		try {
 			if (dataStream == null) {
-                logger.debug("== dataStream == null --> serialStream.close()");
+                //logger.debug("== dataStream == null --> serialStream.close()");
 				try {
 					this.serialStream.close();
 					this.serialStream = null;
 				} catch (IOException e) {
 					// do nothing
-					logger.error("IOException:", e);
+					//logger.error("IOException:", e);
 				}
 			} else {
 				if (dataStream instanceof String) {
 					this.serialFile = (String) dataStream;
-                    logger.debug("dataStream == instanceof String --> set serialFile=" + serialFile);
+                    //logger.debug("dataStream == instanceof String --> set serialFile=" + serialFile);
 				}
                 // MTH: This is a little redundant sicne readObject() already wraps the serialFile in a 
                 //      BufferedRandomAccessFile before using it to call setDataStream(raf) ...
@@ -306,14 +307,14 @@ public class RawDataProvider extends Channel {
 				this.serialStream = raf;
 			}
 			for (SegmentCache sc: rawData) {
-                logger.debug("== sc.setDataStream(serialStream)");
+                //logger.debug("== sc.setDataStream(serialStream)");
 				sc.setDataStream(serialStream);
 			}
-            logger.debug("== DONE");
+            //logger.debug("== DONE");
 		} catch (FileNotFoundException e) {
-			logger.error("FileNotFoundException:", e);
+			//logger.error("FileNotFoundException:", e);
 		} catch (IOException e) {
-			logger.error("IOException:", e);
+			//logger.error("IOException:", e);
 		}
 	}
 
@@ -397,9 +398,9 @@ System.out.println("== Segment dumpMseed ENTER");
 						rec.write(ds);
 					}
 				} catch (SteimException e) {
-					logger.error("Can't encode data: " + ti + ", " + this + e);
+					//logger.error("Can't encode data: " + ti + ", " + this + e);
 				} catch (SeedFormatException e) {
-					logger.error("Can't encode data: " + ti + ", " + this + e);
+					//logger.error("Can't encode data: " + ti + ", " + this + e);
 				}
 			}
 
@@ -445,6 +446,7 @@ System.out.println("== Segment dumpMseed ENTER");
 	 * @throws IOException
 	 */
 	public void dumpXML(FileWriter fw, TimeInterval ti, IFilter filter) throws IOException {
+		@SuppressWarnings("unused")
 		int i = 1;
 		fw.write("<Trace network=\"" + getNetworkName() + "\" station=\"" + getStation().getName() + "\" location=\"" + getLocationName()
 				+ "\" channel=\"" + getChannelName() + "\">\n");
@@ -585,10 +587,10 @@ System.out.println("== Segment dumpMseed ENTER");
 	 * @throws IOException
 	 */
 	private void writeObject(ObjectOutputStream out) throws IOException {
-        logger.debug("== ENTER");
-		logger.debug("Serializing RawDataProvider" + toString());
+        //logger.debug("== ENTER");
+		//logger.debug("Serializing RawDataProvider" + toString());
 		out.defaultWriteObject();
-        logger.debug("== EXIT");
+        //logger.debug("== EXIT");
 	}
 
 	/**
@@ -600,17 +602,17 @@ System.out.println("== Segment dumpMseed ENTER");
 	 * @throws IOException
 	 */
 	private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
-		logger.debug("== Deserializing RawDataProvider" + toString());
+		//logger.debug("== Deserializing RawDataProvider" + toString());
         // MTH: Once we've read in the .SER file, serialFile(=... .DATA) will be set
-        logger.debug("== call defaultReadObj()");
+        //logger.debug("== call defaultReadObj()");
 		in.defaultReadObject();
-        logger.debug("== defaultReadObj() DONE");
+        //logger.debug("== defaultReadObj() DONE");
 		if (serialFile != null) {
 			serialStream = new BufferedRandomAccessFile(serialFile, "rw");
 			serialStream.order(BufferedRandomAccessFile.BIG_ENDIAN);
 			setDataStream(serialStream);
 		}
-        logger.debug("== EXIT");
+        //logger.debug("== EXIT");
 	}
 
 	/**
@@ -636,6 +638,7 @@ System.out.println("== Segment dumpMseed ENTER");
 		 * 
 		 * @param segment
 		 */
+		@SuppressWarnings("unused")
 		public void setData(Segment segment) {
 			initialData = segment;
 			filterCache.clear();

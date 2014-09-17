@@ -17,6 +17,8 @@ import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
+
+
 //import org.apache.log4j.Logger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -328,6 +330,7 @@ public class DataModule extends Observable {
 	/**
 	 * Check if we have found all sources for given channel
 	 */
+	@SuppressWarnings("unused")
 	private boolean channelHasAllSources(RawDataProvider channel) {
 		List<ISource> sources = channel.getSources();
 		for (Object o : sources) {

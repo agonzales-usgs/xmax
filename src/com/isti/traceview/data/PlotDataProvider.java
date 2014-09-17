@@ -19,6 +19,8 @@ import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
+
+
 //import org.apache.log4j.Logger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -248,6 +250,7 @@ public class PlotDataProvider extends RawDataProvider implements Observer {
 					}
 					List<PlotDataPoint[]> data = points.subList(startIndex, endIndex);
 					List<SliceData> sliceDataList = new ArrayList<SliceData>();
+					@SuppressWarnings("unused")
 					int j =0;
 					for (PlotDataPoint[] sublist: data) {
 						int k =0;
@@ -490,6 +493,7 @@ public class PlotDataProvider extends RawDataProvider implements Observer {
 	 *         the normal situation is none or one segment, but it can be bigger count in the case
 	 *         of segment overlapping. If no segments found, return null.
 	 */
+	@SuppressWarnings("unused")
 	private static Segment[] getSegment(List<Segment> sps, double start, double end) {
 		List<Segment> ret = new ArrayList<Segment>();
 		Iterator<Segment> it = sps.iterator();
@@ -667,7 +671,7 @@ public class PlotDataProvider extends RawDataProvider implements Observer {
         logger.debug("== ENTER: Deserialize channel from file:" + fileName);
 		PlotDataProvider channel = null;
 		ObjectInputStream ois = null;
-		String serialDataFileName = TemporaryStorage.getDataFileName(fileName);
+		//String serialDataFileName = TemporaryStorage.getDataFileName(fileName);
 		try {
 			Object objRead = null;
 			ois = new ObjectInputStream(new FileInputStream(fileName));

@@ -152,7 +152,7 @@ public class Earthquake extends AbstractEvent implements IEvent {
 						// USGS location, ISC for
 						// ISC catalog, SWE for surface-wave location, [Ekstrom,
 						// BSSA, 2006])
-						String catalog = rawData[0].substring(0, 4).trim();
+						//String catalog = rawData[0].substring(0, 4).trim();
 						// [6-15] Date of reference event
 						// [17-26] Time of reference event
 						Date date = df

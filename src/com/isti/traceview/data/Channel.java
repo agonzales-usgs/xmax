@@ -11,11 +11,12 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Observable;
 import java.util.Properties;
-import java.util.Set;
 
 //import org.apache.log4j.Logger;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
+
+
 
 import com.isti.jevalresp.RespUtils;
 import com.isti.traceview.TraceView;
@@ -59,7 +60,7 @@ public class Channel extends Observable implements Comparable<Object>, Serializa
 
 	private static final String fissuresPropFileName = "fissures.properties";
 
-	private static final Logger logger = LoggerFactory.getLogger(Channel.class);
+	//private static final Logger logger = LoggerFactory.getLogger(Channel.class);
 
 	private static Properties propsObj = null;
 
@@ -200,6 +201,7 @@ public class Channel extends Observable implements Comparable<Object>, Serializa
 		this.sampleRate = sampleRate;
 	}
 
+	@SuppressWarnings("unused")
 	private String[] getArray(String str) {
 		String[] arr = new String[1];
 		if (str == null || str.length() == 0) {
@@ -245,6 +247,7 @@ public class Channel extends Observable implements Comparable<Object>, Serializa
 		this.status = status;
 	}
 	
+	@SuppressWarnings("unused")
 	private void loadProperties() {
 		propsObj = new Properties();// System.getProperties();
 		InputStream inStm = null;
@@ -262,19 +265,19 @@ public class Channel extends Observable implements Comparable<Object>, Serializa
 		} catch (FileNotFoundException e) {
 			StringBuilder message = new StringBuilder();
 			message.append("Unable to open FISSURES property file \"" + fissuresPropFileName + "\":");
-			logger.error(message.toString(), e);
+			//logger.error(message.toString(), e);
 			//throw new RuntimeException(e);
 		} catch (IOException e) {
 			StringBuilder message = new StringBuilder();
 			message.append("Error loading FISSURES property file \"" + fissuresPropFileName + "\":");
-			logger.error(message.toString(), e);
+			//logger.error(message.toString(), e);
 			//throw new RuntimeException(e);
 		} finally {
 			try {
 				inStm.close();
 			} catch (Exception ex) {
 				// ignore any exceptions on close
-				logger.error("Exception:", ex);
+				//logger.error("Exception:", ex);
 			}
 		}
 	}
@@ -288,9 +291,9 @@ public class Channel extends Observable implements Comparable<Object>, Serializa
 	 * @throws IOException
 	 */
 	private void writeObject(ObjectOutputStream out) throws IOException {
-        logger.debug("== ENTER: Serializing " + toString());
+        //logger.debug("== ENTER: Serializing " + toString());
 		out.defaultWriteObject();
-        logger.debug("== EXIT");
+        //logger.debug("== EXIT");
 	}
 
 	/**
@@ -303,7 +306,7 @@ public class Channel extends Observable implements Comparable<Object>, Serializa
 	 */
 	private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
 		in.defaultReadObject();
-        logger.debug("== reading object --> in.defaultReadObject() deserialize " + toString());
+        //logger.debug("== reading object --> in.defaultReadObject() deserialize " + toString());
 	}
 
 	/**

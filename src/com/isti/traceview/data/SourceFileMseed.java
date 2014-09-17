@@ -2,13 +2,13 @@ package com.isti.traceview.data;
 
 import java.io.EOFException;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+
 
 //import org.apache.log4j.Logger;
 import org.slf4j.Logger;
@@ -64,7 +64,7 @@ public class SourceFileMseed extends SourceFile implements Serializable {
 			RawDataProvider currentChannel = new RawDataProvider("", new Station(""), "", "");
 			long blockEndTime = 0;
 			double sampleRate = -1.0;
-			double correction = 0.0;
+			//double correction = 0.0;
 			boolean skipChannel = true;
 
 			segmentSampleCount = 0;
@@ -183,7 +183,7 @@ public class SourceFileMseed extends SourceFile implements Serializable {
 
 	public synchronized void load(Segment segment) {
 		logger.debug(this + " " + segment);
-		long filePointer = 0;
+		//long filePointer = 0;
 		try {
 			Thread.sleep(1000);
 		} catch (InterruptedException e) {
@@ -211,6 +211,7 @@ public class SourceFileMseed extends SourceFile implements Serializable {
 			dis.seek(segment.getStartOffset());
 			logger.debug(this + " " + segment + " Beginning position:" + dis.getFilePointer());
 			while (currentSampleCount < segment.getSampleCount()) {
+				@SuppressWarnings("unused")
 				int blockSampleCount = 0;
 				long blockStartOffset = dis.getFilePointer();
 				SeedRecord sr = SynchronizedSeedRecord.read(dis, TraceView.getConfiguration().getDefaultBlockLength());
@@ -308,7 +309,7 @@ public class SourceFileMseed extends SourceFile implements Serializable {
 			dis = new BufferedRandomAccessFile(getFile().getCanonicalPath(), "r");
 			dis.order(BufferedRandomAccessFile.BIG_ENDIAN);
 			dis.seek(blockStartOffset);
-			FileInputStream d = null;
+			//FileInputStream d = null;
 			SeedRecord sr = SynchronizedSeedRecord.read(dis, TraceView.getConfiguration().getDefaultBlockLength());
 			ControlHeader ch = null;
 			ch = sr.getControlHeader();

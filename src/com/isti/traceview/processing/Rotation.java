@@ -17,15 +17,16 @@ import javax.swing.BoxLayout;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
-import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.ListModel;
 import javax.swing.border.EtchedBorder;
+
+
+
 
 //import org.apache.log4j.Logger;
 import org.slf4j.Logger;
@@ -94,7 +95,7 @@ public class Rotation {
 	public Rotation(JFrame frame) {
 		RotationDialog dialog = new RotationDialog(frame);
 		RotationType type = dialog.type;
-		StandardRotation standardRotation = dialog.standardRotation;
+		//StandardRotation standardRotation = dialog.standardRotation;
 		if(type==null){
 			dialog.dispose();
 		} else if (type.equals(RotationType.ARBITRARY)) {
@@ -279,7 +280,7 @@ public class Rotation {
 					for (int j = 0; j < 8; j++) {
 						rotatedCubicle[j] = matrix.times(new Matrix(cubicle[j])).getData();
 					}
-					double[][] rotatedMean = matrix.times(new Matrix(mean)).getData();
+					//double[][] rotatedMean = matrix.times(new Matrix(mean)).getData();
 				} catch (MatrixException e) {
 					logger.error("MatrixException:", e);
 					System.exit(0);
@@ -341,7 +342,7 @@ public class Rotation {
 			Segment rotated = new Segment(null, segment.getStartOffset(), segment.getStartTime(), segment.getSampleRate(), segment.getSampleCount(),
 					segment.getSourceSerialNumber());
 			double currentTime = segment.getStartTime().getTime();
-			for (int value: segment.getData().data) {
+			for (@SuppressWarnings("unused") int value: segment.getData().data) {
 				pointPosition[0][0] = triplet[0].getRawData(currentTime);
 				pointPosition[1][0] = triplet[1].getRawData(currentTime);
 				pointPosition[2][0] = triplet[2].getRawData(currentTime);
@@ -381,6 +382,7 @@ public class Rotation {
 	 */
 	public static boolean isComplementaryChannelExist(PlotDataProvider channel, TimeInterval ti) {
 		try {
+			@SuppressWarnings("unused")
 			PlotDataProvider[] triplet = getChannelsTriplet(channel, ti);
 		} catch (TraceViewException e) {
 			JOptionPane.showMessageDialog(TraceView.getFrame(), e, "Rotation warning", JOptionPane.WARNING_MESSAGE);

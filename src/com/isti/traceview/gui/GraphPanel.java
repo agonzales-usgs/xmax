@@ -6,15 +6,14 @@ import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.RepaintManager;
 import javax.swing.SwingConstants;
 import javax.swing.border.EtchedBorder;
 import javax.swing.event.MouseInputListener;
 
+
 //import org.apache.log4j.Logger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import org.jfree.chart.axis.DateAxis;
 import org.jfree.chart.axis.DateTickUnit;
 import org.jfree.chart.axis.DateTickUnitType;
@@ -57,11 +56,9 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
-import java.awt.image.BufferedImage;
 import java.awt.image.MemoryImageSource;
 import java.awt.print.PageFormat;
 import java.awt.print.Printable;
-import java.io.IOException;
 
 /**
  * This is graphics container; it contains a list of ChannelView(s) (panels) and renders them as a
@@ -97,14 +94,14 @@ public class GraphPanel extends JPanel implements Printable, MouseInputListener,
 	 * 
 	 * @uml.property name="manualValueMax"
 	 */
-	private int manualValueMax = Integer.MIN_VALUE;
+	//private int manualValueMax = Integer.MIN_VALUE;
 
 	/**
 	 * Minimum Y scale value for manual scale mode
 	 * 
 	 * @uml.property name="manualValueMin"
 	 */
-	private int manualValueMin = Integer.MAX_VALUE;
+	//private int manualValueMin = Integer.MAX_VALUE;
 
 	/**
 	 * List of graphs
@@ -1144,7 +1141,7 @@ public class GraphPanel extends JPanel implements Printable, MouseInputListener,
 				select = true;
 				drawAreaPanel.removeAll();
 				for (ChannelView cv: selected) {
-					List<PlotDataProvider> toProcess = new ArrayList<PlotDataProvider>();
+					//List<PlotDataProvider> toProcess = new ArrayList<PlotDataProvider>();
 					for (PlotDataProvider channel: cv.getPlotDataProviders()) {
 						ChannelView sel_cv = channelViewFactory.getChannelView(channel);
 						sel_cv.setGraphPanel(this);
@@ -1566,6 +1563,7 @@ public class GraphPanel extends JPanel implements Printable, MouseInputListener,
 		 *            date format to use in axis
 		 * @see TimeInterval
 		 */
+		@SuppressWarnings("unused")
 		private void setDateFormat(SimpleDateFormat df) {
 			if (!axis.getDateFormatOverride().equals(df)) {
 				axis.setDateFormatOverride(df);
@@ -1582,9 +1580,9 @@ public class GraphPanel extends JPanel implements Printable, MouseInputListener,
             final long THREE_DAYS = 3L*86400000;
             final long FOUR_DAYS  = 4L*86400000;
             final long ONE_WEEK   = 7L*86400000;
-            final long TWO_WEEKS  = 14L*86400000;
-            final long FOUR_WEEKS = 28L*86400000;
-            final long EIGHT_WEEKS= 56L*86400000;
+            //final long TWO_WEEKS  = 14L*86400000;
+            //final long FOUR_WEEKS = 28L*86400000;
+            //final long EIGHT_WEEKS= 56L*86400000;
 
 			logger.debug("time range: " + ti);
 			boolean needwait = false;

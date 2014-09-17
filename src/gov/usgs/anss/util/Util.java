@@ -252,6 +252,7 @@ public class Util extends Object {
 				if (OS.indexOf("Mac") >= 0)
 					c = "/sbin/ifconfig -a";
 				Subprocess sp = new Subprocess(c);
+				@SuppressWarnings("unused")
 				int val = sp.waitFor();
 				String s = sp.getOutput();
 				// System.out.println("ifconfi output= "+val+"\n"+s);
@@ -2131,6 +2132,7 @@ public class Util extends Object {
 	 *            ate to translate to string
 	 * @return The ascii string in yyyy/mm/dd
 	 */
+	@SuppressWarnings("null")
 	public static String dateToString(java.sql.Date d) {
 		if (d == null)
 			return "";
@@ -2858,7 +2860,7 @@ public class Util extends Object {
 		init("edge.prop");
 		java.util.Date dd = Util.stringToDate2("2006/10/10 12:34:56.789");
 		Util.prt(dd.toString() + " ms=" + (dd.getTime() % 1000));
-		String[] role = Util.getRoles(null);
+		//String[] role = Util.getRoles(null);
 		byte[] b = new byte[12];
 		String s;
 		b[0] = 0;
@@ -3063,7 +3065,7 @@ public class Util extends Object {
 	public static int socketRead(InputStream in, byte[] buf, int off, int len)
 			throws IOException {
 		int nchar = 0;
-		int loop = 0;
+		//int loop = 0;
 		nchar = in.read(buf, off, len);// get nchar
 		if (nchar <= 0) {
 			Util.prta(len + " SR read nchar=" + nchar + " len=" + len

@@ -33,7 +33,6 @@ public class PPMPolarItemRenderer extends DefaultPolarItemRenderer {
 	 * @param dataset the dataset.
 	 * @param seriesIndex the series index.
 	 */
-	@SuppressWarnings("deprecation")
 	public void drawSeries(Graphics2D g2, Rectangle2D dataArea, PlotRenderingInfo info, PolarPlot plot, XYDataset dataset, int seriesIndex) {
 		GeneralPath gp = new GeneralPath();
 		int numPoints = dataset.getItemCount(seriesIndex);

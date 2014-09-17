@@ -6,8 +6,8 @@ import java.util.Arrays;
 import java.util.List;
 
 //import org.apache.log4j.Logger;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 
 import com.isti.traceview.TraceView;
 import com.isti.traceview.TraceViewException;
@@ -18,7 +18,7 @@ import com.isti.traceview.TraceViewException;
  * @author Max Kokoulin
  */
 public class Wildcard {
-	private static final Logger logger = LoggerFactory.getLogger(Wildcard.class);
+	//private static final Logger logger = LoggerFactory.getLogger(Wildcard.class);
 
 	List<String> path = null;
 	List<File> lst = new ArrayList<File>();

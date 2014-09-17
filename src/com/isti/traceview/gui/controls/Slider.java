@@ -5,7 +5,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
-import java.awt.Insets;
+//import java.awt.Insets;
 import java.awt.event.MouseEvent;
 import java.util.Date;
 import java.util.Observable;
@@ -37,7 +37,7 @@ public class Slider extends JPanel implements Observer {
 	private static final Logger logger = LoggerFactory.getLogger(Slider.class);
 	
 	private static final Dimension size = new Dimension(200, 30);
-	private static Insets inset = new Insets(0, 0, 0, 0);
+	//private static Insets inset = new Insets(0, 0, 0, 0);
 	private Font labelFont = null;
 
 	private GraphPanel graphPanel = null;

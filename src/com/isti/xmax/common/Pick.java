@@ -197,7 +197,7 @@ public class Pick extends AbstractEvent implements IEvent {
 		try {
 			SAXBuilder builder = new SAXBuilder();
 			Document doc = builder.build(getSessionFile());
-			Element session = doc.getRootElement();
+			//Element session = doc.getRootElement();
 			String query = "//Pick[@time='" + TimeInterval.formatDate(getStartTime(), TimeInterval.DateFormatType.DATE_FORMAT_NORMAL) + "']";
 			XPath selectPickByTime = XPath.newInstance(query);
 			List<?> picks = selectPickByTime.selectNodes(doc);

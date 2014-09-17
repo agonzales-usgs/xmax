@@ -10,8 +10,7 @@ Class-Path: build/ lib/BareBonesBrowserLaunch.jar lib/JEvalResp.jar li
  b/JavaSeed.jar lib/TauP-1.1.7.jar lib/commons-cli-1.2.jar lib/commons
  -codec-1.5.jar lib/commons-collections-3.2.1.jar lib/commons-configur
  ation-1.7.jar lib/commons-exec-1.1.jar lib/commons-io-2.4.jar lib/com
- mons-lang-2.6.jar lib/commons-logging-1.1.1.jar lib/commons-logging.j
- ar lib/ekit-1.4.jar lib/fissuresIDL-1.0.jar lib/fissuresImpl-1.1.13.j
+ mons-lang-2.6.jar lib/ekit-1.4.jar lib/fissuresIDL-1.0.jar lib/fissuresImpl-1.1.13.j
  ar lib/fissuresUtil-1.0.19.jar lib/isti_shape.jar lib/isti_util.jar l
  ib/jaxen-core.jar lib/jaxen-jdom.jar lib/jcalendar.jar lib/jcommon-1.
  0.17.jar lib/jdom.jar lib/jfreechart-1.0.14.jar.NEW lib/jpf-tools.jar

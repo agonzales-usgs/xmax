@@ -4,6 +4,7 @@ import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+
 //import org.apache.log4j.Logger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,6 +43,7 @@ public class TransCorrelation implements ITransformation {
 				for (PlotDataProvider channel: input) {
 					channelNames.add(channel.getName());
 				}
+				@SuppressWarnings("unused")
 				ViewCorrelation vc = new ViewCorrelation(parentFrame, createData(input, filter, ti), channelNames, sampleRate, ti);
 			} catch (XMAXException e) {
 				JOptionPane.showMessageDialog(parentFrame, e.getMessage(), "Warning", JOptionPane.WARNING_MESSAGE);

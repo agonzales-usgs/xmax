@@ -24,14 +24,12 @@ import javax.swing.border.EtchedBorder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.isti.jevalresp.RespUtils;
 import com.isti.traceview.TraceViewException;
 import com.isti.traceview.data.DataModule;
 import com.isti.traceview.data.RawDataProvider;
 import com.isti.traceview.data.Response;
 import com.isti.traceview.processing.IFilter;
 import com.isti.traceview.processing.IstiUtilsMath;
-import com.isti.traceview.processing.Spectra;
 import com.isti.xmax.XMAX;
 import com.isti.xmax.gui.XMAXframe;
 
