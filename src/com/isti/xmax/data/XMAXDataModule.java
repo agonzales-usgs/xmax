@@ -3,7 +3,9 @@ package com.isti.xmax.data;
 import java.util.List;
 import java.util.SortedSet;
 
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.isti.traceview.TraceViewException;
 import com.isti.traceview.common.IEvent;
@@ -24,7 +26,7 @@ import com.isti.xmax.common.QCIssue;
  * @author Max Kokoulin
  */
 public class XMAXDataModule extends DataModule {
-	private static Logger lg = Logger.getLogger(XMAXDataModule.class);
+	private static final Logger logger = LoggerFactory.getLogger(XMAXDataModule.class);
 
 	/**
 	 * List of known earthquakes
@@ -64,7 +66,7 @@ public class XMAXDataModule extends DataModule {
 		try {
 			Pick.loadPicks();
 		} catch (XMAXException e) {
-			lg.error("Can't load picks: " + e);
+			logger.error("Can't load picks: ", e);
 		}
 	}
 	

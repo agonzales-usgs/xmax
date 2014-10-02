@@ -1,7 +1,9 @@
 package com.isti.traceview.commands;
 
 import java.util.List;
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.isti.traceview.AbstractCommand;
 import com.isti.traceview.common.TimeInterval;
@@ -14,7 +16,7 @@ import com.isti.traceview.data.PlotDataProvider;
  */
 
 public class LoadDataCommand extends AbstractCommand {
-	private static Logger lg = Logger.getLogger(LoadDataCommand.class);
+	private static final Logger logger = LoggerFactory.getLogger(LoadDataCommand.class);
 
 	List<PlotDataProvider> channels;
 	TimeInterval ti = null;
@@ -35,13 +37,13 @@ public class LoadDataCommand extends AbstractCommand {
 			super.run();
 			for (PlotDataProvider channel: channels) {
 				//if (!channel.isLoadingStarted()) {
-					lg.debug("== Load data command: " + channel.toString() + ti);
+					logger.debug("== Load data command: " + channel.toString() + ti);
 					channel.load(ti);
 					//lg.debug("Max Val = " + channel.getMaxValue() + ", Min Val = " + channel.getMinValue());
 				//}
 			}
 		} catch (Exception e) {
-			lg.error("LoadDataCommand error: " + e);
+			logger.error("Exception:", e);
 		}
 	}
 }

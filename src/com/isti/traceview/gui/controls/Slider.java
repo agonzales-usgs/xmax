@@ -5,7 +5,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
-import java.awt.Insets;
+//import java.awt.Insets;
 import java.awt.event.MouseEvent;
 import java.util.Date;
 import java.util.Observable;
@@ -16,7 +16,9 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 import javax.swing.event.MouseInputListener;
 
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.isti.traceview.TraceView;
 import com.isti.traceview.common.TimeInterval;
@@ -32,9 +34,10 @@ import com.isti.traceview.gui.GraphPanel.GraphPanelObservable;
 public class Slider extends JPanel implements Observer {
 
 	private static final long serialVersionUID = 1L;
-	private static Logger lg = Logger.getLogger(Slider.class);
+	private static final Logger logger = LoggerFactory.getLogger(Slider.class);
+	
 	private static final Dimension size = new Dimension(200, 30);
-	private static Insets inset = new Insets(0, 0, 0, 0);
+	//private static Insets inset = new Insets(0, 0, 0, 0);
 	private Font labelFont = null;
 
 	private GraphPanel graphPanel = null;
@@ -100,7 +103,7 @@ public class Slider extends JPanel implements Observer {
 	}
 
 	public void update(Observable o, Object arg) {
-		lg.debug(this + ": update request from " + o);
+		logger.debug(this + ": update request from " + o);
 		if (o instanceof DataModule) {
 			if (arg instanceof TimeInterval) {
 				setRange((TimeInterval) arg);
@@ -132,7 +135,7 @@ public class Slider extends JPanel implements Observer {
 				g.drawLine(0, 0, getWidth(), getHeight());
 				g.drawLine(0, getHeight(), getWidth(), 0);
 			} else {
-				lg.debug("SliderPanel repaint: position " + getSliderPosition() + ", width " + getSliderWidth() + ", shift " + sliderMoved);
+				logger.debug("SliderPanel repaint: position " + getSliderPosition() + ", width " + getSliderWidth() + ", shift " + sliderMoved);
 				int startx = getSliderPosition() + sliderMoved;
 				int width = getSliderWidth();
 				g.fillRoundRect(startx, 0, width, getHeight(), 3, 3);
@@ -156,7 +159,6 @@ public class Slider extends JPanel implements Observer {
 		}
 
 		public void mouseDragged(MouseEvent e) {
-			lg.debug("SliderPanel: mouseDragged");
 			if (mousePressX == Integer.MIN_VALUE) {
 				sliderMoved = 0;
 			} else {
@@ -183,7 +185,6 @@ public class Slider extends JPanel implements Observer {
 		}
 
 		public void mousePressed(MouseEvent e) {
-			lg.debug("SliderPanel: mousePressed");
 			int x = e.getX();
 			if (x > getSliderPosition() && x < (getSliderPosition() + getSliderWidth())) {
 				mousePressX = x;
@@ -193,7 +194,6 @@ public class Slider extends JPanel implements Observer {
 		}
 
 		public void mouseReleased(MouseEvent e) {
-			lg.debug("SliderPanel: mouseReleased");
 			mousePressX = Integer.MIN_VALUE;
 			long start = getDate(getSliderPosition() + sliderMoved).getTime();
 			graphPanel.setTimeRange(new TimeInterval(start, start + graphPanel.getTimeRange().getDuration()));

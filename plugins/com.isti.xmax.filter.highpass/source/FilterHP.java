@@ -1,6 +1,9 @@
-
 import com.isti.traceview.data.RawDataProvider;
 import com.isti.traceview.processing.IFilter;
+import com.isti.traceview.processing.HPFilterException;
+
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 
 /**
  * High-pass Butterworth filter Algorithm is from Stearns, 1975
@@ -10,6 +13,7 @@ public class FilterHP implements IFilter {
 	/**
 	 * number of filter sections (1 section = 2 poles)
 	 */
+	//private static final Logger logger = LoggerFactory.getLogger(FilterHP.class);
 	int order = 0;
 	double cutFrequency = Double.NaN;
 
@@ -77,10 +81,13 @@ public class FilterHP implements IFilter {
 	 *            number of samples in data array
 	 * @return filtered data array
 	 */
-	synchronized public double[] filter(double[] data, int length) {
+	synchronized public double[] filter(double[] data, int length) 
+	throws HPFilterException
+	{
+		//throw new RuntimeException("Requested filtering length exceeds provided array length");
 		if (data.length > length)
-			throw new RuntimeException("Requested filtering length exceeds provided array length");
-		int mean = new Double(demean(data, length)).intValue();
+			throw new HPFilterException("Requested filtering length exceeds provided array length");
+		//int mean = new Double(demean(data, length)).intValue();
 		double[][] f = new double[order + 1][3];
 		for (int i = 0; i <= order; i++) {
 			for (int j = 0; j < 3; j++) {
@@ -117,6 +124,7 @@ public class FilterHP implements IFilter {
 	/**
 	 * remove mean from a buffer
 	 */
+	@SuppressWarnings("unused")
 	private double demean(double buf[], int n) {
 		double sum = 0.0;
 		for (int i = 0; i < n; i++) {

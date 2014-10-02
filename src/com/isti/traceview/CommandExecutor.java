@@ -9,7 +9,9 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p>
@@ -25,7 +27,7 @@ import org.apache.log4j.Logger;
  * @author Max Kokoulin
  */
 public class CommandExecutor extends ThreadPoolExecutor {
-	private static Logger lg = Logger.getLogger(CommandExecutor.class);
+	private static final Logger logger = LoggerFactory.getLogger(CommandExecutor.class);
 	/*
 	 * the number of threads to keep in the pool, even if they are idle
 	 */
@@ -65,7 +67,7 @@ public class CommandExecutor extends ThreadPoolExecutor {
 
 	protected void beforeExecute(Thread t, Runnable r) {
 		super.beforeExecute(t, r);
-		lg.debug("Executing " + r.toString());
+		logger.debug("Executing " + r.toString());
 		if (r instanceof IUndoableCommand) {
 			IUndoableCommand uc = (IUndoableCommand) r;
 			if (uc.canUndo()) {
@@ -78,6 +80,7 @@ public class CommandExecutor extends ThreadPoolExecutor {
 				unpaused.await();
 		} catch (InterruptedException ie) {
 			t.interrupt();
+			logger.error("InterruptedException:", ie);
 		} finally {
 			pauseLock.unlock();
 		}
@@ -132,7 +135,7 @@ public class CommandExecutor extends ThreadPoolExecutor {
 
 	// From Observable
 	public void addObserver(Observer o) {
-		lg.debug("CommandExecutor: adding observer");
+		logger.debug("Adding observer");
 		observable.addObserver(o);
 	}
 
@@ -145,7 +148,7 @@ public class CommandExecutor extends ThreadPoolExecutor {
 	}
 
 	public void notifyObservers() {
-		lg.debug("CommandExecutor: notify observers");
+		logger.debug("Notify observers");
 		observable.notifyObservers();
 		observable.clearChanged();
 	}

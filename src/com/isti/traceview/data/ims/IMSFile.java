@@ -11,7 +11,13 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.apache.log4j.Logger;
+
+
+
+
+//import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.isti.traceview.data.BufferedRandomAccessFile;
 
@@ -21,16 +27,20 @@ public class IMSFile {
 		DATA, REQUEST, SUBSCRIPTION
 	};
 
-	private static Logger lg = Logger.getLogger(IMSFile.class);
-	private static Pattern wid2Pattern = Pattern.compile("(\\w.)\\s.(\\S.)\\s.(\\S.)\\s.");
+	private static final Logger logger = LoggerFactory.getLogger(IMSFile.class);
+	//private static Pattern wid2Pattern = Pattern.compile("(\\w.)\\s.(\\S.)\\s.(\\S.)\\s.");
 	private static Pattern msgTypePattern = Pattern.compile("^MSG_TYPE\\s+(\\S+)$");
 	private static Pattern msgIdPattern = Pattern.compile("^MSG_ID\\s+(\\S+\\.*)$");
 	private static Pattern refIdPattern = Pattern.compile("^REF_ID\\s+(\\S+\\.*)$");
 	private static Pattern prodIdPattern = Pattern.compile("^PROD_ID\\s+(\\S+\\.*)$");
+	@SuppressWarnings("unused")
 	private String format_version = null;
 	private MessageType msg_type = null;
+	@SuppressWarnings("unused")
 	private String msg_id = null;
+	@SuppressWarnings("unused")
 	private String ref_id = null; // msg_id of referenced message
+	@SuppressWarnings("unused")
 	private String prod_id = null;
 	private List<DataType> dataTypes = new ArrayList<DataType>();
 
@@ -44,7 +54,6 @@ public class IMSFile {
 
 	public static IMSFile read(DataInput inStream, boolean parseOnly) throws IOException, IMSFormatException, ParseException, CanadaException {
 		IMSFile imsFile = new IMSFile();
-		lg.debug("IMSFile.read begin");
 		BufferedRandomAccessFile input = (BufferedRandomAccessFile) inStream;
 		try {
 			while (true) {
@@ -77,11 +86,11 @@ public class IMSFile {
 			}
 		} catch (EOFException e) {
 			// Do nothing
+			logger.error("EOFException:", e);
 		}
 		if(imsFile.dataTypes.size()==0){
 			throw new IMSFormatException("Data not found");
 		}
-		lg.debug("IMSFile.read end");
 		return imsFile;
 	}
 
@@ -143,6 +152,7 @@ public class IMSFile {
 			}
 		} catch (EOFException e) {
 			// Do nothing
+			logger.error("EOFException:", e);
 		}
 	}
 }

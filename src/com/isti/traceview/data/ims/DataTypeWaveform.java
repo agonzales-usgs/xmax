@@ -8,12 +8,14 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.isti.traceview.data.BufferedRandomAccessFile;
 
 public class DataTypeWaveform extends DataType {
-	private static Logger lg = Logger.getLogger(DataTypeWaveform.class);
+	private static final Logger logger = LoggerFactory.getLogger(DataTypeWaveform.class);
 
 	private List<BlockSet> channels = null;
 
@@ -27,7 +29,6 @@ public class DataTypeWaveform extends DataType {
 	}
 	
 	public void read(BufferedRandomAccessFile input, boolean parseOnly) throws IOException, IMSFormatException, ParseException, CanadaException {
-		lg.debug("DataTypeWaveform.read begin");
 		long filePointer = 0;
 		try {
 			while (true) {
@@ -54,9 +55,9 @@ public class DataTypeWaveform extends DataType {
 			}
 		} catch (EOFException e) {
 			// Do nothing
+			logger.error("EOFException:", e);
 		}
 
-		lg.debug("DataTypeWaveform.read end");
 	}
 
 	@Override

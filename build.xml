@@ -32,7 +32,7 @@
     <!-- COMPILE CLASSPATH --> 
     <path id="compile.classpath">
         <fileset dir="${lib.dir}">
-            <include name="**/*.jar"/>
+            <include name="*.jar"/>
         </fileset>
     </path>
 
@@ -58,7 +58,7 @@
     <path id="run.classpath">
         <pathelement path="${build.root}"/>
         <fileset dir="${lib.dir}">
-            <include name="**/*.jar"/>
+            <include name="*.jar"/>
         </fileset>
         <dirset dir="${plugins.dir}">
             <include name="**/classes"/>
