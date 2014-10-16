@@ -221,7 +221,7 @@ public class SegyTimeSeries { /* Offset Description */
 				max = y[i];
 			}
 		}
-		//logger.debug("SegyTimeSeries::getDataArray(TimeInterval ti) left");
+		logger.debug("SegyTimeSeries::getDataArray(TimeInterval ti) left");
 		return retAR;
 	}
 
@@ -326,6 +326,7 @@ public class SegyTimeSeries { /* Offset Description */
 				dis.close();
 			} catch (IOException e) {
 				// do nothing
+				logger.error("IOException:", e);
 			}
 		}
 	}

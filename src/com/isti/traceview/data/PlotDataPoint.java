@@ -6,8 +6,8 @@ import java.util.Set;
 import java.util.TreeSet;
 
 //import org.apache.log4j.Logger;
-//import org.slf4j.Logger;
-//import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * represents one screen point of graph, contains all data needed to draw pixel. Each point on
@@ -22,7 +22,7 @@ public class PlotDataPoint implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	//private static final Logger logger = LoggerFactory.getLogger(PlotDataPoint.class);
+	private static final Logger logger = LoggerFactory.getLogger(PlotDataPoint.class);
 
 	/**
 	 * High value in representing section
@@ -65,7 +65,7 @@ public class PlotDataPoint implements Serializable {
 	private Set<EventWrapper> events = null;
 
 	public PlotDataPoint(double top, double bottom, double mean, int segmentNumber, int continueAreaNumber, int rawDataProviderNumber, Set<EventWrapper> events) {
-		// lg.debug("Created: + this);
+		logger.debug("Created:" + this);
 		this.top = top;
 		this.bottom = bottom;
 		this.mean = mean;

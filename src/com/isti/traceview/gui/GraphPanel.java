@@ -1226,9 +1226,9 @@ public class GraphPanel extends JPanel implements Printable, MouseInputListener,
 			
 		paintNow = true;
 		int infoPanelWidth = channelViewFactory.getInfoAreaWidth();
-		//lg.debug("Repainting graph panel");
+		logger.debug("Repainting graph panel");
 		if (!mouseRepaint || forceRepaint || ChannelView.tooltipVisible) {
-			//lg.debug("GraphPanel: force repaint");
+			logger.debug("GraphPanel: force repaint");
 			//RepaintManager rm = RepaintManager.currentManager(this);
 			//rm.markCompletelyDirty(this);
 			for (Component component: drawAreaPanel.getComponents()) {
@@ -1236,7 +1236,7 @@ public class GraphPanel extends JPanel implements Printable, MouseInputListener,
 				
 				if (view.getHeight() == 0 || view.getWidth() == 0) {
 					// Ugly hack to avoid lack of screen redraw sometimes
-					//lg.debug("DrawAreaPanel: rebuilding corrupted layout");
+					logger.debug("DrawAreaPanel: rebuilding corrupted layout");
 					drawAreaPanel.doLayout();
 					for (Component comp: drawAreaPanel.getComponents()) {
 						comp.doLayout();
@@ -1251,7 +1251,7 @@ public class GraphPanel extends JPanel implements Printable, MouseInputListener,
 			if (mouseX > infoPanelWidth && mouseY < getHeight() - southPanel.getHeight() && showBigCursor) {
 				// Drawing cursor
 				// g.setXORMode(selectionColor); Hack for java 6
-				//lg.debug("Force drawing cursor: " + mouseX + ", " + mouseY + ", color " + selectionColor);
+				logger.debug("Force drawing cursor: " + mouseX + ", " + mouseY + ", color " + selectionColor);
 				g.drawLine(infoPanelWidth, mouseY, getWidth(), mouseY);
 				g.drawLine(mouseX, 0, mouseX, getHeight());
 				previousMouseX = mouseX;
@@ -1266,18 +1266,18 @@ public class GraphPanel extends JPanel implements Printable, MouseInputListener,
 			forceRepaint = false;
 		} else {
 			g.setXORMode(selectionColor);
-			//lg.debug("Repainting cursor, color " + selectionColor);
+			logger.debug("Repainting cursor, color " + selectionColor);
 			if (previousMouseX >= 0 && previousMouseY >= 0) {
 				// Erasing cursor
 				if (showBigCursor) {
-					//lg.debug("Erasing cursor: " + previousMouseX + ", " + previousMouseY);
+					logger.debug("Erasing cursor: " + previousMouseX + ", " + previousMouseY);
 					g.drawLine(infoPanelWidth, previousMouseY, getWidth(), previousMouseY);
 					g.drawLine(previousMouseX, 0, previousMouseX, getHeight());
 				}
 				previousMouseX = -1;
 				previousMouseY = -1;
 			}
-			//lg.debug("Erasing selection area");
+			logger.debug("Erasing selection area");
 			paintSelection(g, previousSelectedAreaXbegin, previousSelectedAreaXend, previousSelectedAreaYbegin, previousSelectedAreaYend, "Erasing");
 			previousSelectedAreaXbegin = Long.MAX_VALUE;
 			previousSelectedAreaXend = Long.MIN_VALUE;
@@ -1286,14 +1286,14 @@ public class GraphPanel extends JPanel implements Printable, MouseInputListener,
 			if (mouseX > infoPanelWidth && mouseY < getHeight() - southPanel.getHeight()) {
 				// Drawing cursor
 				if (showBigCursor) {
-					//lg.debug("Drawing cursor: " + mouseX + ", " + mouseY);
+					logger.debug("Drawing cursor: " + mouseX + ", " + mouseY);
 					g.drawLine(infoPanelWidth, mouseY, getWidth(), mouseY);
 					g.drawLine(mouseX, 0, mouseX, getHeight());
 				}
 				previousMouseX = mouseX;
 				previousMouseY = mouseY;
 			}
-			//lg.debug("Drawing selection area");
+			logger.debug("Drawing selection area");
 			paintSelection(g, selectedAreaXbegin, selectedAreaXend, selectedAreaYbegin, selectedAreaYend, "Drawing");
 			previousSelectedAreaXbegin = selectedAreaXbegin;
 			previousSelectedAreaXend = selectedAreaXend;
@@ -1310,8 +1310,7 @@ public class GraphPanel extends JPanel implements Printable, MouseInputListener,
 	private void paintSelection(Graphics g, long Xbegin, long Xend, double Ybegin, double Yend, String message) {
 		int infoPanelWidth = channelViewFactory.getInfoAreaWidth();
 		if (Xbegin != Long.MAX_VALUE && Xend != Long.MIN_VALUE && mouseSelectionEnabled) {
-			// lg.debug(message + " selection X: " + getXposition(Xbegin) + ", " +
-			// getXposition(Xend));
+			logger.debug(message + " selection X: " + getXposition(Xbegin) + ", " + getXposition(Xend));
 			if (Xend > Xbegin) {
 				int begPos = getXposition(Xbegin);
 				int leftPos = begPos >= 0 ? begPos + infoPanelWidth + getInsets().left : infoPanelWidth + getInsets().left;

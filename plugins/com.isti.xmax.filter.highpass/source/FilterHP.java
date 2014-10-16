@@ -2,8 +2,8 @@ import com.isti.traceview.data.RawDataProvider;
 import com.isti.traceview.processing.IFilter;
 import com.isti.traceview.processing.HPFilterException;
 
-//import org.slf4j.Logger;
-//import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * High-pass Butterworth filter Algorithm is from Stearns, 1975
@@ -13,7 +13,7 @@ public class FilterHP implements IFilter {
 	/**
 	 * number of filter sections (1 section = 2 poles)
 	 */
-	//private static final Logger logger = LoggerFactory.getLogger(FilterHP.class);
+	private static final Logger logger = LoggerFactory.getLogger(FilterHP.class);
 	int order = 0;
 	double cutFrequency = Double.NaN;
 

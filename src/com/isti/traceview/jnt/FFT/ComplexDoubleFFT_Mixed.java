@@ -24,8 +24,7 @@ import org.slf4j.LoggerFactory;
  * @author this package must also be.
  */
 public class ComplexDoubleFFT_Mixed extends ComplexDoubleFFT {
-	private static final Logger logger = LoggerFactory
-			.getLogger(ComplexDoubleFFT.class);
+	private static final Logger logger = LoggerFactory.getLogger(ComplexDoubleFFT.class);
 	static final double PI = Math.PI;
 
 	public ComplexDoubleFFT_Mixed(int n) {

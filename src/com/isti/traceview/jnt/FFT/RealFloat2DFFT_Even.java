@@ -43,8 +43,7 @@ import org.slf4j.LoggerFactory;
  */
 
 public class RealFloat2DFFT_Even {
-	private static final Logger logger = LoggerFactory
-			.getLogger(RealFloat2DFFT_Even.class);
+	private static final Logger logger = LoggerFactory.getLogger(RealFloat2DFFT_Even.class);
 	int nrows;
 	int ncols;
 	int rowspan;

@@ -2,8 +2,8 @@ import com.isti.traceview.data.RawDataProvider;
 import com.isti.traceview.processing.IFilter;
 import com.isti.traceview.processing.BPFilterException;
 
-//import org.slf4j.Logger;
-//import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p>
@@ -26,7 +26,7 @@ import com.isti.traceview.processing.BPFilterException;
 
 public class FilterBP implements IFilter {
 
-	//private static final Logger logger = LoggerFactory.getLogger(FilterBP.class);
+	private static final Logger logger = LoggerFactory.getLogger(FilterBP.class);
 	int order = 0;
 	double cutLowFrequency = Double.NaN;
 	double cutHighFrequency = Double.NaN;

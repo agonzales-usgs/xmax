@@ -40,8 +40,7 @@ import edu.sc.seis.fissuresUtil.bag.DistAz;
  * @author Max Kokoulin
  */
 public class Earthquake extends AbstractEvent implements IEvent {
-	private static final Logger logger = LoggerFactory
-			.getLogger(Earthquake.class);
+	private static final Logger logger = LoggerFactory.getLogger(Earthquake.class);
 	private static SimpleDateFormat df = new SimpleDateFormat(
 			"yyyy/MM/dd HH:mm:ss.SSS");
 	/**
