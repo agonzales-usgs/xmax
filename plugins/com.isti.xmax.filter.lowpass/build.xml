@@ -42,7 +42,7 @@
     <path id="plugin.classpath">
         <pathelement location="${build.dir}"/>
 	<dirset dir="../">
-            <include name="**/classes"/>
+            <include name="**/classes/*.class"/>
         </dirset>
    	<fileset dir="${lib.dir}">
 	    <include name="*.jar"/>
