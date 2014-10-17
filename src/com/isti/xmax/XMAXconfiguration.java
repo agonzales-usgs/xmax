@@ -499,19 +499,23 @@ public class XMAXconfiguration extends Configuration {
 	 * 
 	 * @return the log file name.
 	 */
+	/*
 	public String getLogFile() {
 		return logFile;
 	}
-
+	*/
+	
 	/**
 	 * Setter of the property <tt>logFile</tt>
 	 * 
 	 * @param logFile
 	 *            the log file name.
 	 */
-	/*public void setLogFile(String logFile) {
+	/*
+	public void setLogFile(String logFile) {
 		this.logFile = logFile;
-	}*/
+	}
+	*/
 
 	/**
 	 * Get HTML pattern to generate blank HTML report. First looks in the "pattern.html" file, if

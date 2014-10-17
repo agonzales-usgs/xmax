@@ -69,7 +69,7 @@
 			type, 4 - all -->
 		<PanelCountUnit>1</PanelCountUnit>
 		<UnitsInFrame>1</UnitsInFrame>
-		<!--LogFile>logs/xmax.log</LogFile-->
+		<LogFile>logs/XMAX.LOG</LogFile>
 
 		<Plugins>
 			<PSD>

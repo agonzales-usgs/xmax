@@ -452,6 +452,7 @@ public class XMAX extends TraceView {
 	 * Set configuration
 	 */
 	public static void setConfiguration(XMAXconfiguration cn) {
+		/*
 		RollingFileAppender apd = new RollingFileAppender();
 		apd.setName("FILELOG");
 		apd.setFile(cn.getLogFile());
@@ -459,8 +460,9 @@ public class XMAX extends TraceView {
 		apd.setMaxBackupIndex(10);
 		apd.setLayout(new PatternLayout("%d %5p %m%n"));
 		apd.activateOptions();
-		//Logger.getRootLogger().addAppender(apd);
-		Runtime.getRuntime().addShutdownHook(new ClearLogShutDownHook());
+		Logger.getRootLogger().addAppender(apd);
+		*/
+		//Runtime.getRuntime().addShutdownHook(new ClearLogShutDownHook());
 		TraceView.setConfiguration(cn);
 	}
 }
@@ -470,11 +472,14 @@ public class XMAX extends TraceView {
  */
 class ClearLogShutDownHook extends Thread {
 	public void run() {
+		
 		//RollingFileAppender apd = (RollingFileAppender) (Logger.getRootLogger().getAppender("FILELOG"));
 		//apd.close();
+		/*
 		File f = new File(XMAXconfiguration.getInstance().getLogFile());
 		if (f.length() == 0) {
 			f.deleteOnExit();
 		}
+		*/
 	}
 }
