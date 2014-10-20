@@ -87,34 +87,9 @@
         </java>
     </target>
 
-    <!-- BUILD-PLUGINS -->
-    <target name="build-plugins">
-        <!-- mkdir dir="${build.root}/plugins" / -->
-        <ant dir="plugins/com.isti.xmax.filter.lowpass" target="build" />
-        <ant dir="plugins/com.isti.xmax.filter.highpass" target="build" />
-        <ant dir="plugins/com.isti.xmax.filter.bandpass" target="build" />
-	<ant dir="plugins/com.isti.xmax.filter.dyo" target="build" />
-	<ant dir="plugins/com.isti.xmax.filter.reconvolution" target="build" /> 
-	<ant dir="plugins/com.isti.xmax.correlation" target="build" />
-        <ant dir="plugins/com.isti.xmax.ppm" target="build" />
-        <ant dir="plugins/com.isti.xmax.psd" target="build" />
-        <ant dir="plugins/com.isti.xmax.showResponse" target="build" />
-        <ant dir="plugins/com.isti.xmax.spectra" target="build" />
-   	<copy todir="plugins/com.isti.xmax.filter.dyo/classes">
-	    <fileset dir="plugins/com.isti.xmax.filter.lowpass/classes">
-	        <include name="*.class"/>
-	    </fileset>
-   	    <fileset dir="plugins/com.isti.xmax.filter.highpass/classes">
-	        <include name="*.class"/>
-	    </fileset>
-	    <fileset dir="plugins/com.isti.xmax.filter.bandpass/classes">
-	        <include name="*.class"/>
-	    </fileset>
-	</copy>
-    </target>
-
     <!-- CREATE-MANIFEST -->
-    <target name="create-manifest" depends="build-plugins" description="Create MANIFEST.MF for xmax.jar archive">
+    <!--depends="build-plugins"--> 
+    <target name="create-manifest" description="Create MANIFEST.MF for xmax.jar archive">
         <tstamp/><!-- needed for TODAY -->
 	<delete file="${manifest.file}"/>
 	<echo message="Creating new ${manifest.file}"/>
@@ -146,9 +121,35 @@
             <compilerarg value="-Xlint"/>
         </javac>
     </target>
+    
+    <!-- BUILD-PLUGINS -->
+    <target name="build-plugins" depends="compile" description="Compile plugin source [depends=compile]">
+        <!--mkdir dir="${build.root}/plugins"/-->
+        <ant dir="plugins/com.isti.xmax.filter.lowpass" target="build" />
+	<ant dir="plugins/com.isti.xmax.filter.highpass" target="build" />
+        <ant dir="plugins/com.isti.xmax.filter.bandpass" target="build" />
+	<ant dir="plugins/com.isti.xmax.filter.dyo" target="build" />
+	<ant dir="plugins/com.isti.xmax.filter.reconvolution" target="build" /> 
+	<ant dir="plugins/com.isti.xmax.correlation" target="build" />
+        <ant dir="plugins/com.isti.xmax.ppm" target="build" />
+        <ant dir="plugins/com.isti.xmax.psd" target="build" />
+        <ant dir="plugins/com.isti.xmax.showResponse" target="build" />
+        <ant dir="plugins/com.isti.xmax.spectra" target="build" />
+   	<copy todir="plugins/com.isti.xmax.filter.dyo/classes">
+	    <fileset dir="plugins/com.isti.xmax.filter.lowpass/classes">
+	        <include name="*.class"/>
+	    </fileset>
+   	    <fileset dir="plugins/com.isti.xmax.filter.highpass/classes">
+	        <include name="*.class"/>
+	    </fileset>
+	    <fileset dir="plugins/com.isti.xmax.filter.bandpass/classes">
+	        <include name="*.class"/>
+	    </fileset>
+	</copy>
+    </target>
 
     <!-- JAR -->
-    <target name="jar" depends="compile" description="generate the distribution">
+    <target name="jar" depends="build-plugins" description="generate the distribution">
 	<!--echo message="Deleting and creating ${manifest.file}"/-->
 	<!--echo message="Classpath = ${jar.classpath}"/-->
 	<tstamp/><!-- needed for TODAY --> 
