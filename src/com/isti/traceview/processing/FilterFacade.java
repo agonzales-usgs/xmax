@@ -1,8 +1,6 @@
 package com.isti.traceview.processing;
 
-//import org.apache.log4j.Logger;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 import com.isti.traceview.TraceViewException;
 import com.isti.traceview.common.TimeInterval;
@@ -15,7 +13,7 @@ import com.isti.traceview.data.Segment;
  * @author Max Kokoulin
  */
 public class FilterFacade {
-	private static final Logger logger = LoggerFactory.getLogger(FilterFacade.class);
+	private static final Logger logger = Logger.getLogger(FilterFacade.class);
 
 	private IFilter filter;
 

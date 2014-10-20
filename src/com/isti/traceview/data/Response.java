@@ -1,6 +1,5 @@
 package com.isti.traceview.data;
 
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -9,9 +8,7 @@ import java.io.Reader;
 import java.io.StringReader;
 import java.util.Date;
 
-//import org.apache.log4j.Logger;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 import com.isti.traceview.TraceViewException;
 import com.isti.traceview.processing.IstiUtilsMath;
@@ -25,7 +22,7 @@ import edu.sc.seis.fissuresUtil.freq.Cmplx;
  *
  */
 public class Response {
-	private static final Logger logger = LoggerFactory.getLogger(Response.class);
+	private static final Logger logger = Logger.getLogger(Response.class);
 	private static final boolean verboseDebug = false;
 	
 	String network = null;

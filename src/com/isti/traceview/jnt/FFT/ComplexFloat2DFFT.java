@@ -1,7 +1,6 @@
 package com.isti.traceview.jnt.FFT;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 /**
  * Computes the FFT of 2 dimensional complex, single precision data. The data is
@@ -23,7 +22,7 @@ import org.slf4j.LoggerFactory;
  * @author not subject to copyright.
  */
 public class ComplexFloat2DFFT {
-	private static final Logger logger = LoggerFactory.getLogger(ComplexFloat2DFFT.class);
+	private static final Logger logger = Logger.getLogger(ComplexFloat2DFFT.class);
 	int nrows;
 	int ncols;
 	ComplexFloatFFT rowFFT, colFFT;

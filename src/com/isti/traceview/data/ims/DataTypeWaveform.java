@@ -8,14 +8,12 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
-//import org.apache.log4j.Logger;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 import com.isti.traceview.data.BufferedRandomAccessFile;
 
 public class DataTypeWaveform extends DataType {
-	private static final Logger logger = LoggerFactory.getLogger(DataTypeWaveform.class);
+	private static final Logger logger = Logger.getLogger(DataTypeWaveform.class);
 
 	private List<BlockSet> channels = null;
 

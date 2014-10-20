@@ -27,15 +27,14 @@ import java.nio.ByteBuffer;
 import java.util.Random;
 import gov.usgs.anss.util.*;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 /**
  * 
  * @author davidketchum
  */
 public class Canada {
-	private static final Logger logger = LoggerFactory.getLogger(Canada.class);
+	private static final Logger logger = Logger.getLogger(Canada.class);
 	/*
 	 * Copyright 1994 Science Applications International Corporation
 	 * 

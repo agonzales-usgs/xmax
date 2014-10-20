@@ -3,9 +3,7 @@ package com.isti.traceview.processing;
 import java.util.Arrays;
 import java.util.Date;
 
-//import org.apache.log4j.Logger;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
@@ -23,7 +21,7 @@ import edu.sc.seis.fissuresUtil.freq.Cmplx;
  * ISTI utils math methods.
  */
 public class IstiUtilsMath {
-	private static final Logger logger = LoggerFactory.getLogger(IstiUtilsMath.class);
+	private static final Logger logger = Logger.getLogger(IstiUtilsMath.class);
 	/**
 	 * \ingroup isti_utils_retVal \brief SUCCESS
 	 */

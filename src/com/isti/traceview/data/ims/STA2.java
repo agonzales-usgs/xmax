@@ -3,14 +3,12 @@ package com.isti.traceview.data.ims;
 import java.io.IOException;
 import java.text.ParseException;
 
-//import org.apache.log4j.Logger;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 import com.isti.traceview.data.BufferedRandomAccessFile;
 
 public class STA2 extends Block {
-	private static final Logger logger = LoggerFactory.getLogger(STA2.class);
+	private static final Logger logger = Logger.getLogger(STA2.class);
 	
 	private String network;		//6-14 a9 network identifier
 	private double latitude;	//16-24 f9.5 latitude (degrees, South is negative)
@@ -48,6 +46,7 @@ public class STA2 extends Block {
 	}
 	
 	public void read(BufferedRandomAccessFile input) throws IMSFormatException, IOException, ParseException {
+		logger.info("Reading STA2 RandomAccessFile");
 		header = input.readLine();
 		if(!header.startsWith("STA2")){
 			throw new IMSFormatException("Wrong station block header: " + header);

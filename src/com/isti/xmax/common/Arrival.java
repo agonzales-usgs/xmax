@@ -2,10 +2,7 @@ package com.isti.xmax.common;
 
 import java.util.Date;
 
-//import org.apache.log4j.Logger;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
+import org.apache.log4j.Logger;
 import com.isti.traceview.common.AbstractEvent;
 import com.isti.traceview.common.IEvent;
 
@@ -16,7 +13,7 @@ import com.isti.traceview.common.IEvent;
  * @author Max Kokoulin
  */
 public class Arrival extends AbstractEvent implements IEvent {
-	private static final Logger logger = LoggerFactory.getLogger(Arrival.class);
+	private static final Logger logger = Logger.getLogger(Arrival.class);
 
 	/**
 	 * @param localTime

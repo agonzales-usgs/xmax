@@ -17,11 +17,7 @@ import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
-
-
-//import org.apache.log4j.Logger;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 import com.isti.traceview.TraceView;
 import com.isti.traceview.TraceViewException;
@@ -38,7 +34,7 @@ import com.isti.traceview.gui.IColorModeState;
  * @author Max Kokoulin
  */
 public class DataModule extends Observable {
-	private static final Logger logger = LoggerFactory.getLogger(DataModule.class);
+	private static final Logger logger = Logger.getLogger(DataModule.class);
 
 	/**
 	 * List of found files with trace data
@@ -190,7 +186,7 @@ public class DataModule extends Observable {
             if (dir.exists() ) {
                 if (!dir.isDirectory()) {
                     //System.out.format("== DataModule.dumpData(): ERROR: dataTempPath=[%s] is NOT a directory!\n", dataTempPath);
-                	logger.error("== dataTempPath=[%s] is NOT a directory!\n", dataTempPath);
+                	logger.error(String.format("== dataTempPath=[%s] is NOT a directory!\n", dataTempPath));
                     System.exit(1);
                 }
                 //System.out.format("== DataModule.dumpData(): dataTempPath=[%s] exists\n", dataTempPath);
@@ -199,7 +195,7 @@ public class DataModule extends Observable {
                 Boolean success = dir.mkdirs();
                 if (!success) {
                     //System.out.format("== DataModule.dumpData(): ERROR: unable to create directory dataTempPath=[%s]\n", dataTempPath);
-                    logger.error("unable to create directory dataTempPath=[%s]\n", dataTempPath);
+                    logger.error(String.format("unable to create directory dataTempPath=[%s]\n", dataTempPath));
                 	System.exit(1);
                 }
                 //System.out.format("== DataModule.dumpData(): successfully created dir dataTempPath=[%s]\n", dataTempPath);

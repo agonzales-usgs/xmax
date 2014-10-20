@@ -15,8 +15,7 @@ import com.isti.traceview.processing.HPFilterException;
 import com.isti.traceview.processing.LPFilterException;
 import com.isti.xmax.gui.XMAXframe;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 import javax.swing.JTextField;
 import javax.swing.JLabel;
@@ -37,7 +36,7 @@ import javax.swing.border.EtchedBorder;
 public class FilterDYO extends JDialog implements IFilter, PropertyChangeListener {
 
 	private static final long serialVersionUID = 1L;
-	private static final Logger logger = LoggerFactory.getLogger(FilterDYO.class);
+	private static final Logger logger = Logger.getLogger(FilterDYO.class);
 	
 	private static Double cutLowFrequency = null;
 	private static Double cutHighFrequency = null;

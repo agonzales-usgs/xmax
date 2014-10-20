@@ -9,9 +9,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
-//import org.apache.log4j.Logger;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 /**
  * <p>
@@ -27,7 +25,7 @@ import org.slf4j.LoggerFactory;
  * @author Max Kokoulin
  */
 public class CommandExecutor extends ThreadPoolExecutor {
-	private static final Logger logger = LoggerFactory.getLogger(CommandExecutor.class);
+	private static final Logger logger = Logger.getLogger(CommandExecutor.class);
 	/*
 	 * the number of threads to keep in the pool, even if they are idle
 	 */

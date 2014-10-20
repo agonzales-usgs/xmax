@@ -11,9 +11,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.TimeZone;
 
-//import org.apache.log4j.Logger;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 import com.isti.traceview.TraceView;
 
@@ -24,7 +22,7 @@ import static edu.sc.seis.seisFile.sac.SacConstants.data_offset;
 public class SourceFileSAC extends SourceFile implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private static final Logger logger = LoggerFactory.getLogger(SourceFileSAC.class);
+	private static final Logger logger = Logger.getLogger(SourceFileSAC.class);
 	private static final SimpleDateFormat fissTime = new SimpleDateFormat("yyyyDDD'T'HH:mm:ss.SSS'Z'"); 
 	static {
 		fissTime.setTimeZone(TimeZone.getTimeZone("GMT"));

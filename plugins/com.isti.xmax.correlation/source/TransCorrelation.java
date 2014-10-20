@@ -5,9 +5,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 
-//import org.apache.log4j.Logger;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 import com.isti.traceview.common.TimeInterval;
 import com.isti.traceview.data.PlotDataProvider;
@@ -27,7 +25,7 @@ import com.isti.xmax.gui.XMAXframe;
  */
 public class TransCorrelation implements ITransformation {
 
-	private static final Logger logger = LoggerFactory.getLogger(TransCorrelation.class);
+	private static final Logger logger = Logger.getLogger(TransCorrelation.class);
 
 	public int maxDataLength = 64128;
 	private double sampleRate = 0;

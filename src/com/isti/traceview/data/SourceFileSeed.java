@@ -17,9 +17,7 @@ import java.util.Set;
 import java.util.StringTokenizer;
 import java.util.Vector;
 
-//import org.apache.log4j.Logger;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 import com.isti.traceview.TraceView;
 import com.isti.traceview.data.TraceViewSacExportBuilder;
@@ -49,7 +47,7 @@ import edu.iris.Fissures.seed.util.Utility;
 public class SourceFileSeed extends SourceFile implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private static final Logger logger = LoggerFactory.getLogger(SourceFileSeed.class);
+	private static final Logger logger = Logger.getLogger(SourceFileSeed.class);
 	private boolean verboseMode = false; // set to true to turn Jseedr verbose mode ON
 
 	// when exporting
@@ -117,7 +115,7 @@ public class SourceFileSeed extends SourceFile implements Serializable {
  * @version 11/5/2004
  */
 class TraceViewSacExportBuilder extends ExportBuilder {
-	private static final Logger logger = LoggerFactory.getLogger(TraceViewSacExportBuilder.class);
+	private static final Logger logger = Logger.getLogger(TraceViewSacExportBuilder.class);
 
 	/**
 	 * Create a new Sac Export Buider.

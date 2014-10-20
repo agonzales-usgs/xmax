@@ -12,11 +12,7 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Properties;
 
-//import org.apache.log4j.Logger;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-
+import org.apache.log4j.Logger;
 
 import com.isti.jevalresp.RespUtils;
 import com.isti.traceview.TraceView;
@@ -60,7 +56,7 @@ public class Channel extends Observable implements Comparable<Object>, Serializa
 
 	private static final String fissuresPropFileName = "fissures.properties";
 
-	private static final Logger logger = LoggerFactory.getLogger(Channel.class);
+	private static final Logger logger = Logger.getLogger(Channel.class);
 
 	private static Properties propsObj = null;
 

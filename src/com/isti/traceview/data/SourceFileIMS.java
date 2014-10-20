@@ -7,9 +7,7 @@ import java.text.ParseException;
 import java.util.HashSet;
 import java.util.Set;
 
-//import org.apache.log4j.Logger;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 import com.isti.traceview.data.ims.BlockSet;
 import com.isti.traceview.data.ims.DAT2;
@@ -24,7 +22,7 @@ import gov.usgs.anss.cd11.CanadaException;
 
 public class SourceFileIMS extends SourceFile {
 	private static final long serialVersionUID = 1L;
-	private static final Logger logger = LoggerFactory.getLogger(SourceFileIMS.class);
+	private static final Logger logger = Logger.getLogger(SourceFileIMS.class);
 
 	public SourceFileIMS(File file) {
 		super(file);

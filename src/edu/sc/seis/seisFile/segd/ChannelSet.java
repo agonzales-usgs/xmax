@@ -1,14 +1,13 @@
 package edu.sc.seis.seisFile.segd;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 import java.io.DataInput;
 import java.io.IOException;
 import edu.sc.seis.seisFile.segd.SegdRecord;
 
 public class ChannelSet {
-	private static final Logger logger = LoggerFactory.getLogger(ChannelSet.class);
+	private static final Logger logger = Logger.getLogger(ChannelSet.class);
 	
 	public enum ChannelType {
 		OTHER, 

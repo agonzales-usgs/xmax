@@ -18,9 +18,7 @@ import java.util.List;
 import java.util.Set;
 
 
-//import org.apache.log4j.Logger;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 import com.isti.traceview.TraceView;
 import com.isti.traceview.TraceViewException;
@@ -47,7 +45,7 @@ public abstract class SourceFile implements ISource {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private static final Logger logger = LoggerFactory.getLogger(SourceFile.class);
+	private static final Logger logger = Logger.getLogger(SourceFile.class);
 
 	/**
 	 * @uml.property name="file"

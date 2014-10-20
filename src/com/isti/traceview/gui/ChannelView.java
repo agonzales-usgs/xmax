@@ -42,9 +42,7 @@ import java.awt.Rectangle;
 
 import javax.swing.JCheckBox;
 
-//import org.apache.log4j.Logger;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 import org.jfree.chart.axis.NumberAxis;
 import org.jfree.data.RangeType;
@@ -69,7 +67,7 @@ public class ChannelView extends JPanel implements Comparable<Object>, Observer 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private static final Logger logger = LoggerFactory.getLogger(ChannelView.class); // @jve:decl-index=0:
+	private static final Logger logger = Logger.getLogger(ChannelView.class); // @jve:decl-index=0:
 
 	public static boolean tooltipVisible = false;
 	public static final int defaultInfoPanelWidth = 80;

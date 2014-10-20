@@ -1,7 +1,6 @@
 package com.isti.traceview.jnt.FFT;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 /** Computes  FFT's of real, double precision data where n is an integral power of 2.
   * The physical layout of the mathematical data d[i] in the array data is as follows:
@@ -46,7 +45,7 @@ import org.slf4j.LoggerFactory;
   */
 
 public class RealDoubleFFT_Radix2 extends RealDoubleFFT {
-	private static final Logger logger = LoggerFactory.getLogger(RealDoubleFFT_Radix2.class);
+	private static final Logger logger = Logger.getLogger(RealDoubleFFT_Radix2.class);
 	private int logn;
 
 	/**

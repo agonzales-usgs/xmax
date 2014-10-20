@@ -13,11 +13,7 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
-//import org.apache.log4j.Logger;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-
+import org.apache.log4j.Logger;
 
 import com.isti.traceview.TraceViewException;
 import com.isti.traceview.common.Station;
@@ -51,7 +47,7 @@ public class RawDataProvider extends Channel {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private static final Logger logger = LoggerFactory.getLogger(RawDataProvider.class);
+	private static final Logger logger = Logger.getLogger(RawDataProvider.class);
 
 	/**
 	 * @uml.property name="rawData"

@@ -1,13 +1,12 @@
 package edu.sc.seis.seisFile.segd;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 import java.io.DataInput;
 import java.io.IOException;
 
 public class AdditionalGeneralHeader {
-	private static final Logger logger = LoggerFactory.getLogger(AdditionalGeneralHeader.class);
+	private static final Logger logger = Logger.getLogger(AdditionalGeneralHeader.class);
 	
 	public enum PhaseControl {
 		NOT_RECORDED, BASEPLATE_ACCELEROMETER, REACTION_MASS, WEIGHTED_SUM, DIRECT_FORCE_MEASUREMENT

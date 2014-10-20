@@ -10,11 +10,10 @@ import java.util.Arrays;
 import java.util.Date;
 
 import com.isti.traceview.common.TimeInterval;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 public class SegdRecord {
-	private static final Logger logger = LoggerFactory.getLogger(SegdRecord.class);
+	private static final Logger logger = Logger.getLogger(SegdRecord.class);
 	
 	public enum Format {
 		BINARY_MULTIPLEXED_20_BIT, // (not implemented)

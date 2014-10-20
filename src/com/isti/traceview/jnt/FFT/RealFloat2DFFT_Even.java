@@ -1,7 +1,6 @@
 package com.isti.traceview.jnt.FFT;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 /**
  * EXPERIMENTAL! (till I think of something better): Computes the FFT of 2
@@ -43,7 +42,7 @@ import org.slf4j.LoggerFactory;
  */
 
 public class RealFloat2DFFT_Even {
-	private static final Logger logger = LoggerFactory.getLogger(RealFloat2DFFT_Even.class);
+	private static final Logger logger = Logger.getLogger(RealFloat2DFFT_Even.class);
 	int nrows;
 	int ncols;
 	int rowspan;

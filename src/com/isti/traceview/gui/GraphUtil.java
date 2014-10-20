@@ -23,9 +23,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-//import org.apache.log4j.Logger;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 import com.isti.traceview.TraceView;
 import com.isti.traceview.gui.FileChooser;
@@ -34,7 +32,7 @@ import com.isti.traceview.gui.FileChooser;
  * Sets of general procedures used for gui construction
  */
 public class GraphUtil {
-	private static final Logger logger = LoggerFactory.getLogger(GraphUtil.class);
+	private static final Logger logger = Logger.getLogger(GraphUtil.class);
 	private static final double default_compression = 0.9; // the compression level (0.0-1.0).
 
 	/**

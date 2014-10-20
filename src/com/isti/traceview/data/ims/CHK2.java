@@ -3,14 +3,12 @@ package com.isti.traceview.data.ims;
 import java.io.IOException;
 import java.text.ParseException;
 
-//import org.apache.log4j.Logger;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 import com.isti.traceview.data.BufferedRandomAccessFile;
 
 public class CHK2 extends Block {
-	private static final Logger logger = LoggerFactory.getLogger(CHK2.class);
+	private static final Logger logger = Logger.getLogger(CHK2.class);
 	private int chksum;
 	
 	public CHK2(long startOffset){

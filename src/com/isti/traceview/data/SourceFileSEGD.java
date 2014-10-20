@@ -6,9 +6,7 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-//import org.apache.log4j.Logger;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 import edu.sc.seis.seisFile.segd.ChannelSet;
 import edu.sc.seis.seisFile.segd.ScanType;
@@ -19,7 +17,7 @@ import edu.sc.seis.seisFile.segd.Trace;
 public class SourceFileSEGD extends SourceFile implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private static final Logger logger = LoggerFactory.getLogger(SourceFileSEGD.class);
+	private static final Logger logger = Logger.getLogger(SourceFileSEGD.class);
 	private final int NORM_AMPLITUDE =100000;
 	
 	public SourceFileSEGD(File file) {

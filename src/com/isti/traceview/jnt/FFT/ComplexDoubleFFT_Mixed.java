@@ -1,7 +1,6 @@
 package com.isti.traceview.jnt.FFT;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 /**
  * Computes FFT's of complex, double precision data of arbitrary length n. This
@@ -24,7 +23,7 @@ import org.slf4j.LoggerFactory;
  * @author this package must also be.
  */
 public class ComplexDoubleFFT_Mixed extends ComplexDoubleFFT {
-	private static final Logger logger = LoggerFactory.getLogger(ComplexDoubleFFT.class);
+	private static final Logger logger = Logger.getLogger(ComplexDoubleFFT.class);
 	static final double PI = Math.PI;
 
 	public ComplexDoubleFFT_Mixed(int n) {

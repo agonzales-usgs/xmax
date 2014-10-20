@@ -24,9 +24,7 @@ import java.util.GregorianCalendar;
 
 
 
-//import org.apache.log4j.Logger;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 import gov.usgs.anss.util.Util;
 
@@ -40,8 +38,7 @@ import gov.usgs.anss.util.Util;
  */
 public class ChannelSubframe {
 
-	private static final Logger logger = LoggerFactory
-			.getLogger(ChannelSubframe.class);
+	private static final Logger logger = Logger.getLogger(ChannelSubframe.class);
 	private int len;
 	@SuppressWarnings("unused")
 	private int authOffset;

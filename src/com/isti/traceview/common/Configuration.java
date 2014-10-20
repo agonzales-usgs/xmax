@@ -6,9 +6,7 @@ import java.util.Observable;
 import java.util.Set;
 import java.util.StringTokenizer;
 
-//import org.apache.log4j.Logger;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 import com.isti.traceview.TraceViewException;
 import com.isti.traceview.gui.ColorModeBySegment;
@@ -33,7 +31,7 @@ import edu.iris.dmc.seedcodec.B1000Types;
  * @author Max Kokoulin
  */
 public class Configuration extends Observable {
-	private static final Logger logger = LoggerFactory.getLogger(Configuration.class);
+	private static final Logger logger = Logger.getLogger(Configuration.class);
 
 	private String default_pattern_html = "<html><head><title>HTML report</title></head><body><h1>HTML report</h1> </body></html>";
 	protected static String listSeparator = ",";

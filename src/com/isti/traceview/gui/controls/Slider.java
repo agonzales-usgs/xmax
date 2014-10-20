@@ -16,9 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 import javax.swing.event.MouseInputListener;
 
-//import org.apache.log4j.Logger;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 import com.isti.traceview.TraceView;
 import com.isti.traceview.common.TimeInterval;
@@ -34,7 +32,7 @@ import com.isti.traceview.gui.GraphPanel.GraphPanelObservable;
 public class Slider extends JPanel implements Observer {
 
 	private static final long serialVersionUID = 1L;
-	private static final Logger logger = LoggerFactory.getLogger(Slider.class);
+	private static final Logger logger = Logger.getLogger(Slider.class);
 	
 	private static final Dimension size = new Dimension(200, 30);
 	//private static Insets inset = new Insets(0, 0, 0, 0);

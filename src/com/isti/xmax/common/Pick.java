@@ -12,8 +12,7 @@ import java.nio.channels.FileChannel;
 import java.util.Date;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
@@ -48,7 +47,7 @@ import com.isti.xmax.XMAXconfiguration;
  * @author Max Kokoulin
  */
 public class Pick extends AbstractEvent implements IEvent {
-	private static final Logger logger = LoggerFactory.getLogger(Pick.class);
+	private static final Logger logger = Logger.getLogger(Pick.class);
 	private static String thisSessionStart = TimeInterval.formatDate(new Date(), TimeInterval.DateFormatType.DATE_FORMAT_MIDDLE);
 	private static Pick lastPick = null;
 
@@ -328,7 +327,7 @@ public class Pick extends AbstractEvent implements IEvent {
  * SAX handler to parse xml picks database file
  */
 class SAXHandler extends DefaultHandler {
-	private static final Logger logger = LoggerFactory.getLogger(SAXHandler.class);
+	private static final Logger logger = Logger.getLogger(SAXHandler.class);
 
 	private Locator locator = null;
 	private String sessionLabel = "";

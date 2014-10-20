@@ -1,8 +1,6 @@
 package com.isti.traceview.commands;
 
-//import org.apache.log4j.Logger;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 import com.isti.traceview.AbstractUndoableCommand;
 import com.isti.traceview.UndoException;
@@ -15,7 +13,7 @@ import com.isti.traceview.processing.Rotation;
  * @author Max Kokoulin
  */
 public class RotateCommand extends AbstractUndoableCommand {
-	private static final Logger logger = LoggerFactory.getLogger(SelectCommand.class);
+	private static final Logger logger = Logger.getLogger(SelectCommand.class);
 	private GraphPanel graphPanel = null;
 	private Rotation previous = null;
 	private Rotation rotation = null;

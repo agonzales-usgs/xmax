@@ -10,10 +10,8 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EtchedBorder;
 import javax.swing.event.MouseInputListener;
 
+import org.apache.log4j.Logger;
 
-//import org.apache.log4j.Logger;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.jfree.chart.axis.DateAxis;
 import org.jfree.chart.axis.DateTickUnit;
 import org.jfree.chart.axis.DateTickUnitType;
@@ -71,7 +69,7 @@ public class GraphPanel extends JPanel implements Printable, MouseInputListener,
 
 	private static final long serialVersionUID = 1L;
 
-	private static final Logger logger = LoggerFactory.getLogger(GraphPanel.class); // @jve:decl-index=0:
+	private static final Logger logger = Logger.getLogger(GraphPanel.class); // @jve:decl-index=0:
 
 	private static final Color selectionColor = Color.YELLOW;
 	private static Font axisFont = null; // @jve:decl-index=0:
@@ -290,7 +288,7 @@ public class GraphPanel extends JPanel implements Printable, MouseInputListener,
 				url = GraphPanel.class.getResource("defaultMarkPosition.gif");
 			}
 			//System.out.format("== MTH: file=%s path=%s\n", url.getFile(), url.getPath() );
-			logger.info("== MTH: file=%s path=%s\n", url.getFile(), url.getPath());
+			logger.info(String.format("== MTH: file=%s path=%s\n", url.getFile(), url.getPath()));
 			markPositionImage = javax.imageio.ImageIO.read(url);
 			//} catch (MalformedURLException e) {
 		} catch (Exception e) {

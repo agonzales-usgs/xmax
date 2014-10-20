@@ -12,10 +12,7 @@ import java.util.Date;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
-//import org.apache.log4j.Logger;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
+import org.apache.log4j.Logger;
 
 import com.isti.traceview.common.TimeInterval;
 
@@ -27,7 +24,7 @@ import com.isti.traceview.common.TimeInterval;
  */
 public class Segment implements Externalizable, Cloneable {
 	public static final long serialVersionUID = 1;
-	private static final Logger logger = LoggerFactory.getLogger(Segment.class);
+	private static final Logger logger = Logger.getLogger(Segment.class);
 	/**
 	 * Gap Tolerance - 1.0 is a gap of 2*sample rate
 	 */
@@ -340,7 +337,7 @@ public class Segment implements Externalizable, Cloneable {
                         if (data == null) {
                             if (ret.length != sampleCount) {
                             	//System.out.format("== Segment.getData(): Warning: sampleCount=[%d pnts] BUT data.length=[%d pnts]\n", sampleCount, ret.length);
-                            	logger.warn("sampleCount=[%d pnts] BUT data.length=[%d pnts]\n", sampleCount, ret.length);
+                            	logger.warn(String.format("sampleCount=[%d pnts] BUT data.length=[%d pnts]\n", sampleCount, ret.length));
                             }
                             //data = new int[sampleCount];
                             data = new int[ret.length];

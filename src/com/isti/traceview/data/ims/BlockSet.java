@@ -6,14 +6,12 @@ import java.io.EOFException;
 import java.io.IOException;
 import java.text.ParseException;
 
-//import org.apache.log4j.Logger;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 import com.isti.traceview.data.BufferedRandomAccessFile;
 
 public class BlockSet {
-	private static final Logger logger = LoggerFactory.getLogger(BlockSet.class);
+	private static final Logger logger = Logger.getLogger(BlockSet.class);
 
 	private long startOffset;
 	private WID2 wid2;

@@ -8,9 +8,7 @@ import java.io.PrintStream;
 import java.lang.reflect.Array;
 import java.util.Date;
 
-//import org.apache.log4j.Logger;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 import org.jfree.data.xy.XYSeries;
 
 import com.isti.jevalresp.OutputGenerator;
@@ -27,7 +25,7 @@ import edu.sc.seis.fissuresUtil.freq.Cmplx;
  * @author Max Kokoulin
  */
 public class Spectra {
-	private static final Logger logger = LoggerFactory.getLogger(Spectra.class);
+	private static final Logger logger = Logger.getLogger(Spectra.class);
 	/**
 	 * Noise Spectra.
 	 */

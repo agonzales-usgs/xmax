@@ -6,9 +6,7 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-//import org.apache.log4j.Logger;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 import com.isti.traceview.TraceViewException;
 
@@ -20,7 +18,7 @@ import com.isti.traceview.TraceViewException;
 public class SourceFileSEGY extends SourceFile implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private static final Logger logger = LoggerFactory.getLogger(SourceFileSEGY.class);
+	private static final Logger logger = Logger.getLogger(SourceFileSEGY.class);
 
 	public SourceFileSEGY(File file) {
 		super(file);

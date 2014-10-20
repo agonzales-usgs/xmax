@@ -19,11 +19,7 @@ import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
-
-
-//import org.apache.log4j.Logger;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 import com.isti.traceview.TraceViewException;
 import com.isti.traceview.common.IEvent;
@@ -56,7 +52,7 @@ import com.isti.traceview.processing.Rotation;
 
 public class PlotDataProvider extends RawDataProvider implements Observer {
 	public static final long serialVersionUID = 1;
-	private static final Logger logger = LoggerFactory.getLogger(PlotDataProvider.class);
+	private static final Logger logger = Logger.getLogger(PlotDataProvider.class);
 
 	/**
 	 * Point count which we have in RAM for whole time range

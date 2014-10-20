@@ -32,8 +32,7 @@ import java.nio.ByteBuffer;
 import java.net.*;
 import java.io.IOException;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 /**
  * This class allows and event to get sent to the alaram system. It generally is
@@ -43,7 +42,7 @@ import org.slf4j.LoggerFactory;
  * @author davidketchum
  */
 public class SendEvent {
-	private static final Logger logger = LoggerFactory.getLogger(SendEvent.class);
+	private static final Logger logger = Logger.getLogger(SendEvent.class);
 	static DatagramSocket out;
 	static DatagramPacket dp;
 	static byte[] outbuf;

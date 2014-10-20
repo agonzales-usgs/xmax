@@ -1,9 +1,7 @@
 package com.isti.traceview.commands;
 
 import java.util.List;
-//import org.apache.log4j.Logger;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 import com.isti.traceview.AbstractCommand;
 import com.isti.traceview.common.TimeInterval;
@@ -16,7 +14,7 @@ import com.isti.traceview.data.PlotDataProvider;
  */
 
 public class LoadDataCommand extends AbstractCommand {
-	private static final Logger logger = LoggerFactory.getLogger(LoadDataCommand.class);
+	private static final Logger logger = Logger.getLogger(LoadDataCommand.class);
 
 	List<PlotDataProvider> channels;
 	TimeInterval ti = null;

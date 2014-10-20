@@ -9,9 +9,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 
-//import org.apache.log4j.Logger;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 import com.isti.traceview.TraceViewException;
 import com.isti.traceview.common.TimeInterval;
@@ -32,7 +30,7 @@ import com.isti.traceview.common.TimeInterval;
  * samp_rate, to contain that value.
  */
 public class SegyTimeSeries { /* Offset Description */
-	private static final Logger logger = LoggerFactory.getLogger(SegyTimeSeries.class);
+	private static final Logger logger = Logger.getLogger(SegyTimeSeries.class);
 	static final boolean doRepacketize = false;
 
 	String oNetwork = "";

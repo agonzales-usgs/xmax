@@ -19,34 +19,33 @@ Class-Path: build/ lib/BareBonesBrowserLaunch.jar lib/JEvalResp.jar li
  ols.jar lib/jpf.jar lib/jtransforms-2.4.jar lib/jxp.jar lib/log4j-1.2
  .17.jar lib/log4j-1.2.17.jar lib/miglayout-3.6.3-swing-java14.jar lib
  /oscache-2.1-mod2.jar lib/saxpath.jar lib/seedCodec-1.0.6.jar lib/sei
- sFile-1.5.2.jar lib/slf4j-api-1.7.7.jar lib/slf4j-log4j12-1.7.7.jar p
- lugins/com.isti.xmax.correlation/classes/TransCorrelation.class plugi
- ns/com.isti.xmax.correlation/classes/ViewCorrelation$1.class plugins/
- com.isti.xmax.correlation/classes/ViewCorrelation.class plugins/com.i
- sti.xmax.filter.bandpass/classes/FilterBP.class plugins/com.isti.xmax
- .filter.dyo/classes/FilterBP.class plugins/com.isti.xmax.filter.dyo/c
- lasses/FilterDYO$1.class plugins/com.isti.xmax.filter.dyo/classes/Fil
- terDYO.class plugins/com.isti.xmax.filter.dyo/classes/FilterHP.class 
- plugins/com.isti.xmax.filter.dyo/classes/FilterLP.class plugins/com.i
- sti.xmax.filter.highpass/classes/FilterHP.class plugins/com.isti.xmax
- .filter.lowpass/classes/FilterLP.class plugins/com.isti.xmax.filter.r
- econvolution/classes/Reconvolution$1.class plugins/com.isti.xmax.filt
- er.reconvolution/classes/Reconvolution.class plugins/com.isti.xmax.fi
- lter.reconvolution/classes/ReconvolutionException.class plugins/com.i
- sti.xmax.ppm/classes/AngleInputDialog.class plugins/com.isti.xmax.ppm
- /classes/PPMPolarItemRenderer.class plugins/com.isti.xmax.ppm/classes
- /TransPPM$ArrayValues.class plugins/com.isti.xmax.ppm/classes/TransPP
- M.class plugins/com.isti.xmax.ppm/classes/ViewPPM$1.class plugins/com
- .isti.xmax.ppm/classes/ViewPPM.class plugins/com.isti.xmax.psd/classe
- s/NoiseModel.class plugins/com.isti.xmax.psd/classes/TransPSD.class p
- lugins/com.isti.xmax.psd/classes/ViewPSD$1.class plugins/com.isti.xma
- x.psd/classes/ViewPSD$MyOptionPane.class plugins/com.isti.xmax.psd/cl
- asses/ViewPSD$PSDChannelViewFactory.class plugins/com.isti.xmax.psd/c
- lasses/ViewPSD$PSDItemRenderer.class plugins/com.isti.xmax.psd/classe
- s/ViewPSD.class plugins/com.isti.xmax.showResponse/classes/TransResp.
- class plugins/com.isti.xmax.showResponse/classes/ViewResp$1.class plu
- gins/com.isti.xmax.showResponse/classes/ViewResp.class plugins/com.is
- ti.xmax.spectra/classes/TransSpectra.class plugins/com.isti.xmax.spec
- tra/classes/ViewSpectra$1.class plugins/com.isti.xmax.spectra/classes
- /ViewSpectra.class ./
+ sFile-1.5.2.jar plugins/com.isti.xmax.correlation/classes/TransCorrel
+ ation.class plugins/com.isti.xmax.correlation/classes/ViewCorrelation
+ $1.class plugins/com.isti.xmax.correlation/classes/ViewCorrelation.cl
+ ass plugins/com.isti.xmax.filter.bandpass/classes/FilterBP.class plug
+ ins/com.isti.xmax.filter.dyo/classes/FilterBP.class plugins/com.isti.
+ xmax.filter.dyo/classes/FilterDYO$1.class plugins/com.isti.xmax.filte
+ r.dyo/classes/FilterDYO.class plugins/com.isti.xmax.filter.dyo/classe
+ s/FilterHP.class plugins/com.isti.xmax.filter.dyo/classes/FilterLP.cl
+ ass plugins/com.isti.xmax.filter.highpass/classes/FilterHP.class plug
+ ins/com.isti.xmax.filter.lowpass/classes/FilterLP.class plugins/com.i
+ sti.xmax.filter.reconvolution/classes/Reconvolution$1.class plugins/c
+ om.isti.xmax.filter.reconvolution/classes/Reconvolution.class plugins
+ /com.isti.xmax.filter.reconvolution/classes/ReconvolutionException.cl
+ ass plugins/com.isti.xmax.ppm/classes/AngleInputDialog.class plugins/
+ com.isti.xmax.ppm/classes/PPMPolarItemRenderer.class plugins/com.isti
+ .xmax.ppm/classes/TransPPM$ArrayValues.class plugins/com.isti.xmax.pp
+ m/classes/TransPPM.class plugins/com.isti.xmax.ppm/classes/ViewPPM$1.
+ class plugins/com.isti.xmax.ppm/classes/ViewPPM.class plugins/com.ist
+ i.xmax.psd/classes/NoiseModel.class plugins/com.isti.xmax.psd/classes
+ /TransPSD.class plugins/com.isti.xmax.psd/classes/ViewPSD$1.class plu
+ gins/com.isti.xmax.psd/classes/ViewPSD$MyOptionPane.class plugins/com
+ .isti.xmax.psd/classes/ViewPSD$PSDChannelViewFactory.class plugins/co
+ m.isti.xmax.psd/classes/ViewPSD$PSDItemRenderer.class plugins/com.ist
+ i.xmax.psd/classes/ViewPSD.class plugins/com.isti.xmax.showResponse/c
+ lasses/TransResp.class plugins/com.isti.xmax.showResponse/classes/Vie
+ wResp$1.class plugins/com.isti.xmax.showResponse/classes/ViewResp.cla
+ ss plugins/com.isti.xmax.spectra/classes/TransSpectra.class plugins/c
+ om.isti.xmax.spectra/classes/ViewSpectra$1.class plugins/com.isti.xma
+ x.spectra/classes/ViewSpectra.class ./
 

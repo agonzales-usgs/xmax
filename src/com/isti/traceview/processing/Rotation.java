@@ -25,12 +25,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EtchedBorder;
 
-
-
-
-//import org.apache.log4j.Logger;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 import com.isti.traceview.TraceView;
 import com.isti.traceview.TraceViewException;
@@ -63,7 +58,7 @@ public class Rotation {
 		THRILLIUM_UVW_TO_XMAX, THRILLIUM_XMAX_TO_UVW, STS2_UVW_TO_XMAX, STS2_XMAX_TO_UVW
 	};
 
-	private static final Logger logger = LoggerFactory.getLogger(Rotation.class);
+	private static final Logger logger = Logger.getLogger(Rotation.class);
 
 	private static double[][] UVWtoXMAXthrillium = { { Math.sqrt(2.0 / 3.0), -Math.sqrt(1.0 / 6.0), -Math.sqrt(1.0 / 6.0) },
 			{ 0.0, Math.sqrt(0.5), -Math.sqrt(0.5) }, { Math.sqrt(1.0 / 3.0), Math.sqrt(1.0 / 3.0), Math.sqrt(1.0 / 3.0) } };

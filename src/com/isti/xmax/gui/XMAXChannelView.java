@@ -10,9 +10,7 @@ import java.util.SortedSet;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-//import org.apache.log4j.Logger;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 import com.isti.traceview.CommandExecutor;
 import com.isti.traceview.commands.SelectTimeCommand;
@@ -51,7 +49,7 @@ public class XMAXChannelView extends ChannelView {
  * Special mouse adapter to set mouse behavior
  */
 class XMAXChannelViewMouseAdapter implements IMouseAdapter {
-	private static final Logger logger = LoggerFactory.getLogger(XMAXChannelViewMouseAdapter.class);
+	private static final Logger logger = Logger.getLogger(XMAXChannelViewMouseAdapter.class);
 	public static final DecimalFormat df = new DecimalFormat("#####.##");
 
 	public void mouseClickedButton1(int x, int y, JPanel clickedAt) {

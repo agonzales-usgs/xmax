@@ -26,9 +26,7 @@ import java.util.Set;
 import javax.swing.JSplitPane;
 import javax.swing.BoxLayout;
 
-//import org.apache.log4j.Logger;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 /**
  * Side-panel for earthquakes and phases selection. Contain list if available earthquakes (i.e those
@@ -42,7 +40,7 @@ import org.slf4j.LoggerFactory;
 public class PhasePanel extends JPanel implements ListSelectionListener {
 
 	private static final long serialVersionUID = 1L;
-	private static final Logger logger = LoggerFactory.getLogger(PhasePanel.class); // @jve:decl-index=0:
+	private static final Logger logger = Logger.getLogger(PhasePanel.class); // @jve:decl-index=0:
 	private static SimpleDateFormat df = new SimpleDateFormat("yyyy,DDD,HH:mm:ss");
 	private static Object[] initialSelectedPhases = { "P" };
 

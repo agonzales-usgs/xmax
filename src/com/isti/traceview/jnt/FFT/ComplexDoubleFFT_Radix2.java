@@ -1,7 +1,6 @@
 package com.isti.traceview.jnt.FFT;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 /**
  * Computes FFT's of complex, double precision data where n is an integer power
@@ -21,7 +20,7 @@ import org.slf4j.LoggerFactory;
  */
 
 public class ComplexDoubleFFT_Radix2 extends ComplexDoubleFFT {
-	private static final Logger logger = LoggerFactory.getLogger(ComplexDoubleFFT.class);
+	private static final Logger logger = Logger.getLogger(ComplexDoubleFFT.class);
 	static final double PI = Math.PI;
 	static final int FORWARD = -1;
 	static final int BACKWARD = +1;
