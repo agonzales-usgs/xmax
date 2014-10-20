@@ -4,18 +4,15 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.Date;
 
-///import org.apache.log4j.Logger;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 import com.isti.traceview.data.BufferedRandomAccessFile;
 
 public class WID2 extends Block {
-	private static final Logger logger = LoggerFactory.getLogger(WID2.class);
+	private static final Logger logger = Logger.getLogger(WID2.class);
 	public enum Compression {
 		INT, CM6, CM8, CSF
 	}
-	
 	
 	//private static Pattern headerPattern = Pattern.compile("(\\w.)\\s.(\\S.)\\s.(\\S.)\\s.");
 	

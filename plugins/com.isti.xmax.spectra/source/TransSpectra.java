@@ -5,9 +5,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 
-//import org.apache.log4j.Logger;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 import com.isti.traceview.TraceViewException;
 import com.isti.traceview.common.TimeInterval;
@@ -26,7 +24,7 @@ import com.isti.xmax.gui.XMAXframe;
  * @author Max Kokoulin
  */
 public class TransSpectra implements ITransformation {
-	private static final Logger logger = LoggerFactory.getLogger(TransSpectra.class);
+	private static final Logger logger = Logger.getLogger(TransSpectra.class);
 	private static final boolean verboseDebug = false;
 
 	public int maxDataLength = 65536;

@@ -10,10 +10,7 @@ import java.awt.Dimension;
 
 import javax.swing.BoxLayout;
 
-
-//import org.apache.log4j.Logger;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 import com.isti.traceview.gui.IColorModeState;
 import com.isti.traceview.gui.IMeanState;
@@ -40,7 +37,7 @@ import java.util.Observer;
 public class StatusBar extends JPanel implements Observer {
 
 	private static final long serialVersionUID = 1L;
-	private static final Logger logger = LoggerFactory.getLogger(StatusBar.class);
+	private static final Logger logger = Logger.getLogger(StatusBar.class);
 
 	@SuppressWarnings("unused")
 	private Font font = null;

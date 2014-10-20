@@ -5,9 +5,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-//import org.apache.log4j.Logger;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 /**
  * <p>
@@ -23,7 +21,7 @@ import org.slf4j.LoggerFactory;
  * @author Max Kokoulin
  */
 public class TemporaryStorage {
-	private static final Logger logger = LoggerFactory.getLogger(TemporaryStorage.class);
+	private static final Logger logger = Logger.getLogger(TemporaryStorage.class);
 	private String tempdir = null;
 	private Set<File> files = null;
 

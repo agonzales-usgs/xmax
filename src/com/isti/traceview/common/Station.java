@@ -10,17 +10,12 @@ import java.util.TreeSet;
 
 import com.isti.traceview.data.Channel;
 
-//import org.apache.log4j.Logger;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /**
  * Defines the station information. Station list is initialized during startup: such information as
  * longitude, latitude, elevation and depth is loaded from a station configuration file. Class
  * implements an interface "Comparable" to define sort order in the station lists.
  */
 public class Station implements Comparable<Object>, Serializable {
-	private static final Logger logger = LoggerFactory.getLogger(Station.class);
 	private static final long serialVersionUID = 1L;
 	/**
 	 * @uml.property name="name"

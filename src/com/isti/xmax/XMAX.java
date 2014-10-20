@@ -8,8 +8,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 import javax.swing.JOptionPane;
 
@@ -46,7 +45,7 @@ import com.isti.xmax.gui.XMAXframe;
 public class XMAX extends TraceView {
 	//private static final String version = "1.06";
 	//private static final String releaseDate = "Sept 14, 2011";
-	private static final Logger logger = LoggerFactory.getLogger(XMAX.class);
+	private static final Logger logger = Logger.getLogger(XMAX.class);
 	private static final String version = "1.08";
 	private static final String releaseDate = "Aug 29, 2013";
 

@@ -4,10 +4,6 @@ import java.awt.event.MouseEvent;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
-//import org.apache.log4j.Logger;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.isti.traceview.common.IEvent;
 import com.isti.traceview.data.PlotDataProvider;
 import com.isti.traceview.gui.GraphPanel;
@@ -23,7 +19,6 @@ import com.isti.xmax.data.XMAXChannel;
 public class XMAXGraphPanel extends GraphPanel {
 
 	private static final long serialVersionUID = 1L;
-	private static final Logger logger = LoggerFactory.getLogger(XMAXGraphPanel.class);
 
 	public XMAXGraphPanel() {
 		super();

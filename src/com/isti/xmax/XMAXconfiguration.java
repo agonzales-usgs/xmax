@@ -16,8 +16,7 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.StringTokenizer;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 import org.apache.commons.configuration.AbstractConfiguration;
 import org.apache.commons.configuration.ConfigurationException;
@@ -45,7 +44,7 @@ import com.isti.xmax.XMAXException;
  * @author Max Kokoulin
  */
 public class XMAXconfiguration extends Configuration {
-	private static final Logger logger = LoggerFactory.getLogger(XMAXconfiguration.class);
+	private static final Logger logger = Logger.getLogger(XMAXconfiguration.class);
 	private Map<String, String> userDirectories = null;
 
 	/**

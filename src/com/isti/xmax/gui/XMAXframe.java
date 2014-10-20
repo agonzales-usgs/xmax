@@ -69,12 +69,7 @@ import javax.swing.KeyStroke;
 import javax.swing.MenuElement;
 import javax.swing.ToolTipManager;
 
-
-
-
-//import org.apache.log4j.Logger;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 import org.java.plugin.registry.Extension;
 
 import java.awt.event.ActionEvent;
@@ -117,7 +112,7 @@ import javax.swing.JRadioButtonMenuItem;
  * @author Max Kokoulin
  */
 public class XMAXframe extends JFrame implements MouseInputListener, ActionListener, ItemListener, Observer {
-	private static final Logger logger = LoggerFactory.getLogger(XMAXframe.class); // @jve:decl-index=0:
+	private static final Logger logger = Logger.getLogger(XMAXframe.class); // @jve:decl-index=0:
 
 	private static final long serialVersionUID = 1L;
 	private static XMAXframe instance = null;
@@ -2106,7 +2101,7 @@ public class XMAXframe extends JFrame implements MouseInputListener, ActionListe
 			} catch (InstantiationException e1) {
 				logger.error("Can't compute responses: ", e1);
 			} catch (IllegalAccessException e1) {
-				logger.error("Can't compute responses: ", 1);
+				logger.error("Can't compute responses: ", e1);
 			} finally {
 				statusBar.setMessage("");
 				setWaitCursor(false);

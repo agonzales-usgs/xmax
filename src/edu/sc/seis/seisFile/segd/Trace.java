@@ -1,7 +1,6 @@
 package edu.sc.seis.seisFile.segd;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 import java.io.BufferedInputStream;
 import java.io.DataInput;
@@ -13,7 +12,7 @@ import java.io.IOException;
 import com.isti.traceview.common.TimeInterval;
 
 public class Trace {
-	private static final Logger logger = LoggerFactory.getLogger(Trace.class);
+	private static final Logger logger = Logger.getLogger(Trace.class);
 	
 	public enum TraceEdit {
 		NO_EDIT, 

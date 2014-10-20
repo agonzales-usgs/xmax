@@ -28,9 +28,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-//import org.apache.log4j.Logger;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
@@ -75,7 +73,7 @@ import com.isti.traceview.processing.Spectra;
 public class ViewPSD extends JDialog implements PropertyChangeListener, ChartProgressListener {
 
 	private static final long serialVersionUID = 1L;
-	private static final Logger logger = LoggerFactory.getLogger(ViewPSD.class);
+	private static final Logger logger = Logger.getLogger(ViewPSD.class);
 	private static final String huttFreqsFile = "hutt_freqs";
 	private static final String huttPeriodsKey = "HuttPeriods";
 	private static SimpleDateFormat df = new SimpleDateFormat("yyyy,DDD");

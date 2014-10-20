@@ -5,9 +5,7 @@ import java.util.SimpleTimeZone;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-//import org.apache.log4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.slf4j.Logger;
+import org.apache.log4j.Logger;
 
 import com.isti.traceview.common.Configuration;
 import com.isti.traceview.data.DataModule;
@@ -27,7 +25,7 @@ public class TraceView {
 	 * @see JFrame
 	 */
 	
-	private static final Logger logger = LoggerFactory.getLogger(TraceView.class);
+	private static final Logger logger = Logger.getLogger(TraceView.class);
 	/**
 	 * Library version label holder
 	 */

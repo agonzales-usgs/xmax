@@ -6,9 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 
-//import org.apache.log4j.Logger;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 import org.apache.commons.configuration.Configuration;
 
 import com.isti.traceview.TraceViewException;
@@ -29,7 +27,7 @@ import com.isti.xmax.gui.XMAXframe;
  * @author Max Kokoulin
  */
 public class TransPSD implements ITransformation {
-	private static final Logger logger = LoggerFactory.getLogger(TransPSD.class);
+	private static final Logger logger = Logger.getLogger(TransPSD.class);
 	private static final boolean verboseDebug = false;
 	public int maxDataLength = 65536;
 	private int effectiveLength = 0;

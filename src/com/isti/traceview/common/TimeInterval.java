@@ -7,9 +7,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-//import org.apache.log4j.Logger;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 import com.isti.traceview.TraceView;
 
@@ -41,7 +39,7 @@ public class TimeInterval {
 		DATE_FORMAT_LONG
 	};
 
-	private static final Logger logger = LoggerFactory.getLogger(TimeInterval.class);
+	private static final Logger logger = Logger.getLogger(TimeInterval.class);
 	public static SimpleDateFormat df = new SimpleDateFormat("yyyy,DDD,HH:mm:ss.SSS");
 	public static SimpleDateFormat df_middle = new SimpleDateFormat("yyyy,DDD,HH:mm:ss");
 	public static SimpleDateFormat df_long = new SimpleDateFormat("yyyy,DDD,HH:mm");

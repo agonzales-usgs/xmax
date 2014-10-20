@@ -7,9 +7,7 @@ import javax.swing.JOptionPane;
 
 
 
-//import org.apache.log4j.Logger;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
@@ -31,7 +29,7 @@ import com.isti.xmax.gui.XMAXframe;
  */
 public class TransPPM implements ITransformation {
 
-	private static final Logger logger = LoggerFactory.getLogger(TransPPM.class);
+	private static final Logger logger = Logger.getLogger(TransPPM.class);
 	public int maxDataLength = 65536;
 
 	public void transform(List<PlotDataProvider> input, TimeInterval ti, IFilter filter, Object configuration, JFrame parentFrame) {

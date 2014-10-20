@@ -9,9 +9,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-//import org.apache.log4j.Logger;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 import com.isti.traceview.TraceView;
 import com.isti.traceview.common.TimeInterval;
@@ -27,7 +25,7 @@ import com.isti.traceview.gui.GraphUtil;
 public class Zoomer extends JPanel implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
-	private static final Logger logger = LoggerFactory.getLogger(Zoomer.class);
+	private static final Logger logger = Logger.getLogger(Zoomer.class);
 	
 	private static Insets inset = new Insets(0, 0, 0, 0);
 	private static final Dimension maxSize = new Dimension(130, 30);
