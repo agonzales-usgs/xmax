@@ -9,11 +9,10 @@ import org.apache.log4j.Logger;
 import com.isti.traceview.data.BufferedRandomAccessFile;
 
 public class WID2 extends Block {
-	private static Logger lg = Logger.getLogger(WID2.class);
+	private static final Logger logger = Logger.getLogger(WID2.class);
 	public enum Compression {
 		INT, CM6, CM8, CSF
 	}
-	
 	
 	//private static Pattern headerPattern = Pattern.compile("(\\w.)\\s.(\\S.)\\s.(\\S.)\\s.");
 	
@@ -95,7 +94,7 @@ public class WID2 extends Block {
 	}
 
 	public void read(BufferedRandomAccessFile input) throws IMSFormatException, IOException, ParseException{
-		lg.debug("WID2.read begin");
+		logger.debug("== START WID2 Read");
 		header = input.readLine();
 		if(!header.startsWith("WID2")){
 			throw new IMSFormatException("Wrong waveform block header: " + header);
@@ -121,6 +120,5 @@ public class WID2 extends Block {
 		instType = getString(88,94);
 		orientHor = getDouble(95,100);
 		orientVer = getDouble(101,105);
-		lg.debug("WID2.read end");
 	}
 }

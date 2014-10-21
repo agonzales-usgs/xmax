@@ -6,7 +6,7 @@ import java.util.Date;
  * @author Max Kokoulin
  */
 
-public interface ICommand extends Runnable{
+public interface ICommand extends Runnable {
 
 
 	/**
