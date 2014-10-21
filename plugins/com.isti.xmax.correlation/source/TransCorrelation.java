@@ -30,7 +30,6 @@ public class TransCorrelation implements ITransformation {
 	private double sampleRate = 0;
 
 	public void transform(List<PlotDataProvider> input, TimeInterval ti, IFilter filter, Object configuration, JFrame parentFrame) {
-		logger.debug("CORRELATION PLUGIN CALLED!!!!!!!!");
 		if ((input == null) || (input.size() == 0) || (input.size() > 2)) {
 			JOptionPane.showMessageDialog(parentFrame, "You should select two channels to view correlation\nor one channel to view autocorrelation",
 					"Error", JOptionPane.ERROR_MESSAGE);
@@ -64,7 +63,6 @@ public class TransCorrelation implements ITransformation {
 	 * @throws XMAXException
 	 */
 	private List<double[]> createData(List<PlotDataProvider> input, IFilter filter, TimeInterval ti) throws XMAXException {
-		logger.debug("START");
 		List<double[]> ret = new ArrayList<double[]>();
 		PlotDataProvider channel1 = input.get(0);
 		List<Segment> segments1 = channel1.getRawData(ti);

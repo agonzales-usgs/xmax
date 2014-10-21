@@ -29,7 +29,6 @@ public class TransSpectra implements ITransformation {
 	public int maxDataLength = 65536;
 
 	public void transform(List<PlotDataProvider> input, TimeInterval ti, IFilter filter, Object configuration, JFrame parentFrame) {
-		logger.debug("SPECTRA PLUGIN CALLED!!!!!!!!!!!!!!!!!!!");
 		if (input.size() == 0) {
 			JOptionPane.showMessageDialog(parentFrame, "Please select channels", "Spectra computation warning", JOptionPane.WARNING_MESSAGE);
 		} else {
@@ -62,7 +61,6 @@ public class TransSpectra implements ITransformation {
 	 * @throws XMAXException
 	 */
 	private List<Spectra> createData(List<PlotDataProvider> input, IFilter filter, TimeInterval ti, JFrame parentFrame) throws XMAXException {
-		logger.debug("== START");
 		List<Spectra> dataset = new ArrayList<Spectra>();
 		for (PlotDataProvider channel: input) {
 			double sampleRate = 0;

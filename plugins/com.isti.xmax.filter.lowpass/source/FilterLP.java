@@ -2,14 +2,11 @@ import com.isti.traceview.data.RawDataProvider;
 import com.isti.traceview.processing.IFilter;
 import com.isti.traceview.processing.LPFilterException;
 
-import org.apache.log4j.Logger;
-
 /**
  * Low-pass Butterworth filter Algorithm is from Stearns, 1975
  */
 
 public class FilterLP implements IFilter {
-	private static final Logger logger = Logger.getLogger(FilterLP.class);	
 	int order = 0;
 	double cutFrequency = Double.NaN;
 
@@ -81,7 +78,6 @@ public class FilterLP implements IFilter {
 	synchronized public double[] filter(double[] data, int length) 
 	throws LPFilterException
 	{
-		logger.info("Applying lowpass filter");
 		//throw new RuntimeException("Requested filtering length exceeds provided array length");
 		if (data.length > length)
 			throw new LPFilterException("Requested filtering length exceeds provided array length");

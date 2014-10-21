@@ -2,8 +2,6 @@ import com.isti.traceview.data.RawDataProvider;
 import com.isti.traceview.processing.IFilter;
 import com.isti.traceview.processing.HPFilterException;
 
-import org.apache.log4j.Logger;
-
 /**
  * High-pass Butterworth filter Algorithm is from Stearns, 1975
  */
@@ -12,7 +10,6 @@ public class FilterHP implements IFilter {
 	/**
 	 * number of filter sections (1 section = 2 poles)
 	 */
-	private static final Logger logger = Logger.getLogger(FilterHP.class);
 	int order = 0;
 	double cutFrequency = Double.NaN;
 
@@ -83,7 +80,6 @@ public class FilterHP implements IFilter {
 	synchronized public double[] filter(double[] data, int length) 
 	throws HPFilterException
 	{
-		logger.info("Applying highpass filter");
 		//throw new RuntimeException("Requested filtering length exceeds provided array length");
 		if (data.length > length)
 			throw new HPFilterException("Requested filtering length exceeds provided array length");

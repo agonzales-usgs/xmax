@@ -32,7 +32,6 @@ public class TransPSD implements ITransformation {
 	private int effectiveLength = 0;
 
 	public void transform(List<PlotDataProvider> input, TimeInterval ti, IFilter filter, Object configuration, JFrame parentFrame) {
-		logger.debug("PSD PLUGIN CALLED!!!!!!!!!!!!!!!!!!!");
 		if (input.size() == 0) {
 			JOptionPane.showMessageDialog(parentFrame, "Please select channels", "PSD computation warning", JOptionPane.WARNING_MESSAGE);
 		} else {
@@ -71,7 +70,6 @@ public class TransPSD implements ITransformation {
 
 	private List<Spectra> createData(List<PlotDataProvider> input, IFilter filter, TimeInterval ti, JFrame parentFrame) throws TraceViewException,
 			XMAXException {
-		logger.debug("== START");
 		List<Spectra> dataset = new ArrayList<Spectra>();
 		ListIterator<PlotDataProvider> li = input.listIterator();
 		String respNotFound = "";

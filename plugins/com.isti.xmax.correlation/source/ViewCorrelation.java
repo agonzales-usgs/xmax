@@ -145,7 +145,6 @@ public class ViewCorrelation extends JDialog implements PropertyChangeListener, 
 	}
 
 	private XYDataset filterData(List<double[]> ds) {
-		logger.debug("== START");
 		this.setCursor(new Cursor(Cursor.WAIT_CURSOR));
 		double[] correlation = null;
 		double[] dblData1 = applyWindow(ds.get(0), (String) getTaperCB().getSelectedItem());
@@ -174,7 +173,6 @@ public class ViewCorrelation extends JDialog implements PropertyChangeListener, 
 		dataset.addSeries(series);
 		getAmpMaxL().setText("Max Amplitude: " + dFormat.format(ampMax));
 		getLagTimeL().setText("Lag time: " + sampleRate * (ampMaxPoint - correlation.length / 2) / 1000 + " s");
-		logger.debug("dataset returned");
 		this.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 		return dataset;
 	}

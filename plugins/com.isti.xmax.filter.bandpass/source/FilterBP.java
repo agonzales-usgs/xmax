@@ -2,8 +2,6 @@ import com.isti.traceview.data.RawDataProvider;
 import com.isti.traceview.processing.IFilter;
 import com.isti.traceview.processing.BPFilterException;
 
-import org.apache.log4j.Logger;
-
 /**
  * <p>
  * Band-pass Butterworth filter Algorithm is from Stearns, 1975
@@ -25,7 +23,6 @@ import org.apache.log4j.Logger;
 
 public class FilterBP implements IFilter {
 
-	private static final Logger logger = Logger.getLogger(FilterBP.class);
 	int order = 0;
 	double cutLowFrequency = Double.NaN;
 	double cutHighFrequency = Double.NaN;
@@ -135,7 +132,6 @@ public class FilterBP implements IFilter {
 	throws BPFilterException
 	{
 		//throw new RuntimeException("Requested filtering length exceeds provided array length");
-		logger.info("Applying bandpass filter");
 		if (data.length > length)
 			throw new BPFilterException("Requested filtering length exceeds provided array length");
 		//int mean = new Double(demean(data, length)).intValue();
