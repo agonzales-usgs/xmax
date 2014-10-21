@@ -32,12 +32,6 @@
         <classpath refid="classpath"/>
     </typedef>
 
-    <!-- Plugin Info -->
-    <jpf-info manifest="${basedir}/plugin.xml"
-	      propertyid="plugin.id"
-	      propertyversion="plugin.version" />
-    <property name="plugin.home" value="${basedir}" />
-
     <!-- Plugin Classpath -->
     <path id="plugin.classpath">
         <pathelement location="${build.dir}"/>
@@ -48,6 +42,12 @@
 	    <include name="*.jar"/>
 	</fileset>
     </path>
+
+    <!-- Plugin Info -->
+    <jpf-info manifest="${basedir}/plugin.xml"
+	      propertyid="plugin.id"
+	      propertyversion="plugin.version" />
+    <property name="plugin.home" value="${basedir}" />
 
     <!-- Initializes Java Plugins using JPF --> 
     <jpf-path pathidref="plugin.classpath" pluginid="${plugin.id}">

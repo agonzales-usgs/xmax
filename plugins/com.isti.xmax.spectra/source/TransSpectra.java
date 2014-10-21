@@ -4,7 +4,6 @@ import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-
 import org.apache.log4j.Logger;
 
 import com.isti.traceview.TraceViewException;

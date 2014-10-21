@@ -4,6 +4,7 @@
     </description>
 
     <!-- GLOBAL PROPERTIES --> 
+    <property name="base.dir"	      location="."/> 
     <property name="src.dir"          location="src"/>
     <property name="lib.dir"          location="lib"/>
     <property name="plugins.dir"      location="plugins"/> 
@@ -109,7 +110,6 @@
     <!-- target="1.7" in '<javac></javac>' --> 
     <target name="compile" depends="init,create-manifest" description="Compile the source [depends=init]">
         <property name="myclasspath" refid="compile.classpath"/>
-	<!--echo message="Classpath = ${myclasspath}"/-->
 	<javac verbose="false" 
 	       srcdir="${src.dir}" 
 	       destdir="${build.root}" 
@@ -120,11 +120,18 @@
             <classpath refid="compile.classpath"/>
             <compilerarg value="-Xlint"/>
         </javac>
+   	<copy todir="${build.root}">
+	    <fileset dir="${base.dir}">
+		<include name="log4j.properties"/>
+	    </fileset>
+	    <fileset dir="${src.dir}">
+	        <include name="META-INF/**"/>
+	    </fileset>
+	</copy>
     </target>
     
     <!-- BUILD-PLUGINS -->
-    <target name="build-plugins" depends="compile" description="Compile plugin source [depends=compile]">
-        <!--mkdir dir="${build.root}/plugins"/-->
+    <target name="build-plugins" description="Compile plugin source [depends=compile]">
         <ant dir="plugins/com.isti.xmax.filter.lowpass" target="build" />
 	<ant dir="plugins/com.isti.xmax.filter.highpass" target="build" />
         <ant dir="plugins/com.isti.xmax.filter.bandpass" target="build" />
@@ -149,9 +156,8 @@
     </target>
 
     <!-- JAR -->
-    <target name="jar" depends="build-plugins" description="generate the distribution">
+    <target name="jar" depends="compile,build-plugins" description="generate the distribution">
 	<!--echo message="Deleting and creating ${manifest.file}"/-->
-	<!--echo message="Classpath = ${jar.classpath}"/-->
 	<tstamp/><!-- needed for TODAY --> 
 	<jar destfile="${project.archive}" manifest="${manifest.file}" basedir="${build.root}">
 	</jar>

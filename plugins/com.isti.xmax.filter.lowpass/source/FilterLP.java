@@ -9,7 +9,7 @@ import org.apache.log4j.Logger;
  */
 
 public class FilterLP implements IFilter {
-	private static final Logger logger = Logger.getLogger(FilterLP.class);
+	private static final Logger logger = Logger.getLogger(FilterLP.class);	
 	int order = 0;
 	double cutFrequency = Double.NaN;
 

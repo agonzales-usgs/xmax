@@ -24,17 +24,13 @@
 	
     <!-- Build Classpath (Java Plugins) --> 
     <path id="classpath">
-        <fileset dir="${lib.dir}" includes="*.jar"/>
+        <fileset dir="${lib.dir}">
+	    <include name="*.jar"/>
+   	</fileset> 
     </path>
     <typedef resource="org/java/plugin/tools/ant/jpf-tasks.properties">
         <classpath refid="classpath"/>
     </typedef>
-
-    <!-- Plugin Info -->
-    <jpf-info manifest="${basedir}/plugin.xml"
-	      propertyid="plugin.id"
-	      propertyversion="plugin.version"/>
-    <property name="plugin.home" value="${basedir}"/>
     
     <!-- Plugin Classpath -->
     <path id="plugin.classpath">
@@ -46,6 +42,12 @@
 	    <include name="*.jar"/>
 	</fileset>
     </path>
+
+    <!-- Plugin Info -->
+    <jpf-info manifest="${basedir}/plugin.xml"
+	      propertyid="plugin.id"
+	      propertyversion="plugin.version"/>
+    <property name="plugin.home" value="${basedir}"/>
 
     <!-- Initializes Java Plugins using JPF --> 
     <jpf-path pathidref="plugin.classpath" pluginid="${plugin.id}">
