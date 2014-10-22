@@ -17,7 +17,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-
 import org.apache.log4j.Logger;
 
 import com.isti.traceview.TraceView;
@@ -114,7 +113,7 @@ public abstract class SourceFile implements ISource {
 		while (it.hasNext()) {
 			File file = it.next();
             System.out.format("         Found file:%s\n", file.toString());
-            logger.debug("file=" + file.toString());
+            logger.debug("== getDataFiles: file=" + file.toString());
 			if (file.getName().matches(".*\\.log(\\.\\d{1,2}){0,1}$")) {
 				logger.warn("Excluding file " + file.getName() + " from loading list");
 				it.remove();
@@ -136,22 +135,22 @@ public abstract class SourceFile implements ISource {
 		for (File file: files) {
 			if (isIMS(file)) {
 				lst.add(new SourceFileIMS(file));
-				logger.info("IMS data file added: " + file.getAbsolutePath());
+				logger.debug("IMS data file added: " + file.getAbsolutePath());
 			} else if (isMSEED(file)) {
 				lst.add(new SourceFileMseed(file));
-				logger.info("MSEED data file added: " + file.getAbsolutePath());
+				logger.debug("MSEED data file added: " + file.getAbsolutePath());
 			} else if (isSAC(file)) {
 				lst.add(new SourceFileSAC(file));
-				logger.info("SAC data file added: " + file.getAbsolutePath());
+				logger.debug("SAC data file added: " + file.getAbsolutePath());
 			} else if (isSEGY(file)) {
 				lst.add(new SourceFileSEGY(file));
-				logger.info("SEGY data file added: " + file.getAbsolutePath());
+				logger.debug("SEGY data file added: " + file.getAbsolutePath());
 			} else if (isSEGD(file)) {
 				lst.add(new SourceFileSEGD(file));
-				logger.info("SEGD data file added: " + file.getAbsolutePath());
+				logger.debug("SEGD data file added: " + file.getAbsolutePath());
 			} else if (isSEED(file)) {
 				lst.add(new SourceFileSeed(file));
-				logger.info("SEED data file added: " + file.getAbsolutePath());
+				logger.debug("SEED data file added: " + file.getAbsolutePath());
 			}else {
 				logger.warn("Unknown file format: " + file.getName());
 			}

@@ -8,10 +8,12 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
+import org.apache.log4j.PatternLayout;
+import org.apache.log4j.RollingFileAppender;
 
 import javax.swing.JOptionPane;
-
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.HelpFormatter;
@@ -19,8 +21,6 @@ import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 import org.apache.commons.cli.PosixParser;
-import org.apache.log4j.PatternLayout;
-import org.apache.log4j.RollingFileAppender;
 import org.java.plugin.ObjectFactory;
 import org.java.plugin.PluginManager;
 import org.java.plugin.PluginManager.PluginLocation;
@@ -176,11 +176,11 @@ public class XMAX extends TraceView {
 				} else {
 					// Ordinary initialization
 					// switch off logging to suppress unneeded messages
-					//Level level = Logger.getRootLogger().getLevel();
-					//Logger.getRootLogger().setLevel(Level.OFF);
-					
+					Level level = Logger.getRootLogger().getLevel();
+					Logger.getRootLogger().setLevel(Level.OFF);
 					// Collecting plug-in locations.
 					PluginLocation[] pluginLocations = collectPluginLocations();
+					
 					// Creating plug-in manager instance.
 					pluginManager = ObjectFactory.newInstance().createManager();
 					// Publishing discovered plug-ins.
@@ -199,7 +199,7 @@ public class XMAX extends TraceView {
 					}
 					
 					//restoring logging level
-					//Logger.getRootLogger().setLevel(level);
+					Logger.getRootLogger().setLevel(level);
 					setDataModule(XMAXDataModule.getInstance());
                     
 					getDataModule().loadData();

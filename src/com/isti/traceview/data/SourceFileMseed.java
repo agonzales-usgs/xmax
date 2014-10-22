@@ -9,7 +9,6 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-
 import org.apache.log4j.Logger;
 
 import com.isti.traceview.TraceView;
@@ -144,7 +143,7 @@ public class SourceFileMseed extends SourceFile implements Serializable {
 								blockEndTime = getBlockEndTime(dh, sampleRate);
 								segmentSampleCount = segmentSampleCount + dh.getNumSamples();
 							} else {
-								logger.info("Skipping 0-length block #" + blockNumber);
+								logger.debug("Skipping 0-length block #" + blockNumber);
 							}
 						} else {
 							logger.error("Block # " + blockNumber + " is not a data record");
