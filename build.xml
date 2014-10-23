@@ -43,9 +43,9 @@
 	<fileset dir="${lib.dir}">
    	    <include name="*.jar"/>
 	</fileset>
-	<fileset dir="${plugins.dir}">
+	<!--fileset dir="${plugins.dir}">
 	    <include name="**/classes/*.class"/>
-	</fileset>
+	</fileset-->
    	<pathelement location="."/>
 	<!--pathelement location="${basedir}/${project.archive}"/-->
     </path>

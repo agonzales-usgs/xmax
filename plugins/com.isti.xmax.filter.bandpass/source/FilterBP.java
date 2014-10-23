@@ -131,7 +131,6 @@ public class FilterBP implements IFilter {
 	synchronized public double[] filter(double[] data, int length) 
 	throws BPFilterException
 	{
-		//throw new RuntimeException("Requested filtering length exceeds provided array length");
 		if (data.length > length)
 			throw new BPFilterException("Requested filtering length exceeds provided array length");
 		//int mean = new Double(demean(data, length)).intValue();

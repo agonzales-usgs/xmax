@@ -18,57 +18,5 @@ Class-Path: build/ lib/BareBonesBrowserLaunch.jar lib/JEvalResp.jar li
  b/jpf-tools.jar lib/jpf.jar lib/jtransforms-2.4.jar lib/jxp.jar lib/l
  og4j-1.2.16.jar lib/log4j.jar lib/miglayout-3.6.3-swing-java14.jar li
  b/oscache-2.1-mod2.jar lib/saxpath.jar lib/seedCodec-1.0.6.jar lib/se
- isFile-1.5.2.jar plugins/com.isti.xmax.core/classes/AngleInputDialog.
- class plugins/com.isti.xmax.core/classes/FilterBP.class plugins/com.i
- sti.xmax.core/classes/FilterDYO$1.class plugins/com.isti.xmax.core/cl
- asses/FilterDYO.class plugins/com.isti.xmax.core/classes/FilterHP.cla
- ss plugins/com.isti.xmax.core/classes/FilterLP.class plugins/com.isti
- .xmax.core/classes/NoiseModel.class plugins/com.isti.xmax.core/classe
- s/PPMPolarItemRenderer.class plugins/com.isti.xmax.core/classes/Recon
- volution$1.class plugins/com.isti.xmax.core/classes/Reconvolution.cla
- ss plugins/com.isti.xmax.core/classes/ReconvolutionException.class pl
- ugins/com.isti.xmax.core/classes/TransCorrelation.class plugins/com.i
- sti.xmax.core/classes/TransPPM$ArrayValues.class plugins/com.isti.xma
- x.core/classes/TransPPM.class plugins/com.isti.xmax.core/classes/Tran
- sPSD.class plugins/com.isti.xmax.core/classes/TransResp.class plugins
- /com.isti.xmax.core/classes/TransSpectra.class plugins/com.isti.xmax.
- core/classes/ViewCorrelation$1.class plugins/com.isti.xmax.core/class
- es/ViewCorrelation.class plugins/com.isti.xmax.core/classes/ViewPPM$1
- .class plugins/com.isti.xmax.core/classes/ViewPPM.class plugins/com.i
- sti.xmax.core/classes/ViewPSD$1.class plugins/com.isti.xmax.core/clas
- ses/ViewPSD$MyOptionPane.class plugins/com.isti.xmax.core/classes/Vie
- wPSD$PSDChannelViewFactory.class plugins/com.isti.xmax.core/classes/V
- iewPSD$PSDItemRenderer.class plugins/com.isti.xmax.core/classes/ViewP
- SD.class plugins/com.isti.xmax.core/classes/ViewResp$1.class plugins/
- com.isti.xmax.core/classes/ViewResp.class plugins/com.isti.xmax.core/
- classes/ViewSpectra$1.class plugins/com.isti.xmax.core/classes/ViewSp
- ectra.class plugins/com.isti.xmax.correlation/classes/TransCorrelatio
- n.class plugins/com.isti.xmax.correlation/classes/ViewCorrelation$1.c
- lass plugins/com.isti.xmax.correlation/classes/ViewCorrelation.class 
- plugins/com.isti.xmax.filter.bandpass/classes/FilterBP.class plugins/
- com.isti.xmax.filter.dyo/classes/FilterBP.class plugins/com.isti.xmax
- .filter.dyo/classes/FilterDYO$1.class plugins/com.isti.xmax.filter.dy
- o/classes/FilterDYO.class plugins/com.isti.xmax.filter.dyo/classes/Fi
- lterHP.class plugins/com.isti.xmax.filter.dyo/classes/FilterLP.class 
- plugins/com.isti.xmax.filter.highpass/classes/FilterHP.class plugins/
- com.isti.xmax.filter.lowpass/classes/FilterLP.class plugins/com.isti.
- xmax.filter.reconvolution/classes/Reconvolution$1.class plugins/com.i
- sti.xmax.filter.reconvolution/classes/Reconvolution.class plugins/com
- .isti.xmax.filter.reconvolution/classes/ReconvolutionException.class 
- plugins/com.isti.xmax.ppm/classes/AngleInputDialog.class plugins/com.
- isti.xmax.ppm/classes/PPMPolarItemRenderer.class plugins/com.isti.xma
- x.ppm/classes/TransPPM$ArrayValues.class plugins/com.isti.xmax.ppm/cl
- asses/TransPPM.class plugins/com.isti.xmax.ppm/classes/ViewPPM$1.clas
- s plugins/com.isti.xmax.ppm/classes/ViewPPM.class plugins/com.isti.xm
- ax.psd/classes/NoiseModel.class plugins/com.isti.xmax.psd/classes/Tra
- nsPSD.class plugins/com.isti.xmax.psd/classes/ViewPSD$1.class plugins
- /com.isti.xmax.psd/classes/ViewPSD$MyOptionPane.class plugins/com.ist
- i.xmax.psd/classes/ViewPSD$PSDChannelViewFactory.class plugins/com.is
- ti.xmax.psd/classes/ViewPSD$PSDItemRenderer.class plugins/com.isti.xm
- ax.psd/classes/ViewPSD.class plugins/com.isti.xmax.showResponse/class
- es/TransResp.class plugins/com.isti.xmax.showResponse/classes/ViewRes
- p$1.class plugins/com.isti.xmax.showResponse/classes/ViewResp.class p
- lugins/com.isti.xmax.spectra/classes/TransSpectra.class plugins/com.i
- sti.xmax.spectra/classes/ViewSpectra$1.class plugins/com.isti.xmax.sp
- ectra/classes/ViewSpectra.class ../xmax/
+ isFile-1.5.2.jar ../xmax/
 
