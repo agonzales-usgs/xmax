@@ -68,4 +68,3 @@ public class DataTypeWaveform extends DataType {
 		}
 	}
 }
-

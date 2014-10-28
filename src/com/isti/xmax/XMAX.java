@@ -44,8 +44,6 @@ import com.isti.xmax.gui.XMAXframe;
  * @author Max Kokoulin
  */
 public class XMAX extends TraceView {
-	//private static final String version = "1.06";
-	//private static final String releaseDate = "Sept 14, 2011";
 	private static final Logger logger = Logger.getLogger(XMAX.class);
 	private static final String version = "1.08";
 	private static final String releaseDate = "Aug 29, 2013";
@@ -200,6 +198,7 @@ public class XMAX extends TraceView {
 					}
 					
 					//restoring logging level
+					System.out.format("Logger LEVEL == [%s]\n", level.toString());	
 					Logger.getRootLogger().setLevel(level);
 					setDataModule(XMAXDataModule.getInstance());
                     
@@ -477,6 +476,5 @@ class ClearLogShutDownHook extends Thread {
 		if (f.length() == 0) {
 			f.deleteOnExit();
 		}
-
 	}
 }
